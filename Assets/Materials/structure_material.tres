@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cmlreoo2qwhp4"]
+
+[ext_resource type="Texture2D" uid="uid://65bielav3roh" path="res://Assets/Textures/checker_black_512x512.png" id="1_yjord"]
+
+[resource]
+albedo_texture = ExtResource("1_yjord")
+uv1_scale = Vector3(0.7, 0.7, 0.7)
+uv1_triplanar = true
+uv1_world_triplanar = true
