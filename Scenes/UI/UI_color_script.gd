@@ -12,7 +12,6 @@ func _ready() -> void:
 		return
 	printerr("Faça a conexão do signal aqui")
 	push_error("Faça a conexão do signal aqui")
-	
 
 func trocarDeCor(cor):
 	printerr("Reescreva UI_color_script para que a cor tenha o tipo desejado")
