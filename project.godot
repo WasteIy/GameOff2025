@@ -21,8 +21,3 @@ folder_colors={
 "res://Assets/": "red",
 "res://Scenes/": "blue"
 }
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
