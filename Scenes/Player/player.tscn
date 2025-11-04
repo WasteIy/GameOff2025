@@ -1,3 +1,29 @@
-[gd_scene load_steps=0 format=3 uid="uid://ctf164itluor7"]
+[gd_scene load_steps=6 format=3 uid="uid://bl6m5oumql8y4"]
+
+[ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
+[ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/UI_scene.tscn" id="3_xpcdj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_uvnfx")
+
+[node name="Model" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_tugb3")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86476886, 0)
+
+[node name="Camera" type="Camera3D" parent="Head"]
+unique_name_in_owner = true
+
+[node name="ColorChange" type="Node" parent="."]
+script = ExtResource("2_a3d8c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_uvnfx")
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_xpcdj")]
