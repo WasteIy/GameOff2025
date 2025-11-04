@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnka266lmacek"]
+
+[ext_resource type="Texture2D" uid="uid://5ppiu6jhtnkm" path="res://Assets/Textures/checker_blue_512x512.png" id="1_3pnye"]
+
+[resource]
+albedo_color = Color(0.6542321, 0.6542321, 0.654232, 1)
+albedo_texture = ExtResource("1_3pnye")
+uv1_scale = Vector3(0.7, 0.7, 0.7)
+uv1_triplanar = true
+uv1_world_triplanar = true

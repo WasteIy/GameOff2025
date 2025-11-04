@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ca4d0wj6cgv8x"]
+
+[ext_resource type="Texture2D" uid="uid://bon4mtbhvo3qo" path="res://Assets/Textures/checker_red_512x512.png" id="1_3f6vf"]
+
+[resource]
+albedo_color = Color(0.6789437, 0.6789437, 0.6789436, 1)
+albedo_texture = ExtResource("1_3f6vf")
+metallic_specular = 0.0
+uv1_scale = Vector3(0.7, 0.7, 0.7)
+uv1_triplanar = true
+uv1_world_triplanar = true
