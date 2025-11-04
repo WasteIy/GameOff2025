@@ -1,5 +1,4 @@
 extends ColorfulEntity
-class_name ColorfulTree
 
 func _set_active(active: bool) -> void:
 	is_active = active 
