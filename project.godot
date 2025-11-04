@@ -22,6 +22,9 @@ buses/default_bus_layout=""
 [autoload]
 
 GameManager="*res://Global/game_manager.gd"
+GameController="*res://Global/game_controller.gd"
+ResourceManager="*res://Global/resource_manager.gd"
+SFXManager="*res://Global/sfx_manager.gd"
 
 [file_customization]
 

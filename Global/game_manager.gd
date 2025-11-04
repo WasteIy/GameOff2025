@@ -1,5 +1,4 @@
 extends Node
-class_name GameController
 
 signal color_changed(new_color)
 

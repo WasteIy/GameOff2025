@@ -19,12 +19,12 @@ func _ready() -> void:
 func change_color(cor: int) -> void:
 	var tween := create_tween()
 	match cor:
-		GameController.ColorEnum.RED:
+		GameManager.ColorEnum.RED:
 			tween.tween_property(material, "shader_parameter/sFreq", 1.0, 0.2)
 			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.0, 0.2)
-		GameController.ColorEnum.GREEN:
+		GameManager.ColorEnum.GREEN:
 			tween.tween_property(material, "shader_parameter/sFreq", 1.5, 0.2)
 			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.3, 0.2)
-		GameController.ColorEnum.BLUE:
+		GameManager.ColorEnum.BLUE:
 			tween.tween_property(material, "shader_parameter/sFreq", 2.0, 0.2)
 			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.7, 0.2)
