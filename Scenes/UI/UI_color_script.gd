@@ -1,47 +1,30 @@
 extends Panel
 
 var shaderMaterial : ShaderMaterial
-
-@onready var gameManager = %GameManager
+var gameManager : GameManager = GameManager
 
 func _ready() -> void:
 	shaderMaterial = material
+	
 	if not gameManager:
-		printerr("O GameManager não foi encontrado no UI_color_script. Verifique o path ou a cena")
-		push_error("O GameManager não foi encontrado no UI_color_script. Verifique o path ou a cena")
+		printerr("O GameManager não foi encontrado.")
+		push_error("O GameManager não foi encontrado.")
 		return
-	printerr("Faça a conexão do signal aqui")
-	push_error("Faça a conexão do signal aqui")
-
-func trocarDeCor(cor):
-	printerr("Reescreva UI_color_script para que a cor tenha o tipo desejado")
-	push_error("Reescreva UI_color_script para que a cor tenha o tipo desejado")
-	if cor == "Vermelho":
-		var tween := create_tween()
-		tween.tween_property(material, "shader_parameter/sFreq", 1.0, 0.2)
-		tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.0, 0.2)
-	elif cor == "Verde":
-		var tween := create_tween()
-		tween.tween_property(material, "shader_parameter/sFreq", 1.35, 0.2)
-		tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.3, 0.2)
-	elif cor == "Azul":
-		var tween := create_tween()
-		tween.tween_property(material, "shader_parameter/sFreq", 1.78, 0.2)
-		tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.7, 0.2)
+	
+	if not gameManager.is_connected("color_changed", Callable(self, "change_color")):
+		gameManager.connect("color_changed", Callable(self, "change_color"))
+	change_color(gameManager.active_color)
 
 
-'''
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("1"):
-		var tween := create_tween()
-		tween.tween_property(material, "shader_parameter/sFreq", 1.0, 0.2)
-		tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.0, 0.2)
-	elif event.is_action_pressed("2"):
-		var tween := create_tween()
-		tween.tween_property(material, "shader_parameter/sFreq", 1.35, 0.2)
-		tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.3, 0.2)
-	elif event.is_action_pressed("3"):
-		var tween := create_tween()
-		tween.tween_property(material, "shader_parameter/sFreq", 1.78, 0.2)
-		tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.7, 0.2)
-'''
+func change_color(cor: int) -> void:
+	var tween := create_tween()
+	match cor:
+		GameController.ColorEnum.RED:
+			tween.tween_property(material, "shader_parameter/sFreq", 1.0, 0.2)
+			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.0, 0.2)
+		GameController.ColorEnum.GREEN:
+			tween.tween_property(material, "shader_parameter/sFreq", 1.35, 0.2)
+			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.3, 0.2)
+		GameController.ColorEnum.BLUE:
+			tween.tween_property(material, "shader_parameter/sFreq", 1.78, 0.2)
+			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.7, 0.2)

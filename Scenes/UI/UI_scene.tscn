@@ -1,31 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgcvp0kq4j3l3"]
+[gd_scene load_steps=4 format=3 uid="uid://cjfgpiirpihg7"]
 
 [ext_resource type="Shader" uid="uid://dl66atqk84612" path="res://Assets/Shaders/UI_Color.gdshader" id="1_wghih"]
 [ext_resource type="Script" uid="uid://c4qwpy6hl2iyj" path="res://Scenes/UI/UI_color_script.gd" id="2_agmrd"]
-[ext_resource type="Shader" uid="uid://dg12ekgthqsqd" path="res://Assets/Shaders/speed_shader.gdshader" id="3_18t6v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_agmrd"]
 shader = ExtResource("1_wghih")
 shader_parameter/color_offset = 0.0
 shader_parameter/sFreq = 1.0
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_18t6v"]
-noise_type = 0
-frequency = 0.182
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g87wr"]
-noise = SubResource("FastNoiseLite_18t6v")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g87wr"]
-shader = ExtResource("3_18t6v")
-shader_parameter/noise = SubResource("NoiseTexture2D_g87wr")
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/line_count = 0.65000000968578
-shader_parameter/line_density = 0.5
-shader_parameter/line_faloff = 0.7550000358625
-shader_parameter/mask_size = 0.1
-shader_parameter/mask_edge = 0.5
-shader_parameter/animation_speed = 12.0000005225
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -39,11 +20,3 @@ offset_right = 120.0
 offset_bottom = 71.0
 grow_horizontal = 2
 script = ExtResource("2_agmrd")
-
-[node name="Panel2" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_g87wr")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
