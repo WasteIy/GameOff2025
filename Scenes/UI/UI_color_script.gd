@@ -23,8 +23,8 @@ func change_color(cor: int) -> void:
 			tween.tween_property(material, "shader_parameter/sFreq", 1.0, 0.2)
 			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.0, 0.2)
 		GameController.ColorEnum.GREEN:
-			tween.tween_property(material, "shader_parameter/sFreq", 1.35, 0.2)
+			tween.tween_property(material, "shader_parameter/sFreq", 1.5, 0.2)
 			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.3, 0.2)
 		GameController.ColorEnum.BLUE:
-			tween.tween_property(material, "shader_parameter/sFreq", 1.78, 0.2)
+			tween.tween_property(material, "shader_parameter/sFreq", 2.0, 0.2)
 			tween.parallel().tween_property(material, "shader_parameter/color_offset", 0.7, 0.2)

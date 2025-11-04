@@ -15,12 +15,12 @@ void vertex() {
 
 void fragment() {
 	float uvX = UV.x - 0.5;
-	float sinX = sin(uvX * 14.0 * sFreq);
+	float sinX = -cos(uvX * 14.0 * sFreq);
 	sinX = (sinX + 1.0) / 5.0;
 
 	float distanceToCenter = abs(uvX) / 0.5;
 	COLOR.a = mix(1.0, 0.0, distanceToCenter);
-	vec3 raibowColor = hsv2rgb(vec3(uvX * distanceToCenter * 0.2 + color_offset, 1.0, 1.0));
+	vec3 raibowColor = hsv2rgb(vec3(color_offset, 1.0, 1.0));
 	if(UV.y < sinX || UV.y > (1.0 - sinX)){
 		COLOR.a = 0.0;
 	}
