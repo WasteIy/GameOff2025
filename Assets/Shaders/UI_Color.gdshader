@@ -15,7 +15,7 @@ void vertex() {
 
 void fragment() {
 	float uvX = UV.x - 0.5;
-	float sinX = sin((uvX + PI/2.0 + 1.0) * 14.0 * sFreq);
+	float sinX = -cos(uvX * 14.0 * sFreq);
 	sinX = (sinX + 1.0) / 5.0;
 
 	float distanceToCenter = abs(uvX) / 0.5;
