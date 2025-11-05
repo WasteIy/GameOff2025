@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=9 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
 [ext_resource type="Script" uid="uid://b03w8se4tf6xq" path="res://Scenes/Player/camera_script.gd" id="2_mtuoh"]
 [ext_resource type="Script" uid="uid://dmw751ewg0keo" path="res://Scenes/Player/State Machine/state_machine.gd" id="3_htcer"]
 [ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_xpcdj"]
-[ext_resource type="Script" uid="uid://deu6rrnyao61f" path="res://Scenes/Player/State Machine/walk_state.gd" id="4_dd0ac"]
-[ext_resource type="Script" uid="uid://clhwoi8ffxuul" path="res://Scenes/Player/State Machine/idle_state.gd" id="5_jlvik"]
-[ext_resource type="Script" uid="uid://b0pyvlq7iy0pj" path="res://Scenes/Player/State Machine/jump_state.gd" id="6_gk6dx"]
+[ext_resource type="Script" uid="uid://bwg0o3whbijsk" path="res://Scenes/Player/State Machine/state_script.gd" id="4_dd0ac"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -29,17 +27,13 @@ mesh = SubResource("CapsuleMesh_tugb3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
 
-[node name="State Machine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_htcer")
+metadata/_custom_type_script = "uid://dmw751ewg0keo"
 
-[node name="WalkState" type="Node" parent="State Machine"]
+[node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("4_dd0ac")
-
-[node name="IdleState" type="Node" parent="State Machine"]
-script = ExtResource("5_jlvik")
-
-[node name="JumpState" type="Node" parent="State Machine"]
-script = ExtResource("6_gk6dx")
+metadata/_custom_type_script = "uid://bwg0o3whbijsk"
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 
