@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b03w8se4tf6xq" path="res://Scenes/Player/camera_script.gd" id="2_mtuoh"]
 [ext_resource type="Script" uid="uid://dmw751ewg0keo" path="res://Scenes/Player/State Machine/state_machine.gd" id="3_htcer"]
 [ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_xpcdj"]
-[ext_resource type="Script" uid="uid://bwg0o3whbijsk" path="res://Scenes/Player/State Machine/state_script.gd" id="4_dd0ac"]
+[ext_resource type="Script" uid="uid://bk40qjqvrcgcv" path="res://Scenes/Player/State Machine/idle_state.gd" id="5_jlvik"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -14,30 +14,40 @@
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_uvnfx")
 
-[node name="CameraObject" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86476886, 0)
-script = ExtResource("2_mtuoh")
-
-[node name="Camera" type="Camera3D" parent="CameraObject"]
-unique_name_in_owner = true
-
 [node name="Model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_tugb3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_htcer")
-metadata/_custom_type_script = "uid://dmw751ewg0keo"
+[node name="CameraHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86476886, 0)
+script = ExtResource("2_mtuoh")
 
-[node name="State" type="Node" parent="StateMachine"]
-script = ExtResource("4_dd0ac")
-metadata/_custom_type_script = "uid://bwg0o3whbijsk"
+[node name="Camera" type="Camera3D" parent="CameraHolder"]
+unique_name_in_owner = true
 
-[node name="UI" parent="." instance=ExtResource("3_xpcdj")]
+[node name="Raycasts" type="Node" parent="."]
+
+[node name="DownRaycast" type="RayCast3D" parent="Raycasts"]
+unique_name_in_owner = true
+target_position = Vector3(0, -1.1, 0)
+
+[node name="UpRaycast" type="RayCast3D" parent="Raycasts"]
+unique_name_in_owner = true
+target_position = Vector3(0, 1.1, 0)
 
 [node name="Components" type="Node" parent="."]
 
 [node name="ColorChange" type="Node" parent="Components"]
 script = ExtResource("2_a3d8c")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_htcer")
+metadata/_custom_type_script = "uid://dmw751ewg0keo"
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("5_jlvik")
+metadata/_custom_type_script = "uid://bk40qjqvrcgcv"
+
+[node name="UI" parent="." instance=ExtResource("3_xpcdj")]

@@ -5,6 +5,7 @@ class_name StateMachine extends Node
 var current_state: State
 var states: Dictionary[String, State] = {}
 
+@onready var player: Player = $".."
 
 # Aqui adiciona todos os filhos desse nó no dictionary
 func _ready() -> void:
