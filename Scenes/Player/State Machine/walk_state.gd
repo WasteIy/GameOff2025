@@ -7,7 +7,13 @@ func enter(character_reference):
 	character = character_reference
 
 func physics_update(delta : float):
+	character.apply_gravity(delta)
+	check_input()
 	move(delta)
+
+func check_input():
+	if Input.is_action_just_pressed("jump"):
+		transitioned.emit(self, "JumpState")
 
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

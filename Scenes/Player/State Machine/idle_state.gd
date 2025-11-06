@@ -8,6 +8,7 @@ func enter(character_reference):
 
 func physics_update(delta: float) -> void:
 #	check_is_on_floor()
+	character.apply_gravity(delta)
 	check_input()
 	move(delta)
 	
