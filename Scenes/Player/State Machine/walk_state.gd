@@ -3,6 +3,7 @@ class_name WalkState extends State
 var character : CharacterBody3D
 
 func enter(character_reference):
+	print("Entrei no WalkState")
 	character = character_reference
 
 func physics_update(delta : float):

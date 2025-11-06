@@ -1,9 +1,9 @@
-class_name IdleState extends State
+class_name JumpState extends State
 
 var character : CharacterBody3D
 
 func enter(character_reference):
-	print("Entrei no IdleState")
+	print("Entrei no JumpState")
 	character = character_reference
 
 func physics_update(delta: float) -> void:

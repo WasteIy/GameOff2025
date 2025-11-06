@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=12 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bk40qjqvrcgcv" path="res://Scenes/Player/State Machine/idle_state.gd" id="5_jlvik"]
 [ext_resource type="Script" uid="uid://cfa7jbqogc8cl" path="res://Scenes/Player/State Machine/in_air_state.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
+[ext_resource type="Script" uid="uid://dbsgd5wkgkk8i" path="res://Scenes/Player/State Machine/jump_state.gd" id="8_gk6dx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -60,5 +61,9 @@ metadata/_custom_type_script = "uid://cfa7jbqogc8cl"
 [node name="WalkState" type="Node" parent="StateMachine"]
 script = ExtResource("7_jlvik")
 metadata/_custom_type_script = "uid://dsi0tr6e5moq0"
+
+[node name="JumpState" type="Node" parent="StateMachine"]
+script = ExtResource("8_gk6dx")
+metadata/_custom_type_script = "uid://dbsgd5wkgkk8i"
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
