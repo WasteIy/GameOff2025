@@ -2,13 +2,15 @@ class_name State extends Node
 
 var state_machine: StateMachine
 
-func enter() -> void:
+signal transitioned
+
+func enter(_character_reference: CharacterBody3D) -> void:
 	pass
 	
 func exit() -> void:
 	pass
 	
-func update(_delta: float) -> void:
+func process(_delta: float) -> void:
 	pass
 
 func physics_update(_delta: float) -> void:

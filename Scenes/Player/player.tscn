@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=11 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dmw751ewg0keo" path="res://Scenes/Player/State Machine/state_machine.gd" id="3_htcer"]
 [ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_xpcdj"]
 [ext_resource type="Script" uid="uid://bk40qjqvrcgcv" path="res://Scenes/Player/State Machine/idle_state.gd" id="5_jlvik"]
+[ext_resource type="Script" uid="uid://cfa7jbqogc8cl" path="res://Scenes/Player/State Machine/in_air_state.gd" id="6_0u5uq"]
+[ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -42,12 +44,21 @@ target_position = Vector3(0, 1.1, 0)
 [node name="ColorChange" type="Node" parent="Components"]
 script = ExtResource("2_a3d8c")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_htcer")
+initial_state = NodePath("IdleState")
 metadata/_custom_type_script = "uid://dmw751ewg0keo"
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("5_jlvik")
 metadata/_custom_type_script = "uid://bk40qjqvrcgcv"
+
+[node name="InAirState" type="Node" parent="StateMachine"]
+script = ExtResource("6_0u5uq")
+metadata/_custom_type_script = "uid://cfa7jbqogc8cl"
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("7_jlvik")
+metadata/_custom_type_script = "uid://dsi0tr6e5moq0"
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]

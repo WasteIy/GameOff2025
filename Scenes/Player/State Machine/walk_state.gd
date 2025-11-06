@@ -1,0 +1,24 @@
+class_name WalkState extends State
+
+var character : CharacterBody3D
+
+func enter(character_reference):
+	character = character_reference
+
+func physics_update(delta : float):
+	move(delta)
+
+func move(delta : float):
+	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	character.move_direction = (character.global_basis * Vector3(character.input_direction.x, 0.0, character.input_direction.y)).normalized()
+	
+	if character.move_direction and character.is_on_floor():
+		character.velocity.x = lerp(character.velocity.x, character.move_direction.x * character.move_speed, character.move_acceleration * delta)
+		character.velocity.z = lerp(character.velocity.z, character.move_direction.z * character.move_speed, character.move_acceleration * delta)
+		
+		if character.hit_ground_cooldown <= 0: character.desired_move_speed = character.velocity.length()
+		
+	else:
+		transitioned.emit(self, "IdleState")
+		
+	if character.desired_move_speed >= character.max_speed: character.desired_move_speed = character.max_speed
