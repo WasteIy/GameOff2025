@@ -3,7 +3,7 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 10.0
-const JUMP_VELOCITY = 6.0
+const JUMP_VELOCITY = 9.0
 const SENSITIVITY = 0.004
 
 #bob variables
@@ -28,7 +28,7 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(85))
 
 func _physics_process(delta):
 	# Add the gravity.
