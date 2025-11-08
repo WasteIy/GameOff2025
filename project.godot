@@ -30,6 +30,7 @@ SFXManager="*res://Global/sfx_manager.gd"
 
 folder_colors={
 "res://Assets/": "red",
+"res://PLACEHOLDERS/": "purple",
 "res://Scenes/": "blue"
 }
 

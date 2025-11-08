@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://rnu8n8yq1oto"]
+
+[ext_resource type="PackedScene" uid="uid://di6avvmayn5sw" path="res://PLACEHOLDERS/blaster-d.fbx" id="1_hprra"]
+[ext_resource type="Script" uid="uid://dot0qfhx6r7xs" path="res://PLACEHOLDERS/pScript_placeholder.gd" id="1_od16a"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l7207"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oacou"]
+
+[sub_resource type="Animation" id="Animation_kpjcp"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_e80uo"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kne1u"]
+resource_name = "Run"
+loop_mode = 1
+step = 0.0358
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxr5p"]
+_data = {
+&"Idle": SubResource("Animation_kpjcp"),
+&"RESET": SubResource("Animation_e80uo"),
+&"Run": SubResource("Animation_kne1u")
+}
+
+[node name="Player_plcaeholder" type="CharacterBody3D"]
+script = ExtResource("1_od16a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_l7207")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oacou")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="blaster-d" parent="Head/Camera3D" instance=ExtResource("1_hprra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37160873, -0.21746147, -0.47576427)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cxr5p")
+}
+autoplay = "Run"
