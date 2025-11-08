@@ -21,7 +21,6 @@ var gravity = 15.8
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var bullet_place: Marker3D = $"Head/Camera3D/blaster-d/Marker3D"
-const BULLET = preload("uid://cbvexba0doxde")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -31,14 +30,6 @@ func _unhandled_input(event):
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(85))
-	if event.is_action_pressed("shoot"):
-		shoot()
-
-func shoot():
-	var newBullet : Node3D = BULLET.instantiate()
-	get_tree().current_scene.add_child(newBullet)
-	newBullet.global_position = bullet_place.global_position
-	newBullet.transform.basis = bullet_place.transform.basis
 
 func _physics_process(delta):
 	# Add the gravity.

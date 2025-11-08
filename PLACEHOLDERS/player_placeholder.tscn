@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://rnu8n8yq1oto"]
+[gd_scene load_steps=18 format=3 uid="uid://d3xdk1phfcba5"]
 
 [ext_resource type="PackedScene" uid="uid://di6avvmayn5sw" path="res://PLACEHOLDERS/blaster-d.fbx" id="1_hprra"]
 [ext_resource type="Script" uid="uid://dot0qfhx6r7xs" path="res://PLACEHOLDERS/pScript_placeholder.gd" id="1_od16a"]

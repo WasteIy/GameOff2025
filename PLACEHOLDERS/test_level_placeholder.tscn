@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd5kmgw3rc6le"]
+[gd_scene load_steps=10 format=3 uid="uid://cw0le087x1nsh"]
 
 [ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_3h3g6"]
 [ext_resource type="Material" uid="uid://ca4d0wj6cgv8x" path="res://Assets/Materials/structure_material_red.tres" id="3_xkete"]
