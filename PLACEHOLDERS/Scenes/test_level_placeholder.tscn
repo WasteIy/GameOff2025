@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bnka266lmacek" path="res://Assets/Materials/structure_material_blue.tres" id="4_x2a1e"]
 [ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="5_7i70s"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="6_4py6l"]
-[ext_resource type="PackedScene" uid="uid://rnu8n8yq1oto" path="res://PLACEHOLDERS/player_placeholder.tscn" id="6_a5hm4"]
+[ext_resource type="PackedScene" uid="uid://il88e1qkncj6" path="res://PLACEHOLDERS/Scenes/player_placeholder.tscn" id="6_a5hm4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -198,5 +198,5 @@ use_collision = true
 size = Vector3(24.439219, 2.1432052, 1.4)
 material = ExtResource("6_4py6l")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("6_a5hm4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.11032, 2.4400637, 13.78928)
+[node name="Player_plcaeholder" parent="." instance=ExtResource("6_a5hm4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.145471, 2.4400635, 5.274251)

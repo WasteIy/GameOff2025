@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://rnu8n8yq1oto"]
+[gd_scene load_steps=18 format=3 uid="uid://il88e1qkncj6"]
 
-[ext_resource type="PackedScene" uid="uid://di6avvmayn5sw" path="res://PLACEHOLDERS/blaster-d.fbx" id="1_hprra"]
-[ext_resource type="Script" uid="uid://dot0qfhx6r7xs" path="res://PLACEHOLDERS/pScript_placeholder.gd" id="1_od16a"]
+[ext_resource type="Script" uid="uid://dot0qfhx6r7xs" path="res://PLACEHOLDERS/Scripts/pScript_placeholder.gd" id="1_od16a"]
+[ext_resource type="PackedScene" uid="uid://di6avvmayn5sw" path="res://PLACEHOLDERS/blaster-d.fbx" id="2_mg8o3"]
 [ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_k2lhu"]
 [ext_resource type="Shader" uid="uid://cp3ukynrqpm6q" path="res://Assets/Shaders/SparkleShader.gdshader" id="3_o5hn5"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="4_f64hd"]
@@ -39,7 +39,7 @@ hue_variation_max = 0.99999994
 
 [sub_resource type="QuadMesh" id="QuadMesh_o5hn5"]
 size = Vector2(0.25, 1)
-center_offset = Vector3(0, 0.4, 0)
+center_offset = Vector3(0, 0.2, 0)
 
 [sub_resource type="Animation" id="Animation_kpjcp"]
 resource_name = "Idle"
@@ -73,18 +73,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
-[node name="blaster-d" parent="Head/Camera3D" instance=ExtResource("1_hprra")]
+[node name="blaster-d" parent="Head/Camera3D" instance=ExtResource("2_mg8o3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37160873, -0.21746147, -0.47576427)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Head/Camera3D/blaster-d"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.014242649, 0.055680335, -0.4553818)
 material_override = SubResource("ShaderMaterial_ery3i")
-emitting = false
-lifetime = 0.09999999999999999
-one_shot = true
+lifetime = 0.1
 explosiveness = 0.9
 randomness = 1.0
 fixed_fps = 60
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_f64hd")
 draw_pass_1 = SubResource("QuadMesh_o5hn5")
 
