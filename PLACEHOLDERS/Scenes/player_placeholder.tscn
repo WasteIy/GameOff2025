@@ -79,7 +79,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37160873, -0.21746147, -0.4
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Head/Camera3D/blaster-d"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.014242649, 0.055680335, -0.4553818)
 material_override = SubResource("ShaderMaterial_ery3i")
+emitting = false
 lifetime = 0.1
+one_shot = true
 explosiveness = 0.9
 randomness = 1.0
 fixed_fps = 60

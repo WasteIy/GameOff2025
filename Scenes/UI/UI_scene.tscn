@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjfgpiirpihg7"]
+[gd_scene load_steps=7 format=3 uid="uid://cjfgpiirpihg7"]
 
+[ext_resource type="Shader" uid="uid://bic5pu4ouc3ax" path="res://Assets/Shaders/Glitch.gdshader" id="1_18t6v"]
 [ext_resource type="Shader" uid="uid://dl66atqk84612" path="res://Assets/Shaders/UI_Color.gdshader" id="1_wghih"]
 [ext_resource type="Script" uid="uid://c4qwpy6hl2iyj" path="res://Scenes/UI/UI_color_script.gd" id="2_agmrd"]
+[ext_resource type="Script" uid="uid://d3ocxmuwkjb7w" path="res://Scenes/UI/GlitchScript.gd" id="4_g87wr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g87wr"]
+shader = ExtResource("1_18t6v")
+shader_parameter/shake_power = 0.02
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 0.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.050000002375
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_agmrd"]
 shader = ExtResource("1_wghih")
@@ -10,7 +20,16 @@ shader_parameter/sFreq = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Glitch" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_g87wr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_g87wr")
+
+[node name="ColorWave" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_agmrd")
 anchors_preset = 5
 anchor_left = 0.5
