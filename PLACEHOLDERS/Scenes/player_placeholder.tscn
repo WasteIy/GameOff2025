@@ -1,0 +1,120 @@
+[gd_scene load_steps=22 format=3 uid="uid://rnu8n8yq1oto"]
+
+[ext_resource type="PackedScene" uid="uid://di6avvmayn5sw" path="res://PLACEHOLDERS/Scenes/blaster-d.fbx" id="1_hprra"]
+[ext_resource type="Script" path="res://PLACEHOLDERS/Scripts/pScript_placeholder.gd" id="1_od16a"]
+[ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_k2lhu"]
+[ext_resource type="Shader" uid="uid://cp3ukynrqpm6q" path="res://Assets/Shaders/SparkleShader.gdshader" id="3_o5hn5"]
+[ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="4_f64hd"]
+[ext_resource type="Texture2D" uid="uid://c8lvgcee2x48d" path="res://Assets/Shaders/T_4_streaks.png" id="5_4vtuq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_l7207"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oacou"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mg8o3"]
+noise_type = 2
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t70hy"]
+noise = SubResource("FastNoiseLite_mg8o3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ery3i"]
+render_priority = 0
+shader = ExtResource("3_o5hn5")
+shader_parameter/mainTex = ExtResource("5_4vtuq")
+shader_parameter/cor = Color(3.2944162, 0.54292107, 0, 1)
+shader_parameter/noiseTex = SubResource("NoiseTexture2D_t70hy")
+
+[sub_resource type="Curve" id="Curve_23h3w"]
+_data = [Vector2(0.9036698, 0), 0.0, 2.4494388, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mg8o3"]
+texture_mode = 1
+curve = SubResource("Curve_23h3w")
+
+[sub_resource type="Curve" id="Curve_f64hd"]
+_data = [Vector2(0, 0.3146068), 0.0, 2.1916027, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_o5hn5"]
+curve = SubResource("Curve_f64hd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f64hd"]
+particle_flag_align_y = true
+direction = Vector3(0, 1, 0)
+spread = 70.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.39999998
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_o5hn5")
+alpha_curve = SubResource("CurveTexture_mg8o3")
+hue_variation_min = -1.0
+hue_variation_max = 0.99999994
+
+[sub_resource type="QuadMesh" id="QuadMesh_o5hn5"]
+size = Vector2(0.25, 1)
+center_offset = Vector3(0, 0.2, 0)
+
+[sub_resource type="Animation" id="Animation_kpjcp"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_e80uo"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kne1u"]
+resource_name = "Run"
+loop_mode = 1
+step = 0.0358
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxr5p"]
+_data = {
+&"Idle": SubResource("Animation_kpjcp"),
+&"RESET": SubResource("Animation_e80uo"),
+&"Run": SubResource("Animation_kne1u")
+}
+
+[node name="Player_plcaeholder" type="CharacterBody3D"]
+script = ExtResource("1_od16a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_l7207")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_oacou")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="blaster-d" parent="Head/Camera3D" instance=ExtResource("1_hprra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37160873, -0.21746147, -0.47576427)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Head/Camera3D/blaster-d"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.014242649, 0.055680335, -0.4553818)
+material_override = SubResource("ShaderMaterial_ery3i")
+amount = 6
+lifetime = 0.1
+explosiveness = 0.9
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_f64hd")
+draw_pass_1 = SubResource("QuadMesh_o5hn5")
+
+[node name="Marker3D" type="Marker3D" parent="Head/Camera3D/blaster-d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 0.05, -0.26)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cxr5p")
+}
+autoplay = "Run"
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_k2lhu")]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4_f64hd")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbvexba0doxde"]
+
+[ext_resource type="Script" uid="uid://fjrlexcu8gr1" path="res://PLACEHOLDERS/Scripts/Bullet.gd" id="1_kyto7"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ery3i"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[node name="Bullet" type="Node3D"]
+script = ExtResource("1_kyto7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_ery3i")
