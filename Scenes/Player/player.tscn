@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://b03w8se4tf6xq" path="res://Scenes/Player/camera_script.gd" id="2_mtuoh"]
 [ext_resource type="Curve" uid="uid://bgv5oilo8se3k" path="res://Scenes/Player/State Machine/Curves/in_air_move_speed_curve.tres" id="3_74mp2"]
 [ext_resource type="Script" uid="uid://dmw751ewg0keo" path="res://Scenes/Player/State Machine/state_machine.gd" id="3_htcer"]
-[ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_xpcdj"]
+[ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/color_indicator.tscn" id="3_xpcdj"]
 [ext_resource type="Script" uid="uid://bk40qjqvrcgcv" path="res://Scenes/Player/State Machine/idle_state.gd" id="5_jlvik"]
 [ext_resource type="Script" uid="uid://cfa7jbqogc8cl" path="res://Scenes/Player/State Machine/in_air_state.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
