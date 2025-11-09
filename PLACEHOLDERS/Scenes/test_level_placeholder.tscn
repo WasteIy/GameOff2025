@@ -212,7 +212,10 @@ material = ExtResource("6_4py6l")
 [node name="Player_plcaeholder" parent="." instance=ExtResource("6_a5hm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.145471, 2.4400635, 5.274251)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7022762, 3.0639076, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player_plcaeholder/Head/Camera3D" index="1"]
+transform = Transform3D(3.0917206, 0, 0, 0, 1.7410041, 0, 0, 0, 1, 0, -0.0013737679, -1.0570459)
 material_override = SubResource("ShaderMaterial_gm477")
 mesh = SubResource("BoxMesh_6sor8")
+skeleton = NodePath("../../../..")
+
+[editable path="Player_plcaeholder"]
