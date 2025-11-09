@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd5kmgw3rc6le"]
+[gd_scene load_steps=13 format=3 uid="uid://cd5kmgw3rc6le"]
 
 [ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_3h3g6"]
 [ext_resource type="Material" uid="uid://ca4d0wj6cgv8x" path="res://Assets/Materials/structure_material_red.tres" id="3_xkete"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="5_7i70s"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="6_4py6l"]
 [ext_resource type="PackedScene" uid="uid://il88e1qkncj6" path="res://PLACEHOLDERS/Scenes/player_placeholder.tscn" id="6_a5hm4"]
+[ext_resource type="Shader" uid="uid://qba4ha35caid" path="res://Assets/Shaders/missing_outline.gdshader" id="7_6orwi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,6 +20,16 @@ background_mode = 2
 sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gm477"]
+render_priority = 0
+shader = ExtResource("7_6orwi")
+shader_parameter/normal_threshold = 2.085
+shader_parameter/depth_threshold = 0.05
+shader_parameter/depth_artifact_correction_coef = 2.0
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6sor8"]
 
 [node name="Test Level" type="Node3D"]
 
@@ -200,3 +211,8 @@ material = ExtResource("6_4py6l")
 
 [node name="Player_plcaeholder" parent="." instance=ExtResource("6_a5hm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.145471, 2.4400635, 5.274251)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7022762, 3.0639076, 0)
+material_override = SubResource("ShaderMaterial_gm477")
+mesh = SubResource("BoxMesh_6sor8")
