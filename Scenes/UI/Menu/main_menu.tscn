@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://clt6mn766fc23"]
 
-[ext_resource type="Script" uid="uid://nk572r5e15vu" path="res://Scenes/UI/main_menu.gd" id="1_5wsvm"]
+[ext_resource type="Script" uid="uid://nk572r5e15vu" path="res://Scenes/UI/Menu/main_menu.gd" id="1_5wsvm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_36iwh"]
 font_size = 64
@@ -23,21 +23,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.00011382803, 0.00011382803, 0.00011382803, 1)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -267.0
-offset_top = 144.0
-offset_right = 267.0
-offset_bottom = 232.0
-grow_horizontal = 2
-text = "[NOME DO JOGO]"
-label_settings = SubResource("LabelSettings_36iwh")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -45,13 +30,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -107.5
-offset_top = 12.0
-offset_right = 107.5
-offset_bottom = 165.0
+offset_left = -267.0
+offset_top = -145.5
+offset_right = 267.0
+offset_bottom = 145.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "[NOME DO JOGO]"
+label_settings = SubResource("LabelSettings_36iwh")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
