@@ -12,8 +12,6 @@ func enter(character_reference: CharacterBody3D):
 	
 
 func verifications():
-	if character.jump_cooldown < character.jump_cooldown_reference:
-		character.jump_cooldown = character.jump_cooldown_reference
 	if character.hit_ground_cooldown != character.hit_ground_cooldown:
 		character.hit_ground_cooldown = character.hit_ground_cooldown
 
@@ -27,8 +25,6 @@ func physics_update(delta: float):
 
 func applies(delta: float):
 	if !character.is_on_floor(): 
-		if character.jump_cooldown > 0.0:
-			character.jump_cooldown -= delta
 		if character.coyote_jump_cooldown > 0.0:
 			character.coyote_jump_cooldown -= delta
 			
@@ -38,8 +34,8 @@ func check_input():
 		
 
 func check_if_floor():
-	#if !character.is_on_floor() and character.velocity.y < 0.0:
-	#w	transitioned.emit(self, "InAirState")
+	if !character.is_on_floor() and character.velocity.y < 0.0:
+		transitioned.emit(self, "InAirState")
 		
 	if character.is_on_floor():
 		if character.move_direction:
@@ -86,21 +82,18 @@ func jump():
 	if !character.is_on_floor():
 		if !character.coyote_jump_on and character.number_air_jump > 0:
 			character.number_air_jump -= 1
-			character.jump_cooldown = character.jump_cooldown_reference
 			can_jump = true 
 		if character.coyote_jump_on:
-			character.jump_cooldown = character.jump_cooldown_reference
 			character.coyote_jump_cooldown = -1.0 # impede outro pulo coyote imediato
 			character.coyote_jump_on = false
 			can_jump = true 
 			
 	# pulo no chão
 	if character.is_on_floor():
-		character.jump_cooldown = character.jump_cooldown_reference
 		can_jump = true 
 		
 	# jump buffering
-	if character.buffered_jump:
+	if character.buffered_jump_on:
 		character.buffered_jump = false
 		character.number_air_jump = character.number_air_jump_reference
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=15 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cfa7jbqogc8cl" path="res://Scenes/Player/State Machine/in_air_state.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
 [ext_resource type="Script" uid="uid://dbsgd5wkgkk8i" path="res://Scenes/Player/State Machine/jump_state.gd" id="8_gk6dx"]
+[ext_resource type="Script" uid="uid://emye2cxnaujd" path="res://Scenes/UI/debug.gd" id="12_oikmp"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
@@ -18,14 +19,16 @@
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_uvnfx")
-bunny_hop_desired_move_speed_increase = 0.0
+move_speed = 9.0
+max_speed = 50.0
+move_acceleration = 11.0
 desired_move_speed_curve = ExtResource("2_jhyir")
 in_air_move_speed_curve = ExtResource("3_74mp2")
-jump_height = 50.0
-coyote_jump_cooldown = 0.0
-in_air_input_multiplier = 0.0
-jump_time_to_peak = 1.0
-jump_time_to_fall = 0.5
+jump_height = 2.1
+coyote_jump_cooldown = 0.3
+in_air_input_multiplier = 1.0
+jump_time_to_peak = 0.34
+jump_time_to_fall = 0.28
 
 [node name="Model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_tugb3")
@@ -77,3 +80,28 @@ script = ExtResource("8_gk6dx")
 metadata/_custom_type_script = "uid://dbsgd5wkgkk8i"
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
+
+[node name="Debug" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("12_oikmp")
+player = NodePath("..")
+
+[node name="Player Info" type="HBoxContainer" parent="Debug"]
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 147.0
+offset_bottom = 45.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug/Player Info"]
+layout_mode = 2
+
+[node name="Velocity" type="Label" parent="Debug/Player Info/VBoxContainer"]
+layout_mode = 2
+text = "Velocity:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Debug/Player Info"]
+layout_mode = 2
+
+[node name="VelocityLabel" type="Label" parent="Debug/Player Info/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
