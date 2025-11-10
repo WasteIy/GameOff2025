@@ -93,7 +93,7 @@ func jump():
 		can_jump = true 
 		
 	# jump buffering
-	if character.buffered_jump_on:
+	if character.buffered_jump:
 		character.buffered_jump = false
 		character.number_air_jump = character.number_air_jump_reference
 		

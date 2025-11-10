@@ -24,6 +24,7 @@ var last_frame_velocity : Vector3
 @onready var jump_velocity : float = (2.0 * jump_height) / jump_time_to_peak
 var number_air_jump_reference: int
 var buffered_jump_on : bool
+var buffered_jump : bool
 var coyote_jump_cooldown_reference : float
 var coyote_jump_on : bool
 var hit_ground_cooldown_reference : float
@@ -34,8 +35,7 @@ var hit_ground_cooldown_reference : float
 @onready var camera_holder: CameraHolder = $CameraHolder
 @onready var state_machine: StateMachine = $StateMachine
 @onready var collision: CollisionShape3D = $Collision
-@onready var model: MeshInstance3D = $Model
-@onready var floor_check : RayCast3D = %DownRaycast
+@onready var floor_check: RayCast3D = $Raycasts/FloorCheck
 @onready var debug: CanvasLayer = $Debug
 
 var input_direction : Vector2

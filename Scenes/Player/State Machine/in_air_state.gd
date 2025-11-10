@@ -34,7 +34,7 @@ func check_input():
 		# Buffered jump
 		if character.floor_check.is_colliding() and character.last_frame_position.y > character.position.y and character.number_air_jump <= 0:
 			character.buffered_jump_on = true
-
+		
 		# Coyote jump
 		if character.was_on_floor and character.coyote_jump_cooldown > 0.0 and character.last_frame_position.y > character.position.y:
 			character.coyote_jump_on = true
@@ -46,7 +46,7 @@ func check_input():
 func check_if_floor():
 	if character.is_on_floor():
 		if character.buffered_jump_on:
-			character.buffered_jump_on = true
+			character.buffered_jump = true
 			character.buffered_jump_on = false
 			transitioned.emit(self, "JumpState")
 		else:

@@ -26,6 +26,10 @@ GameController="*res://Global/game_controller.gd"
 ResourceManager="*res://Global/resource_manager.gd"
 SFXManager="*res://Global/sfx_manager.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [file_customization]
 
 folder_colors={

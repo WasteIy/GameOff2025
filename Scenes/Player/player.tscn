@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=14 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -12,8 +12,6 @@
 [ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
 [ext_resource type="Script" uid="uid://dbsgd5wkgkk8i" path="res://Scenes/Player/State Machine/jump_state.gd" id="8_gk6dx"]
 [ext_resource type="Script" uid="uid://emye2cxnaujd" path="res://Scenes/UI/debug.gd" id="12_oikmp"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_tugb3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
 
@@ -30,28 +28,20 @@ in_air_input_multiplier = 1.0
 jump_time_to_peak = 0.34
 jump_time_to_fall = 0.28
 
-[node name="Model" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_tugb3")
-
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
 
 [node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86476886, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.865, 0)
 script = ExtResource("2_mtuoh")
 
 [node name="Camera" type="Camera3D" parent="CameraHolder"]
 unique_name_in_owner = true
 
-[node name="Raycasts" type="Node" parent="."]
+[node name="Raycasts" type="Node3D" parent="."]
 
-[node name="DownRaycast" type="RayCast3D" parent="Raycasts"]
-unique_name_in_owner = true
-target_position = Vector3(0, -1.1, 0)
-
-[node name="UpRaycast" type="RayCast3D" parent="Raycasts"]
-unique_name_in_owner = true
-target_position = Vector3(0, 1.1, 0)
+[node name="FloorCheck" type="RayCast3D" parent="Raycasts"]
+target_position = Vector3(0, -12.56, 0)
 
 [node name="Components" type="Node" parent="."]
 
