@@ -40,15 +40,15 @@ shadow_enabled = true
 script = ExtResource("2_x4x4f")
 
 [node name="Plataform" type="CSGBox3D" parent="Map/Red"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.6327255, -7.8580117)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.5172029, -7.8580117)
 use_collision = true
-size = Vector3(7.167533, 2.3760452, 7.1601563)
+size = Vector3(7.167533, 2.145, 7.1601563)
 material = ExtResource("2_k8g1k")
 
 [node name="Plataform2" type="CSGBox3D" parent="Map/Red"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.117166, 5.032726, -24.958012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.117166, 4.657563, -24.958012)
 use_collision = true
-size = Vector3(7.167533, 2.3760452, 7.1601563)
+size = Vector3(7.167533, 2.145, 7.1601563)
 material = ExtResource("2_k8g1k")
 
 [node name="Door" type="CSGBox3D" parent="Map/Red"]
@@ -62,17 +62,17 @@ script = ExtResource("2_x4x4f")
 color = 2
 
 [node name="Platform" type="CSGBox3D" parent="Map/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.6327255, -25.010437)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.5172029, -25.010437)
 use_collision = true
 collision_mask = 2
-size = Vector3(7.167533, 2.3760452, 7.1601563)
+size = Vector3(7.167533, 2.145, 7.1601563)
 material = ExtResource("2_npfmg")
 
 [node name="Platform2" type="CSGBox3D" parent="Map/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.006474, 9.651046, -25.010437)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.006474, 8.93026, -25.010437)
 use_collision = true
 collision_mask = 2
-size = Vector3(7.1461444, 2.1565723, 7.1601563)
+size = Vector3(7.1461444, 2.145, 7.1601563)
 material = ExtResource("2_npfmg")
 
 [node name="Window" type="CSGBox3D" parent="Map/Blue"]
@@ -87,17 +87,17 @@ script = ExtResource("2_x4x4f")
 color = 1
 
 [node name="Platform" type="CSGBox3D" parent="Map/Green"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.6327255, -16.430664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.5172029, -16.430664)
 use_collision = true
 collision_mask = 2
-size = Vector3(7.167533, 2.3760452, 7.1601563)
+size = Vector3(7.167533, 2.145, 7.1601563)
 material = ExtResource("4_x4x4f")
 
 [node name="Platform2" type="CSGBox3D" parent="Map/Green"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.617167, 7.5443153, -25.030664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.617167, 6.802563, -25.030664)
 use_collision = true
 collision_mask = 2
-size = Vector3(7.167533, 2.1528664, 7.1601563)
+size = Vector3(7.167533, 2.145, 7.1601563)
 material = ExtResource("4_x4x4f")
 
 [node name="Window" type="CSGBox3D" parent="Map/Green"]
