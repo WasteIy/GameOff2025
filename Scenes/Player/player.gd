@@ -62,11 +62,13 @@ func _ready():
 	
 	hit_ground_cooldown_reference = hit_ground_cooldown
 	number_air_jump_reference = number_air_jump
-	coyote_jump_cooldown_reference = coyote_jump_cooldown_reference
+	coyote_jump_cooldown_reference = coyote_jump_cooldown
 
 	display_debug()
 	
 func _physics_process(_delta: float) -> void:
+	print(coyote_jump_cooldown)
+	print(coyote_jump_on)
 	update_properties()
 	move_and_slide()
 	

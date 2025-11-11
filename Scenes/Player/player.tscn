@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
 [ext_resource type="Script" uid="uid://dbsgd5wkgkk8i" path="res://Scenes/Player/State Machine/jump_state.gd" id="8_gk6dx"]
 [ext_resource type="Script" uid="uid://cdvjmmtnmb31q" path="res://Scenes/Player/State Machine/run_state.gd" id="11_06tpx"]
-[ext_resource type="Script" uid="uid://emye2cxnaujd" path="res://Scenes/UI/debug.gd" id="12_oikmp"]
+[ext_resource type="PackedScene" uid="uid://rvq118nc0ibx" path="res://Scenes/UI/debug.tscn" id="13_06tpx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
 
@@ -23,6 +23,7 @@ script = ExtResource("1_uvnfx")
 bunny_hop_desired_move_speed_increase = 1.0
 desired_move_speed_curve = ExtResource("2_jhyir")
 in_air_move_speed_curve = ExtResource("3_74mp2")
+walk_speed = 9.0
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
@@ -69,27 +70,5 @@ script = ExtResource("6_0u5uq")
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 
-[node name="Debug" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("12_oikmp")
+[node name="Debug" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_06tpx")]
 player = NodePath("..")
-
-[node name="Player Info" type="HBoxContainer" parent="Debug"]
-offset_left = 6.0
-offset_top = 5.0
-offset_right = 147.0
-offset_bottom = 45.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug/Player Info"]
-layout_mode = 2
-
-[node name="Velocity" type="Label" parent="Debug/Player Info/VBoxContainer"]
-layout_mode = 2
-text = "Velocity:"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Debug/Player Info"]
-layout_mode = 2
-
-[node name="VelocityLabel" type="Label" parent="Debug/Player Info/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "................"

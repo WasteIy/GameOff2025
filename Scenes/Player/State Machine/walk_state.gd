@@ -12,6 +12,8 @@ func enter(character_reference):
 	
 	if character.number_air_jump < character.number_air_jump_reference: 
 		character.number_air_jump = character.number_air_jump_reference
+	if character.coyote_jump_cooldown < character.coyote_jump_cooldown_reference:
+		character.coyote_jump_cooldown = character.coyote_jump_cooldown_reference
 
 func physics_update(delta : float):
 	check_if_floor()
