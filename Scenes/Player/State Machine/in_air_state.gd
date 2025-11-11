@@ -1,19 +1,15 @@
-class_name InAirState
-extends State
+class_name InAirState extends State
 
 var character : CharacterBody3D
-
 
 func enter(character_reference : CharacterBody3D):
 	print("Entrei no InAirState")
 	character = character_reference
 	verifications()
 
-
 func verifications():
 	if character.hit_ground_cooldown != character.hit_ground_cooldown_reference:
 		character.hit_ground_cooldown = character.hit_ground_cooldown_reference
-
 
 func physics_update(delta : float):
 	applies(delta)
@@ -22,12 +18,10 @@ func physics_update(delta : float):
 	check_if_floor()
 	move(delta)
 
-
 func applies(delta : float):
 	if !character.is_on_floor():
 		if character.coyote_jump_cooldown > 0.0:
 			character.coyote_jump_cooldown -= delta
-
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):
@@ -39,9 +33,8 @@ func check_input():
 		if character.was_on_floor and character.coyote_jump_cooldown > 0.0 and character.last_frame_position.y > character.position.y:
 			character.coyote_jump_on = true
 			transitioned.emit(self, "JumpState")
-
+		
 		transitioned.emit(self, "JumpState")
-
 
 func check_if_floor():
 	if character.is_on_floor():

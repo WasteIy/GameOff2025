@@ -1,5 +1,4 @@
-class_name JumpState
-extends State
+class_name JumpState extends State
 
 var character: CharacterBody3D
 
@@ -9,7 +8,6 @@ func enter(character_reference: CharacterBody3D):
 	
 	verifications()
 	jump()
-	
 
 func verifications():
 	if character.hit_ground_cooldown != character.hit_ground_cooldown:
@@ -21,32 +19,21 @@ func physics_update(delta: float):
 	check_input()
 	check_if_floor()
 	move(delta)
-	
 
 func applies(delta: float):
 	if !character.is_on_floor(): 
 		if character.coyote_jump_cooldown > 0.0:
 			character.coyote_jump_cooldown -= delta
-			
+
 func check_input():
 	if Input.is_action_just_pressed("jump"):
-		if !character.is_on_floor():
-			character.buffered_jump = true
-		else:
-			jump()
-
-		
+		jump()
 
 func check_if_floor():
 	if !character.is_on_floor() and character.velocity.y < 0.0:
 		transitioned.emit(self, "InAirState")
-	
+		
 	if character.is_on_floor():
-		if character.buffered_jump:
-			character.buffered_jump = false
-			jump()
-			return
-			
 		if character.move_direction:
 			transitioned.emit(self, character.walk_or_run)
 		else:
@@ -56,7 +43,6 @@ func check_if_floor():
 	if character.is_on_wall():
 		character.velocity.x = 0.0
 		character.velocity.z = 0.0
-		
 
 func move(delta: float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -82,7 +68,6 @@ func move(delta: float):
 			
 	if character.desired_move_speed >= character.max_speed:
 		character.desired_move_speed = character.max_speed
-	
 
 func jump(): 
 	var can_jump: bool = false
@@ -97,16 +82,16 @@ func jump():
 			character.coyote_jump_on = false
 			can_jump = true 
 			
-	# pulo no chão
+	# Pulo no chão
 	if character.is_on_floor():
 		can_jump = true 
 		
-	# jump buffering
+	# Buffer de pulo
 	if character.buffered_jump:
 		character.buffered_jump = false
 		character.number_air_jump = character.number_air_jump_reference
 		
-	# aplica o pulo
+	# Aplica o pulo
 	if can_jump:
 		character.velocity.y = character.jump_velocity
 		can_jump = false
