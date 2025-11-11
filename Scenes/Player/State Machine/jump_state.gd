@@ -1,6 +1,6 @@
 class_name JumpState extends State
 
-var character: CharacterBody3D
+var character : CharacterBody3D
 
 func enter(character_reference: CharacterBody3D):
 	print("Entrei no JumpState")

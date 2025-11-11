@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=16 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cfa7jbqogc8cl" path="res://Scenes/Player/State Machine/in_air_state.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
 [ext_resource type="Script" uid="uid://dbsgd5wkgkk8i" path="res://Scenes/Player/State Machine/jump_state.gd" id="8_gk6dx"]
+[ext_resource type="Script" uid="uid://cdvjmmtnmb31q" path="res://Scenes/Player/State Machine/run_state.gd" id="11_06tpx"]
 [ext_resource type="Script" uid="uid://emye2cxnaujd" path="res://Scenes/UI/debug.gd" id="12_oikmp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
@@ -53,21 +54,18 @@ metadata/_custom_type_script = "uid://dmw751ewg0keo"
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("5_jlvik")
-metadata/_custom_type_script = "uid://bk40qjqvrcgcv"
-
-[node name="InAirState" type="Node" parent="StateMachine"]
-script = ExtResource("6_0u5uq")
-metadata/_custom_type_script = "uid://cfa7jbqogc8cl"
-
-[node name="WalkState" type="Node" parent="StateMachine"]
-script = ExtResource("7_jlvik")
-metadata/_custom_type_script = "uid://dsi0tr6e5moq0"
 
 [node name="JumpState" type="Node" parent="StateMachine"]
 script = ExtResource("8_gk6dx")
-metadata/_custom_type_script = "uid://dbsgd5wkgkk8i"
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("7_jlvik")
 
 [node name="RunState" type="Node" parent="StateMachine"]
+script = ExtResource("11_06tpx")
+
+[node name="InAirState" type="Node" parent="StateMachine"]
+script = ExtResource("6_0u5uq")
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 

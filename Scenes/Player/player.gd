@@ -22,7 +22,7 @@ var last_frame_velocity : Vector3
 @export var run_speed : float = 12.0
 @export var run_acceleration : float = 10.0
 @export var run_deceleration : float = 9.0
-@export var continious_run : bool = false
+@export var continuous_run : bool = false
 
 @export_group("Jump Variables")
 @export var jump_height: float = 2.1

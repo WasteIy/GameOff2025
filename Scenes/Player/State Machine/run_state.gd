@@ -1,14 +1,14 @@
-class_name WalkState extends State
+class_name RunState extends State
 
 var character : CharacterBody3D
 
-func enter(character_reference):
-	print("Entrei no WalkState")
+func enter(character_reference : CharacterBody3D) -> void:
+	print("Entrei no RunState")
 	character = character_reference
 	
-	character.move_speed = character.walk_speed
-	character.move_acceleration = character.walk_acceleration
-	character.move_deceleration = character.walk_deceleration
+	character.move_speed = character.run_speed
+	character.move_acceleration = character.run_acceleration
+	character.move_deceleration = character.run_deceleration
 	
 	if character.number_air_jump < character.number_air_jump_reference: 
 		character.number_air_jump = character.number_air_jump_reference
@@ -21,9 +21,9 @@ func physics_update(delta : float):
 	move(delta)
 
 func check_if_floor():
-	if !character.is_on_floor() and !character.is_on_wall():
-		if character.velocity.y < 0.0:
-			transitioned.emit(self, "InAirState")
+	if !character.is_on_floor() and character.velocity.y < 0.0:
+		transitioned.emit(self, "InAirState")
+		
 	if character.is_on_floor():
 		if character.buffered_jump_on:
 			character.buffered_jump = true
@@ -37,9 +37,16 @@ func check_input():
 	if Input.is_action_just_pressed("jump"):
 		transitioned.emit(self, "JumpState")
 	
-	if Input.is_action_just_pressed("run"):
-		character.walk_or_run = "RunState"
-		transitioned.emit(self, "RunState")
+	if character.continuous_run:
+		# Precisa apertar uma vez o botão de correr
+		if Input.is_action_just_pressed("run"):
+			character.walk_or_run = "WalkState"
+			transitioned.emit(self, "WalkState")
+	else:
+		# Tem que pressionar o botão de correr
+		if !Input.is_action_pressed("run"):
+			character.walk_or_run = "WalkState"
+			transitioned.emit(self, "WalkState")
 
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
