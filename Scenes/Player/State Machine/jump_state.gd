@@ -29,8 +29,11 @@ func applies(delta: float):
 			character.coyote_jump_cooldown -= delta
 			
 func check_input():
-	if Input.is_action_just_pressed("jump"):
-		jump()
+	if character.is_on_floor():
+		if character.buffered_jump:
+			character.buffered_jump = false
+			jump()
+			return
 		
 
 func check_if_floor():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=15 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -15,6 +15,8 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oikmp"]
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_uvnfx")
 desired_move_speed_curve = ExtResource("2_jhyir")
@@ -23,17 +25,21 @@ in_air_move_speed_curve = ExtResource("3_74mp2")
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
 
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_oikmp")
+
 [node name="CameraHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.865, 0)
 script = ExtResource("2_mtuoh")
 
 [node name="Camera" type="Camera3D" parent="CameraHolder"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6337569)
 
 [node name="Raycasts" type="Node3D" parent="."]
 
 [node name="FloorCheck" type="RayCast3D" parent="Raycasts"]
-target_position = Vector3(0, -12.56, 0)
+target_position = Vector3(0, -3, 0)
 
 [node name="Components" type="Node" parent="."]
 
