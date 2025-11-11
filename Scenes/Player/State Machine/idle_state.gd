@@ -7,17 +7,18 @@ func enter(character_reference):
 	character = character_reference
 
 func physics_update(delta: float) -> void:
-#	check_is_on_floor()
+	check_is_on_floor()
 	character.apply_gravity(delta)
 	check_input()
 	move(delta)
 	
-#func check_is_on_floor():
-#	if !character.is_on_floor():
-#		transitioned.emit(self, "InAirState")
+func check_is_on_floor():
+	if !character.is_on_floor():
+		transitioned.emit(self, "InAirState")
 
 func check_input():
-	pass
+	if Input.is_action_just_pressed("jump"):
+		transitioned.emit(self, "JumpState")
 	
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
