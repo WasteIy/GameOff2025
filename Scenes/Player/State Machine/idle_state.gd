@@ -15,6 +15,7 @@ func flag_update():
 
 func physics_update(delta: float) -> void:
 	check_is_on_floor()
+	applies(delta)
 	character.apply_gravity(delta)
 	check_input()
 	move(delta)
@@ -27,6 +28,9 @@ func check_is_on_floor():
 			character.buffered_jump = true
 			character.buffered_jump_on = false
 			transitioned.emit(self, "JumpState")
+
+func applies(delta):
+	if character.hit_ground_cooldown > 0.0: character.hit_ground_cooldown -= delta
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):
@@ -43,3 +47,5 @@ func move(delta : float):
 		# Desacelera suavemente 
 		character.velocity.x = lerp(character.velocity.x, 0.0, character.move_deceleration * delta)
 		character.velocity.z = lerp(character.velocity.z, 0.0, character.move_deceleration * delta)
+		
+		if character.hit_ground_cooldown <= 0: character.desired_move_speed = character.velocity.length()

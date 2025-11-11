@@ -6,10 +6,10 @@ func enter(character_reference: CharacterBody3D):
 	print("Entrei no JumpState")
 	character = character_reference
 	
-	verifications()
+	flag_update()
 	jump()
 
-func verifications():
+func flag_update():
 	if character.hit_ground_cooldown != character.hit_ground_cooldown:
 		character.hit_ground_cooldown = character.hit_ground_cooldown
 

@@ -7,9 +7,24 @@ func enter(character_reference):
 	character = character_reference
 
 func physics_update(delta : float):
+	check_if_floor()
+	applies(delta)
 	character.apply_gravity(delta)
 	check_input()
 	move(delta)
+
+func check_if_floor():
+	if !character.is_on_floor() and !character.is_on_wall():
+		if character.velocity.y < 0.0:
+			transitioned.emit(self, "InAirState")
+	if character.is_on_floor():
+		if character.buffered_jump_on:
+			character.buffered_jump = true
+			character.buffered_jump_on = false
+			transitioned.emit(self, "JumpState")
+
+func applies(delta):
+	if character.hit_ground_cooldown > 0.0: character.hit_ground_cooldown -= delta
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):
