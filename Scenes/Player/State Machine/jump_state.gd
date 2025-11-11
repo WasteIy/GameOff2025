@@ -29,18 +29,24 @@ func applies(delta: float):
 			character.coyote_jump_cooldown -= delta
 			
 func check_input():
-	if character.is_on_floor():
-		if character.buffered_jump:
-			character.buffered_jump = false
+	if Input.is_action_just_pressed("jump"):
+		if !character.is_on_floor():
+			character.buffered_jump = true
+		else:
 			jump()
-			return
+
 		
 
 func check_if_floor():
 	if !character.is_on_floor() and character.velocity.y < 0.0:
 		transitioned.emit(self, "InAirState")
-		
+	
 	if character.is_on_floor():
+		if character.buffered_jump:
+			character.buffered_jump = false
+			jump()
+			return
+			
 		if character.move_direction:
 			transitioned.emit(self, character.walk_or_run)
 		else:

@@ -34,7 +34,6 @@ script = ExtResource("2_mtuoh")
 
 [node name="Camera" type="Camera3D" parent="CameraHolder"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6337569)
 
 [node name="Raycasts" type="Node3D" parent="."]
 
