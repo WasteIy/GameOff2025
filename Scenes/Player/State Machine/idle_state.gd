@@ -6,10 +6,6 @@ func enter(character_reference):
 	print("Entrei no IdleState")
 	character = character_reference
 	
-	flag_update()
-
-func flag_update():
-	character.floor_snap_length = 1.0
 	if character.number_air_jump < character.number_air_jump_reference: character.number_air_jump = character.number_air_jump_reference
 	if character.coyote_jump_cooldown < character.coyote_jump_cooldown_reference: character.coyote_jump_cooldown = character.coyote_jump_cooldown_reference
 

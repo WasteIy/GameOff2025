@@ -5,9 +5,7 @@ var character : CharacterBody3D
 func enter(character_reference : CharacterBody3D):
 	print("Entrei no InAirState")
 	character = character_reference
-	verifications()
-
-func verifications():
+	
 	if character.hit_ground_cooldown != character.hit_ground_cooldown_reference:
 		character.hit_ground_cooldown = character.hit_ground_cooldown_reference
 

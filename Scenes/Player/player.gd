@@ -1,17 +1,28 @@
 class_name Player extends CharacterBody3D
 
 @export_group("Movement Variables")
-@export var move_speed : float = 9.0
 @export var max_speed : float = 50.0
-@export var move_acceleration : float = 11.0
-@export var move_deceleration : float = 10.0
 @export var bunny_hop_desired_move_speed_increase : float = 3.0
 @export var desired_move_speed_curve : Curve
 @export var in_air_move_speed_curve : Curve
+var move_speed : float = 9.0
+var move_acceleration : float 
+var move_deceleration : float
 var desired_move_speed : float = 0.0
 var was_on_floor : bool
 var last_frame_position : Vector3 
 var last_frame_velocity : Vector3
+
+@export_group("Walk variables")
+@export var walk_speed : float = 10.0
+@export var walk_acceleration : float = 11.0
+@export var walk_deceleration : float = 10.0
+
+@export_group("Run variables")
+@export var run_speed : float = 12.0
+@export var run_acceleration : float = 10.0
+@export var run_deceleration : float = 9.0
+@export var continious_run : bool = false
 
 @export_group("Jump Variables")
 @export var jump_height: float = 2.1
@@ -45,7 +56,9 @@ var walk_or_run : String = "WalkState"
 # Nota que começa com WalkState, isso é pra fazer a transição do idle pro walk no primeiro input do jogador
 
 func _ready():
-	# Passar a referência das variáveis
+	move_speed = walk_speed
+	move_acceleration = walk_acceleration
+	move_deceleration = walk_deceleration
 	
 	hit_ground_cooldown_reference = hit_ground_cooldown
 	number_air_jump_reference = number_air_jump

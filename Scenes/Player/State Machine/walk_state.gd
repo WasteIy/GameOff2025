@@ -5,6 +5,13 @@ var character : CharacterBody3D
 func enter(character_reference):
 	print("Entrei no WalkState")
 	character = character_reference
+	
+	character.move_speed = character.walk_speed
+	character.move_acceleration = character.walk_acceleration
+	character.move_deceleration = character.walk_deceleration
+	
+	if character.number_air_jump < character.number_air_jump_reference: 
+		character.number_air_jump = character.number_air_jump_reference
 
 func physics_update(delta : float):
 	check_if_floor()

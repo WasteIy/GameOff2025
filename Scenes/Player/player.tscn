@@ -19,6 +19,7 @@
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_uvnfx")
+bunny_hop_desired_move_speed_increase = 1.0
 desired_move_speed_curve = ExtResource("2_jhyir")
 in_air_move_speed_curve = ExtResource("3_74mp2")
 
@@ -65,6 +66,8 @@ metadata/_custom_type_script = "uid://dsi0tr6e5moq0"
 [node name="JumpState" type="Node" parent="StateMachine"]
 script = ExtResource("8_gk6dx")
 metadata/_custom_type_script = "uid://dbsgd5wkgkk8i"
+
+[node name="RunState" type="Node" parent="StateMachine"]
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 
