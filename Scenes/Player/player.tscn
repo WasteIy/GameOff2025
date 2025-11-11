@@ -17,16 +17,8 @@
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_uvnfx")
-move_speed = 9.0
-max_speed = 50.0
-move_acceleration = 11.0
 desired_move_speed_curve = ExtResource("2_jhyir")
 in_air_move_speed_curve = ExtResource("3_74mp2")
-jump_height = 2.1
-coyote_jump_cooldown = 0.3
-in_air_input_multiplier = 1.0
-jump_time_to_peak = 0.34
-jump_time_to_fall = 0.28
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
