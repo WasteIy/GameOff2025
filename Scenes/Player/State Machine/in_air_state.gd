@@ -10,16 +10,19 @@ func enter(character_reference : CharacterBody3D):
 		character.hit_ground_cooldown = character.hit_ground_cooldown_reference
 
 func physics_update(delta : float):
-	applies(delta)
+	update(delta)
 	character.apply_gravity(delta)
 	check_input()
 	check_if_floor()
 	move(delta)
 
-func applies(delta : float):
+func update(delta : float):
 	if !character.is_on_floor():
 		if character.coyote_jump_cooldown > 0.0:
 			character.coyote_jump_cooldown -= delta
+	
+	character.collision.shape.height = lerp(character.collision.shape.height, character.base_collision_height, character.height_change_speed * delta)
+	character.model.scale.y = lerp(character.model.scale.y, character.base_model_height, character.height_change_speed * delta)
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):

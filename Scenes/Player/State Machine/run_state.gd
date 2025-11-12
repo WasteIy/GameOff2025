@@ -17,7 +17,7 @@ func enter(character_reference : CharacterBody3D) -> void:
 
 func physics_update(delta : float):
 	check_if_floor()
-	applies(delta)
+	update(delta)
 	character.apply_gravity(delta)
 	check_input()
 	move(delta)
@@ -32,8 +32,11 @@ func check_if_floor():
 			character.buffered_jump_on = false
 			transitioned.emit(self, "JumpState")
 
-func applies(delta):
+func update(delta):
 	if character.hit_ground_cooldown > 0.0: character.hit_ground_cooldown -= delta
+	
+	character.collision.shape.height = lerp(character.collision.shape.height, character.base_collision_height, character.height_change_speed * delta)
+	character.model.scale.y = lerp(character.model.scale.y, character.base_model_height, character.height_change_speed * delta)
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):
@@ -49,6 +52,9 @@ func check_input():
 		if !Input.is_action_pressed("run"):
 			character.walk_or_run = "WalkState"
 			transitioned.emit(self, "WalkState")
+	
+	if Input.is_action_just_pressed("crouch"): 
+		transitioned.emit(self, "CrouchState")
 
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

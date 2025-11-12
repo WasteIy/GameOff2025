@@ -28,7 +28,7 @@ in_air_move_speed_curve = ExtResource("3_74mp2")
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_uvnfx")
 
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="Model" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_oikmp")
 
 [node name="CameraHolder" type="Node3D" parent="."]
@@ -42,6 +42,9 @@ unique_name_in_owner = true
 
 [node name="FloorCheck" type="RayCast3D" parent="Raycasts"]
 target_position = Vector3(0, -3, 0)
+
+[node name="CeilingCheck" type="RayCast3D" parent="Raycasts"]
+target_position = Vector3(0, 3, 0)
 
 [node name="Components" type="Node" parent="."]
 

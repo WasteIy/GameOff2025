@@ -1,5 +1,9 @@
 class_name Player extends CharacterBody3D
 
+@export var base_collision_height: float = 2.0
+@export var base_model_height: float = 2.0
+@export var height_change_speed: float = 10.0
+
 @export_group("Movement Variables")
 @export var max_speed : float = 50.0
 @export var bunny_hop_desired_move_speed_increase : float = 3.0
@@ -29,8 +33,8 @@ var last_frame_velocity : Vector3
 @export var crouch_acceleration : float = 12.0
 @export var crouch_deceleration : float = 11.0
 @export var continuous_crouch : bool = false
-@export var crouch_hitbox_height : float = 1.2
-
+@export var crouch_collision_height : float = 1.2
+@export var crouch_model_height: float = 1.2
 
 @export_group("Jump Variables")
 @export var jump_height: float = 2.1
@@ -51,10 +55,12 @@ var hit_ground_cooldown_reference : float
 @onready var jump_gravity : float = (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
 @onready var fall_gravity : float = (-2.0 * jump_height) / (jump_time_to_fall * jump_time_to_fall)
 
+@onready var model: MeshInstance3D = $Model
 @onready var camera_holder: CameraHolder = $CameraHolder
 @onready var state_machine: StateMachine = $StateMachine
 @onready var collision: CollisionShape3D = $Collision
 @onready var floor_check: RayCast3D = $Raycasts/FloorCheck
+@onready var ceiling_check: RayCast3D = $Raycasts/CeilingCheck
 @onready var debug: CanvasLayer = $Debug
 
 var input_direction : Vector2
