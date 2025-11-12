@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody3D
 
 @export var base_collision_height: float = 2.0
-@export var base_model_height: float = 2.0
+@export var base_model_height: float = 1.0
 @export var height_change_speed: float = 10.0
 
 @export_group("Movement Variables")
@@ -34,7 +34,7 @@ var last_frame_velocity : Vector3
 @export var crouch_deceleration : float = 11.0
 @export var continuous_crouch : bool = false
 @export var crouch_collision_height : float = 1.2
-@export var crouch_model_height: float = 1.2
+@export var crouch_model_height: float = 0.6
 
 @export_group("Jump Variables")
 @export var jump_height: float = 2.1

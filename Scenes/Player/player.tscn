@@ -32,8 +32,11 @@ shape = SubResource("CapsuleShape3D_uvnfx")
 mesh = SubResource("CapsuleMesh_oikmp")
 
 [node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.865, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 script = ExtResource("2_mtuoh")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CameraHolder"]
+radius = 0.13140771
 
 [node name="Camera" type="Camera3D" parent="CameraHolder"]
 unique_name_in_owner = true
@@ -44,7 +47,7 @@ unique_name_in_owner = true
 target_position = Vector3(0, -3, 0)
 
 [node name="CeilingCheck" type="RayCast3D" parent="Raycasts"]
-target_position = Vector3(0, 3, 0)
+target_position = Vector3(0, 1.5, 0)
 
 [node name="Components" type="Node" parent="."]
 
