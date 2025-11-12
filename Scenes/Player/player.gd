@@ -14,7 +14,7 @@ var last_frame_position : Vector3
 var last_frame_velocity : Vector3
 
 @export_group("Walk variables")
-@export var walk_speed : float = 10.0
+@export var walk_speed : float = 9.0
 @export var walk_acceleration : float = 11.0
 @export var walk_deceleration : float = 10.0
 
@@ -23,6 +23,14 @@ var last_frame_velocity : Vector3
 @export var run_acceleration : float = 10.0
 @export var run_deceleration : float = 9.0
 @export var continuous_run : bool = false
+
+@export_group("Crouch variables")
+@export var crouch_speed : float = 6.0
+@export var crouch_acceleration : float = 12.0
+@export var crouch_deceleration : float = 11.0
+@export var continuous_crouch : bool = false
+@export var crouch_hitbox_height : float = 1.2
+
 
 @export_group("Jump Variables")
 @export var jump_height: float = 2.1
