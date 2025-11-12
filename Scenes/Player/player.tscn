@@ -77,4 +77,5 @@ script = ExtResource("12_7g0yx")
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 
 [node name="Debug" parent="." node_paths=PackedStringArray("player") instance=ExtResource("13_06tpx")]
+visible = false
 player = NodePath("..")

@@ -9,13 +9,13 @@ class_name Player extends CharacterBody3D
 @export var bunny_hop_desired_move_speed_increase : float = 3.0
 @export var desired_move_speed_curve : Curve
 @export var in_air_move_speed_curve : Curve
-@export var move_speed : float = 9.0
+var move_speed : float
 var move_acceleration : float 
 var move_deceleration : float
-@export var desired_move_speed : float = 0.0
+var desired_move_speed : float = 0.0
 var was_on_floor : bool
-@export var last_frame_position : Vector3 
-@export var last_frame_velocity : Vector3
+var last_frame_position : Vector3 
+var last_frame_velocity : Vector3
 
 @export_group("Walk variables")
 @export var walk_speed : float = 9.0
@@ -47,9 +47,9 @@ var was_on_floor : bool
 @onready var jump_velocity : float = (2.0 * jump_height) / jump_time_to_peak
 var number_air_jump_reference: int
 var buffered_jump_on : bool
-@export var buffered_jump : bool
+var buffered_jump : bool
 var coyote_jump_cooldown_reference : float
-@export var coyote_jump_on : bool
+var coyote_jump_on : bool
 var hit_ground_cooldown_reference : float
 
 @onready var jump_gravity : float = (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
@@ -78,12 +78,10 @@ func _ready():
 	number_air_jump_reference = number_air_jump
 	coyote_jump_cooldown_reference = coyote_jump_cooldown
 
-	display_debug()
-	
 func _physics_process(_delta: float) -> void:
 	update_properties()
 	move_and_slide()
-	
+
 func apply_gravity(delta : float):
 	# Se o personagem vai pra cima, aplica a jump_velocity
 	# Se não, a fall-velocityw
@@ -94,6 +92,3 @@ func update_properties():
 	last_frame_position = position
 	last_frame_velocity = velocity
 	was_on_floor = !is_on_floor()
-
-func display_debug():
-	debug.visible = true
