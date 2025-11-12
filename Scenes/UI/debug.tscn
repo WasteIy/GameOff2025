@@ -6,30 +6,167 @@
 script = ExtResource("1_5sp44")
 
 [node name="Player Info" type="HBoxContainer" parent="."]
-offset_left = 6.0
-offset_top = 5.0
-offset_right = 147.0
-offset_bottom = 45.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 12.0
+offset_right = -775.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player Info"]
+[node name="NameContainers" type="VBoxContainer" parent="Player Info"]
 layout_mode = 2
 
-[node name="Velocity" type="Label" parent="Player Info/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="Velocity" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
 layout_mode = 2
 text = "Velocity:"
 
-[node name="CoyoteCooldown" type="Label" parent="Player Info/VBoxContainer"]
+[node name="MaxSpeed" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
+layout_mode = 2
+text = "MaxSpeed:"
+
+[node name="DesiredMoveSpeed" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
+layout_mode = 2
+text = "DesiredMoveSpeed:"
+
+[node name="CoyoteCooldown" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
 layout_mode = 2
 text = "Coyote time: "
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Player Info"]
+[node name="CoyoteJumpOn" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
+layout_mode = 2
+text = "CoyoteJumpOn:"
+
+[node name="JumpContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="AirJumpsLeft" type="Label" parent="Player Info/NameContainers/JumpContainer"]
+layout_mode = 2
+text = "AirJumpsLeft:"
+
+[node name="HitGroundCooldown" type="Label" parent="Player Info/NameContainers/JumpContainer"]
+layout_mode = 2
+text = "HitGroundCooldown:"
+
+[node name="JumpVelocity" type="Label" parent="Player Info/NameContainers/JumpContainer"]
+layout_mode = 2
+text = "JumpVelocity:"
+
+[node name="BufferedJump" type="Label" parent="Player Info/NameContainers/JumpContainer"]
+layout_mode = 2
+text = "BufferedJump:"
+
+[node name="JumpGravity" type="Label" parent="Player Info/NameContainers/JumpContainer"]
+layout_mode = 2
+text = "JumpGravity:"
+
+[node name="FallGravity" type="Label" parent="Player Info/NameContainers/JumpContainer"]
+layout_mode = 2
+text = "FallGravity:"
+
+[node name="FrameContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="LastFramePosition" type="Label" parent="Player Info/NameContainers/FrameContainer"]
+layout_mode = 2
+text = "LastFramePosition:"
+
+[node name="LastFrameVelocity" type="Label" parent="Player Info/NameContainers/FrameContainer"]
+layout_mode = 2
+text = "LastFrameVelocity:"
+
+[node name="LabelContainers" type="VBoxContainer" parent="Player Info"]
 layout_mode = 2
 
-[node name="VelocityLabel" type="Label" parent="Player Info/VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Player Info/LabelContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="VelocityLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "................"
 
-[node name="CoyoteCooldownLabel" type="Label" parent="Player Info/VBoxContainer2"]
+[node name="MaxSpeedLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="DesiredMoveSpeedLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="CoyoteCooldownLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="CoyoteJumpOnLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="JumpContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="AirJumpsLeftLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="HitGroundCooldownLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="JumpVelocityLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="BufferedJumpLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="JumpGravityLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="FallGravityLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="FrameContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="LastFramePositionLabel" type="Label" parent="Player Info/LabelContainers/FrameContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "................"
+
+[node name="LastFrameVelocityLabel" type="Label" parent="Player Info/LabelContainers/FrameContainerLabel"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "................"

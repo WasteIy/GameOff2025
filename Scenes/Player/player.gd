@@ -5,13 +5,13 @@ class_name Player extends CharacterBody3D
 @export var bunny_hop_desired_move_speed_increase : float = 3.0
 @export var desired_move_speed_curve : Curve
 @export var in_air_move_speed_curve : Curve
-var move_speed : float = 9.0
+@export var move_speed : float = 9.0
 var move_acceleration : float 
 var move_deceleration : float
-var desired_move_speed : float = 0.0
+@export var desired_move_speed : float = 0.0
 var was_on_floor : bool
-var last_frame_position : Vector3 
-var last_frame_velocity : Vector3
+@export var last_frame_position : Vector3 
+@export var last_frame_velocity : Vector3
 
 @export_group("Walk variables")
 @export var walk_speed : float = 9.0
@@ -43,9 +43,9 @@ var last_frame_velocity : Vector3
 @onready var jump_velocity : float = (2.0 * jump_height) / jump_time_to_peak
 var number_air_jump_reference: int
 var buffered_jump_on : bool
-var buffered_jump : bool
+@export var buffered_jump : bool
 var coyote_jump_cooldown_reference : float
-var coyote_jump_on : bool
+@export var coyote_jump_on : bool
 var hit_ground_cooldown_reference : float
 
 @onready var jump_gravity : float = (-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)
