@@ -67,8 +67,6 @@ func _ready():
 	display_debug()
 	
 func _physics_process(_delta: float) -> void:
-	print(coyote_jump_cooldown)
-	print(coyote_jump_on)
 	update_properties()
 	move_and_slide()
 	
