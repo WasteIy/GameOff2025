@@ -3,7 +3,6 @@ class_name RunState extends State
 var character : CharacterBody3D
 
 func enter(character_reference : CharacterBody3D) -> void:
-	print("Entrei no RunState")
 	character = character_reference
 	
 	character.move_speed = character.run_speed

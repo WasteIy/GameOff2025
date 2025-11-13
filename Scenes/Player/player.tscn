@@ -1,18 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=12 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
 [ext_resource type="Curve" uid="uid://kkhylwe26fec" path="res://Scenes/Player/State Machine/Curves/desired_move_speed.tres" id="2_jhyir"]
 [ext_resource type="Script" uid="uid://b03w8se4tf6xq" path="res://Scenes/Player/camera_script.gd" id="2_mtuoh"]
 [ext_resource type="Curve" uid="uid://bgv5oilo8se3k" path="res://Scenes/Player/State Machine/Curves/in_air_move_speed_curve.tres" id="3_74mp2"]
-[ext_resource type="Script" uid="uid://dmw751ewg0keo" path="res://Scenes/Player/State Machine/state_machine.gd" id="3_htcer"]
 [ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_xpcdj"]
-[ext_resource type="Script" uid="uid://bk40qjqvrcgcv" path="res://Scenes/Player/State Machine/idle_state.gd" id="5_jlvik"]
-[ext_resource type="Script" uid="uid://cfa7jbqogc8cl" path="res://Scenes/Player/State Machine/in_air_state.gd" id="6_0u5uq"]
-[ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="7_jlvik"]
-[ext_resource type="Script" uid="uid://dbsgd5wkgkk8i" path="res://Scenes/Player/State Machine/jump_state.gd" id="8_gk6dx"]
-[ext_resource type="Script" uid="uid://cdvjmmtnmb31q" path="res://Scenes/Player/State Machine/run_state.gd" id="11_06tpx"]
-[ext_resource type="Script" uid="uid://n0av315tcyx7" path="res://Scenes/Player/State Machine/crouch_state.gd" id="12_7g0yx"]
+[ext_resource type="PackedScene" uid="uid://d1o7b30ilyyb0" path="res://Scenes/Player/Weapons/weapon_manager.tscn" id="5_dey5f"]
+[ext_resource type="PackedScene" uid="uid://djr27dbr0k6wm" path="res://Scenes/Player/State Machine/state_machine.tscn" id="7_gk6dx"]
 [ext_resource type="PackedScene" uid="uid://rvq118nc0ibx" path="res://Scenes/UI/debug.tscn" id="13_06tpx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
@@ -29,17 +24,18 @@ in_air_move_speed_curve = ExtResource("3_74mp2")
 shape = SubResource("CapsuleShape3D_uvnfx")
 
 [node name="Model" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_oikmp")
 
 [node name="CameraHolder" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 script = ExtResource("2_mtuoh")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CameraHolder"]
-radius = 0.13140771
-
 [node name="Camera" type="Camera3D" parent="CameraHolder"]
 unique_name_in_owner = true
+
+[node name="WeaponManager" parent="CameraHolder/Camera" instance=ExtResource("5_dey5f")]
+transform = Transform3D(1, 0, 0, 0, 0.9876883, -0.15643449, 0, 0.15643446, 0.9876885, 0.40340805, -0.26879865, -0.6049668)
 
 [node name="Raycasts" type="Node3D" parent="."]
 
@@ -54,28 +50,7 @@ target_position = Vector3(0, 1.5, 0)
 [node name="ColorChange" type="Node" parent="Components"]
 script = ExtResource("2_a3d8c")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_htcer")
-initial_state = NodePath("IdleState")
-metadata/_custom_type_script = "uid://dmw751ewg0keo"
-
-[node name="IdleState" type="Node" parent="StateMachine"]
-script = ExtResource("5_jlvik")
-
-[node name="JumpState" type="Node" parent="StateMachine"]
-script = ExtResource("8_gk6dx")
-
-[node name="InAirState" type="Node" parent="StateMachine"]
-script = ExtResource("6_0u5uq")
-
-[node name="WalkState" type="Node" parent="StateMachine"]
-script = ExtResource("7_jlvik")
-
-[node name="RunState" type="Node" parent="StateMachine"]
-script = ExtResource("11_06tpx")
-
-[node name="CrouchState" type="Node" parent="StateMachine"]
-script = ExtResource("12_7g0yx")
+[node name="StateMachine" parent="." instance=ExtResource("7_gk6dx")]
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 

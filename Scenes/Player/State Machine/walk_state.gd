@@ -3,7 +3,6 @@ class_name WalkState extends State
 var character : CharacterBody3D
 
 func enter(character_reference):
-	print("Entrei no WalkState")
 	character = character_reference
 	
 	character.move_speed = character.walk_speed

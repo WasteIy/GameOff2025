@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @export var player : CharacterBody3D
 
+@onready var current_state_label: Label = $"Player Info/LabelContainers/StateContainerLabel/CurrentStateLabel"
+
 @onready var velocity_label: Label = %VelocityLabel
 @onready var max_speed_label: Label = %MaxSpeedLabel
 @onready var desired_move_speed_label: Label = %DesiredMoveSpeedLabel
@@ -32,6 +34,8 @@ func _process(_delta: float) -> void:
 		display()
 
 func display():
+	current_state_label.set_text(player.state_machine.current_state.name)
+	
 	velocity_label.set_text("%.2f" % player.velocity.length())
 	max_speed_label.set_text("%.2f" % player.max_speed)
 	desired_move_speed_label.set_text("%.2f" % player.desired_move_speed)

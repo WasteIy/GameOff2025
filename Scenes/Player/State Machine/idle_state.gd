@@ -3,7 +3,6 @@ class_name IdleState extends State
 var character : CharacterBody3D
 
 func enter(character_reference):
-	print("Entrei no IdleState")
 	character = character_reference
 	
 	if character.number_air_jump < character.number_air_jump_reference: 

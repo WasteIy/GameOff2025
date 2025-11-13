@@ -21,20 +21,29 @@ size_flags_vertical = 4
 [node name="NameContainers" type="VBoxContainer" parent="Player Info"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
+[node name="StateContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 
-[node name="Velocity" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
+[node name="CurrentState" type="Label" parent="Player Info/NameContainers/StateContainer"]
+layout_mode = 2
+text = "Current State:"
+
+[node name="MovementContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="Velocity" type="Label" parent="Player Info/NameContainers/MovementContainer"]
 layout_mode = 2
 text = "Velocity:"
 
-[node name="MaxSpeed" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
+[node name="MaxSpeed" type="Label" parent="Player Info/NameContainers/MovementContainer"]
 layout_mode = 2
 text = "MaxSpeed:"
 
-[node name="DesiredMoveSpeed" type="Label" parent="Player Info/NameContainers/VBoxContainer"]
+[node name="DesiredMoveSpeed" type="Label" parent="Player Info/NameContainers/MovementContainer"]
 layout_mode = 2
 text = "DesiredMoveSpeed:"
 
@@ -87,20 +96,28 @@ text = "LastFrameVelocity:"
 [node name="LabelContainers" type="VBoxContainer" parent="Player Info"]
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Player Info/LabelContainers"]
+[node name="StateContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 
-[node name="VelocityLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
+[node name="CurrentStateLabel" type="Label" parent="Player Info/LabelContainers/StateContainerLabel"]
+layout_mode = 2
+
+[node name="MovementContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+
+[node name="VelocityLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MaxSpeedLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
+[node name="MaxSpeedLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="DesiredMoveSpeedLabel" type="Label" parent="Player Info/LabelContainers/VBoxContainer2"]
+[node name="DesiredMoveSpeedLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
 

@@ -3,7 +3,6 @@ class_name JumpState extends State
 var character : CharacterBody3D
 
 func enter(character_reference: CharacterBody3D):
-	print("Entrei no JumpState")
 	character = character_reference
 	
 	if character.hit_ground_cooldown != character.hit_ground_cooldown:
