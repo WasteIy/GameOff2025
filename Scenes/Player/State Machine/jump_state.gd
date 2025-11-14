@@ -1,45 +1,37 @@
-class_name JumpState
-extends State
+class_name JumpState extends State
 
-var character: CharacterBody3D
+var character : CharacterBody3D
 
 func enter(character_reference: CharacterBody3D):
-	print("Entrei no JumpState")
 	character = character_reference
 	
-	verifications()
-	jump()
-	
-
-func verifications():
-	if character.jump_cooldown < character.jump_cooldown_reference:
-		character.jump_cooldown = character.jump_cooldown_reference
 	if character.hit_ground_cooldown != character.hit_ground_cooldown:
 		character.hit_ground_cooldown = character.hit_ground_cooldown
+	
+	jump()
 
 func physics_update(delta: float):
-	applies(delta)
+	update(delta)
 	character.apply_gravity(delta)
 	check_input()
 	check_if_floor()
 	move(delta)
-	
 
-func applies(delta: float):
+func update(delta: float):
 	if !character.is_on_floor(): 
-		if character.jump_cooldown > 0.0:
-			character.jump_cooldown -= delta
 		if character.coyote_jump_cooldown > 0.0:
 			character.coyote_jump_cooldown -= delta
-			
+	
+	character.collision.shape.height = lerp(character.collision.shape.height, character.base_collision_height, character.height_change_speed * delta)
+	character.model.scale.y = lerp(character.model.scale.y, character.base_model_height, character.height_change_speed * delta)
+
 func check_input():
 	if Input.is_action_just_pressed("jump"):
 		jump()
-		
 
 func check_if_floor():
-	#if !character.is_on_floor() and character.velocity.y < 0.0:
-	#w	transitioned.emit(self, "InAirState")
+	if !character.is_on_floor() and character.velocity.y < 0.0:
+		transitioned.emit(self, "InAirState")
 		
 	if character.is_on_floor():
 		if character.move_direction:
@@ -51,7 +43,6 @@ func check_if_floor():
 	if character.is_on_wall():
 		character.velocity.x = 0.0
 		character.velocity.z = 0.0
-		
 
 func move(delta: float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -77,7 +68,6 @@ func move(delta: float):
 			
 	if character.desired_move_speed >= character.max_speed:
 		character.desired_move_speed = character.max_speed
-	
 
 func jump(): 
 	var can_jump: bool = false
@@ -86,25 +76,22 @@ func jump():
 	if !character.is_on_floor():
 		if !character.coyote_jump_on and character.number_air_jump > 0:
 			character.number_air_jump -= 1
-			character.jump_cooldown = character.jump_cooldown_reference
 			can_jump = true 
 		if character.coyote_jump_on:
-			character.jump_cooldown = character.jump_cooldown_reference
 			character.coyote_jump_cooldown = -1.0 # impede outro pulo coyote imediato
 			character.coyote_jump_on = false
 			can_jump = true 
 			
-	# pulo no chão
+	# Pulo no chão
 	if character.is_on_floor():
-		character.jump_cooldown = character.jump_cooldown_reference
 		can_jump = true 
 		
-	# jump buffering
+	# Buffer de pulo
 	if character.buffered_jump:
 		character.buffered_jump = false
 		character.number_air_jump = character.number_air_jump_reference
 		
-	# aplica o pulo
+	# Aplica o pulo
 	if can_jump:
 		character.velocity.y = character.jump_velocity
 		can_jump = false

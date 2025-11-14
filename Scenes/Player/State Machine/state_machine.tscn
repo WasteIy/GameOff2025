@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://djr27dbr0k6wm"]
+
+[ext_resource type="Script" uid="uid://dmw751ewg0keo" path="res://Scenes/Player/State Machine/state_machine.gd" id="1_jhlow"]
+[ext_resource type="Script" uid="uid://bk40qjqvrcgcv" path="res://Scenes/Player/State Machine/idle_state.gd" id="2_8lv4h"]
+[ext_resource type="Script" uid="uid://dbsgd5wkgkk8i" path="res://Scenes/Player/State Machine/jump_state.gd" id="3_l2xtn"]
+[ext_resource type="Script" uid="uid://cfa7jbqogc8cl" path="res://Scenes/Player/State Machine/in_air_state.gd" id="4_rvu3k"]
+[ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="5_4qpfn"]
+[ext_resource type="Script" uid="uid://cdvjmmtnmb31q" path="res://Scenes/Player/State Machine/run_state.gd" id="6_2l5iy"]
+[ext_resource type="Script" uid="uid://n0av315tcyx7" path="res://Scenes/Player/State Machine/crouch_state.gd" id="7_45stm"]
+
+[node name="StateMachine" type="Node" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_jhlow")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://dmw751ewg0keo"
+
+[node name="IdleState" type="Node" parent="."]
+script = ExtResource("2_8lv4h")
+
+[node name="JumpState" type="Node" parent="."]
+script = ExtResource("3_l2xtn")
+
+[node name="InAirState" type="Node" parent="."]
+script = ExtResource("4_rvu3k")
+
+[node name="WalkState" type="Node" parent="."]
+script = ExtResource("5_4qpfn")
+
+[node name="RunState" type="Node" parent="."]
+script = ExtResource("6_2l5iy")
+
+[node name="CrouchState" type="Node" parent="."]
+script = ExtResource("7_45stm")
