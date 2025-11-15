@@ -1,12 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cd5kmgw3rc6le"]
+[gd_scene load_steps=13 format=3 uid="uid://cd5kmgw3rc6le"]
 
 [ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_3h3g6"]
 [ext_resource type="Shader" uid="uid://el54od7fuqws" path="res://Assets/Shaders/HologramaTestes.gdshader" id="2_gm477"]
 [ext_resource type="Texture2D" uid="uid://bkaxc1cr5888r" path="res://Assets/Shaders/RandomSquares.png" id="3_vkhjf"]
 [ext_resource type="Material" uid="uid://ca4d0wj6cgv8x" path="res://Assets/Materials/structure_material_red.tres" id="3_xkete"]
 [ext_resource type="Texture2D" uid="uid://bon4mtbhvo3qo" path="res://Assets/Textures/checker_red_512x512.png" id="3_yoip6"]
-[ext_resource type="Material" uid="uid://bnka266lmacek" path="res://Assets/Materials/structure_material_blue.tres" id="4_x2a1e"]
-[ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="5_7i70s"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="6_4py6l"]
 [ext_resource type="PackedScene" uid="uid://il88e1qkncj6" path="res://PLACEHOLDERS/Scenes/player_placeholder.tscn" id="6_a5hm4"]
 
@@ -22,13 +20,6 @@ background_mode = 2
 sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yoip6"]
-render_priority = 0
-shader = ExtResource("2_gm477")
-shader_parameter/randomSquares = ExtResource("3_vkhjf")
-shader_parameter/mainTexture = ExtResource("3_yoip6")
-shader_parameter/visible = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vkhjf"]
 render_priority = 0
@@ -62,7 +53,6 @@ script = ExtResource("2_3h3g6")
 
 [node name="Plataform" type="CSGBox3D" parent="Map/Red"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.6327255, -7.8580117)
-material_override = SubResource("ShaderMaterial_yoip6")
 use_collision = true
 size = Vector3(7.167533, 2.3760452, 7.1601563)
 material = ExtResource("3_xkete")
@@ -80,56 +70,6 @@ material_override = SubResource("ShaderMaterial_xwu1n")
 use_collision = true
 size = Vector3(2.8842041, 4.300818, 1.4)
 material = ExtResource("3_xkete")
-
-[node name="Blue" type="Node3D" parent="Map"]
-script = ExtResource("2_3h3g6")
-color = 2
-
-[node name="Platform" type="CSGBox3D" parent="Map/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.6327255, -25.010437)
-use_collision = true
-collision_mask = 2
-size = Vector3(7.167533, 2.3760452, 7.1601563)
-material = ExtResource("4_x2a1e")
-
-[node name="Platform2" type="CSGBox3D" parent="Map/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.006474, 9.651046, -25.010437)
-use_collision = true
-collision_mask = 2
-size = Vector3(7.1461444, 2.1565723, 7.1601563)
-material = ExtResource("4_x2a1e")
-
-[node name="Window" type="CSGBox3D" parent="Map/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.999641, 4.286951, -70.72578)
-operation = 2
-use_collision = true
-size = Vector3(17.137066, 2.8388388, 1.4)
-material = ExtResource("4_x2a1e")
-
-[node name="Green" type="Node3D" parent="Map"]
-script = ExtResource("2_3h3g6")
-color = 1
-
-[node name="Platform" type="CSGBox3D" parent="Map/Green"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.6327255, -16.430664)
-use_collision = true
-collision_mask = 2
-size = Vector3(7.167533, 2.3760452, 7.1601563)
-material = ExtResource("5_7i70s")
-
-[node name="Platform2" type="CSGBox3D" parent="Map/Green"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.617167, 7.5443153, -25.030664)
-use_collision = true
-collision_mask = 2
-size = Vector3(7.167533, 2.1528664, 7.1601563)
-material = ExtResource("5_7i70s")
-
-[node name="Window" type="CSGBox3D" parent="Map/Green"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.999641, 4.286951, -70.72578)
-operation = 2
-use_collision = true
-size = Vector3(17.137066, 2.8388388, 1.4)
-material = ExtResource("5_7i70s")
 
 [node name="Black" type="Node" parent="Map"]
 

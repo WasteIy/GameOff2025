@@ -14,12 +14,13 @@ void fragment() {
 		ALBEDO = color.rgb;
 		SPECULAR = 0.0;
 	} else {
-		vec2 newUV = UV * vec2(3.0);
+		vec2 newUV = UV * vec2(2.0);
 		vec4 finalColor = texture(randomSquares, newUV);
 		vec4 finalColor2 = texture(randomSquares, -newUV);
 		float norCos = (cos(TIME) + 1.0) / 2.0;
 		float norSin = (sin(TIME * 5.0) + 1.0) / 2.0;
-		ALBEDO = (finalColor.rgb * norSin) + (finalColor2.rgb * (1.0 - norSin));
+		vec3 cor = (finalColor.rgb * norSin) + (finalColor2.rgb * (1.0 - norSin));
+		ALBEDO = cor * vec3(1.0, 0.0, 0.0);
 		ALPHA = ALBEDO.r;
 	}
 }

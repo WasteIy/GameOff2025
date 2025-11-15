@@ -5,8 +5,11 @@ func _set_active(active: bool) -> void:
 	_update_recursive(self)
 
 func _update_recursive(node: Node) -> void:
-	node.visible = is_active
-
+	if node is CSGBox3D:
+		var nodeCSG : CSGBox3D = node as CSGBox3D
+		var shadMat : ShaderMaterial = nodeCSG.material_override
+		shadMat.set_shader_parameter("visible", is_active)
+	
 	if node.has_method("set_collision_layer") and node.has_method("set_collision_mask"):
 		node.collision_layer = 1 if is_active else 0
 		node.collision_mask = 1 if is_active else 0
