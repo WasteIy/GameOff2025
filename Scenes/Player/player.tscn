@@ -51,7 +51,7 @@ target_position = Vector3(0, 1.5, 0)
 [node name="ColorChange" type="Node" parent="Components"]
 script = ExtResource("2_a3d8c")
 
-[node name="Shoot" type="Node" parent="Components"]
+[node name="WeaponInput" type="Node" parent="Components"]
 script = ExtResource("7_jhyir")
 
 [node name="StateMachine" parent="." instance=ExtResource("7_gk6dx")]
@@ -62,4 +62,5 @@ script = ExtResource("7_jhyir")
 visible = false
 player = NodePath("..")
 
-[connection signal="shoot_input" from="Components/Shoot" to="CameraHolder/Camera/WeaponManager" method="_on_shoot_shoot_input"]
+[connection signal="reload_input" from="Components/WeaponInput" to="CameraHolder/Camera/WeaponManager" method="_on_reload_input"]
+[connection signal="shoot_input" from="Components/WeaponInput" to="CameraHolder/Camera/WeaponManager" method="_on_shoot_input"]

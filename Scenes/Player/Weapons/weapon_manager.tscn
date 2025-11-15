@@ -1,16 +1,54 @@
-[gd_scene load_steps=11 format=4 uid="uid://d1o7b30ilyyb0"]
+[gd_scene load_steps=10 format=4 uid="uid://d1o7b30ilyyb0"]
 
 [ext_resource type="Script" uid="uid://dgjhlcdihhsnd" path="res://Scenes/Player/Weapons/weapon_manager.gd" id="1_kfrq2"]
-[ext_resource type="Script" uid="uid://cd780r5y6bcu1" path="res://Scenes/Player/Weapons/pistol.gd" id="4_6h34i"]
-[ext_resource type="Texture2D" uid="uid://dn80owsfnp2u5" path="res://Assets/Textures/pistol.png" id="4_l4ui6"]
-[ext_resource type="Script" uid="uid://dxkbxf0866063" path="res://Scenes/muzzle_flash.gd" id="5_pr5rr"]
-[ext_resource type="Material" uid="uid://cgafojt8rdou0" path="res://Assets/Materials/muzzle_flash.tres" id="6_6h34i"]
+[ext_resource type="Script" uid="uid://clcu51q5fnxi1" path="res://Scenes/Player/Weapons/weapon_script.gd" id="2_l4ui6"]
+[ext_resource type="Script" uid="uid://co0mq4weu4jyn" path="res://Scenes/Player/Weapons/animation_manager.gd" id="5_6h34i"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53ias"]
-resource_name = "stubber1"
-albedo_texture = ExtResource("4_l4ui6")
-metallic = 1.0
-texture_filter = 2
+[sub_resource type="Animation" id="Animation_pr5rr"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_l4ui6"]
+resource_name = "reload"
+length = 0.4
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.7071068, 0, 0, 0.70710677, 0.2, 1, 1, 0, 0, -4.3711392e-08, 0.3, 1, -0.7071068, 0, 0, 0.70710677, 0.4, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_6h34i"]
+resource_name = "shoot"
+length = 0.2
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.06666667, 1, 0, 0, 0.07, 0.16666667, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0.12035344, 0, 0, 0.99273115, 0.1, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ydlvs"]
+_data = {
+&"RESET": SubResource("Animation_pr5rr"),
+&"reload": SubResource("Animation_l4ui6"),
+&"shoot": SubResource("Animation_6h34i")
+}
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6ahkl"]
 _surfaces = [{
@@ -36,8 +74,6 @@ _surfaces = [{
 "index_count": 1062,
 "index_data": PackedByteArray("AAABAAIAAAACAAMACAAJAAoACAAKAAsAkAENAA4AkAEOAJEBEgATABQAEgAUABYAkgGTAZQBkgGUAZUBlgGXAZgBlgGYAZkBlwFFAJgBlwFCAEUAQgBEAEUAQgBDAEQAKgArACwAKgAsAC0AGACaAZsBmgEhAJsBGACbARkAGwAYABkAHAAbABkAmgEgACEAIAAkACEAIAAlACQALgAvAJwBnQEuAJwBMgAzADQAMgA0AJ4BNgAyAJ4BNgCeAZ8BNwA2AJ8BNwCfATUAOAA5ADoAoAE4ADoAoQGgAToAoQE6ADwAOwChATwAOwA8AD0APgA/AEAAPgBAAEEAogGjATAAMQCiATAApAGlAaYBpwGkAaYBqAGpAU4AqAFOAE8AqgGpAagBqgGrAakBrAGrAaoBrAGtAasBVQBUAK4BVQCuAa8BrwGuAbABrwGwAbEBsQGwAbIBsQGyAbMBUgBTALQBUgC0AbUBTABNALYBTAC2AbcBWABZAFoAWABaAFsAXABdAF4AXABeAF8AuAFWAFcAuQG4AVcABQAHAAYABQAGAAQAugG7AbwBugG8Ab0BvgG/AVAAvgFQAFEAwAHBAXUAwQF2AHUAwQFzAHYAwAF1AMIBwwHAAcIBwwHCAcQBxQHDAcQBxQHEAcYBYABhAMcBYQDIAccBYADHAckBYwBgAMkBYwDJAWIAYQDKAcgBygFkAMgBygHLAWQAywFmAGQAywFlAGYAZwBoAGkAZwBpAGoAzAHNAc4BzAHOAc8BzQHQAc4BzQHRAdAB0QHSAdAB0QGmANIBpgCnANIBpgCoAKcA0wFGAEcA0wFHANQB1QHTAdQB1QHUAdYBSADVAdYBSADWAdcBawDYAWwAawBsAG0A2AFuAGwA2AHZAW4A2QHaAW4A2QHbAdoB2wHcAdoB2wFwANwBcABvANwBcABxAG8A3QHeAREA3QERABAA3wHgAeEB3wHhAUkA4AHiAeEB4AHjAeIB4wFKAOIB4wFLAEoAcgDkAeUBcgDlAXQA5gHnAegB5gHoARcA6QHqAesB6QHrAewB6gHtAesB6gHuAe0BFQDvAfABFQDwAfEB8gHzAfQB8gH0AR0AdwB4AHkAdwB5AHoAewB8AH0AewB9AH4AfwCAAIEAfwCBAIIA9QH2AZUA9QGVAJYAgwCEAIUAgwCFAIYA9wH4AZEA9wGRAJIA+QH6AYgA+QGIAIkAiwCMAI0AiwCNAI4A+wH8Af0B+wH9Af4BjwCQAP8BjwD/AQACAAL/AQECAAIBAgICkwCUAAMCkwADAgQCBAIDAgUCBAIFAgYCBwKZAAgCBwIIAgkCCgILAgwCCgIMAg0CngAOAg8CEAKeAA8CnACdABECnAARAhICEwIUAhUCEwIVAhYCmgCYABcCmgAXAhgCGQIaAhsCGQIbAhwCHQIeAh8CHQIfAiACIQIiAqAAIQKgAJ8AIwIkApsAIwKbAJcAoQCiAKMAoQCjAKQAGgAeAB8AGgAfACUCqgCrAKwAqgCsAK0AJgInAikAJgIpACgArgCvALAArgCwALEApQAoAikCpQApAqkAsgCzALQAsgC0ALUAtgC3ALgAtgC4ALkAKgIrAiwCKgIsAi0CDAAPAC4CDAAuAi8CMAIxAjICMAIyAjMCNAI1AjYCNAI2AjcCJgAnADgCJgA4AjkCOgIjACIAOgIiADsCugC7ALwAugC8AL0AvgA8AsAAwQC+AMAAvgDCADwCwgC/ADwCwgDDAL8AwgDEAMMAxQDGAMcAxQDHAMgAyQDKAMsAyQDLAMwAPQLJAMwAPQLMAM4AzQA9As4AzQDOAM8A0AA+Aj8C0AA/AtIAQALRANMAQALTAEEC1ADVANYA1ADWANcA2ADZANoA2ADaANsA3ADdAN4A3ADeAN8A4ADhAOIA4ADiAOMA5ADlAOYA5ADmAOcA6ADpAOoA6ADqAOsA7ADtAO4A7ADuAO8A8ADxAPIA8ADyAPMA9AD1APYA9AD2APcA+AD5APoA+wD4APoA+QD8APoA/QD4APsA+QD+APwA/QD/APgA/gAAAfwA/QABAf8AAAECAfwA/QADAQEBBAECAQABAwEFAQEBBAEGAQIBAwEHAQUBBwEGAQQBBQEHAQQBCAEJAQoBCwEIAQoBCwEKAQwBDQELAQwBDQEMAQ4BDwENAQ4BEAERARIBEAESARMBFAEVARYBFAEWARcBGAEZARoBGAEaARsBHAEdAR4BHAEeAR8BIAEhASIBIAEiASMBJAElASYBJAEmAScBKAEpASoBKAEqASsBLAEtAS4BLAEuAS8BMAFCAjEBMAExATIBMwFCAjABMwE0AUICNQEwATIBNQEyATYBNwE4ATkBNwE5AToBOwE8AUMCOwFDAj0BPQFDAj4BPQE+AT8BQAE7AT0BQAE9AUEBRAJDAUQBRAJEAUUCQgFGAkcCQgFHAkUBRgFHAUgBRgFIAUkBSQFIAUoBRgFJAUsBTAFNAU4BTAFOAU8BUAFRAVIBUwFQAVIBSAJJAkoCSAJKAksCTAJNAlcBTAJXAVYBVAFVAU4CVAFOAk8CWAFZAVoBWAFaAVsBXAFdAV4BXAFeAV8BhwCKAFAChwBQAlECYAFhAWIBYAFiAWMBUgJTAmUBUgJlAWYBaAFpAWoBawFoAWoBZAFnAVQCZAFUAlUCbAFtAW4BbAFuAW8BcAFxAXIBcAFyAXMBdAF1AXYBdwF0AXYBVgJXAlgCVgJYAlkCeAF5AXoBeAF6AXsBfAF9AX4BfAF+AX8BgAGBAYIBgwGAAYIBhAGFAYYBhAGGAYcBiAGJAYoBiAGKAYsBjAGNAY4BjAGOAY8B"),
 "lods": [0.10723376, PackedByteArray("AAABAAIAAAACAAMAAQAEAAIAAQAFAAQABQAGAAQABQAHAAYACAAJAAoACAAKAAsADAANAA4ADAAPAA0ADAAOABAAEAAOABEAEgATABQAFQATABIAEgAUABYAFgAUABcAFQAYABMAFAAZABcAFQAaABgAGwAYABkAHAAbABkAGQAdABcAGAAdABkAGgAdABgAGgAeAB8AGgAfACAAGgAgAB0AHQAgACEAIQAiAB0AIQAjACIAIAAkACEAIAAlACQAJgAnACgAKAAnACkAKgArACwAKgAsAC0ALgAvADAAMQAuADAAMgAzADQAMgA0ADUANgAyADUANwA2ADUAOAA5ADoAOwA4ADoAOwA6ADwAOwA8AD0APgA/AEAAPgBAAEEAQgBDAEQAQgBEAEUARgBHAEIASABGAEIASABCAEUASABFAEkARQBKAEkARQBLAEoATABNAE4ATABOAE8ATwBOAFAATwBQAFEAUgBTAFQAUgBUAFUAVQBUAFYAVQBWAFcAWABZAFoAWABaAFsAXABdAF4AXABeAF8AYABhAGIAYwBgAGIAYQBkAGIAYQBlAGQAZQBmAGQAZwBoAGkAZwBpAGoAawBsAG0AawBuAGwAawBvAG4AawBwAG8AcABxAG8AcgBzAHQAcwB1AHQAcwB2AHUAdwB4AHkAdwB5AHoAewB8AH0AewB9AH4AfwCAAIEAfwCBAIIAgwCEAIUAgwCFAIYAhwCIAIkAhwCKAIgAiwCMAI0AiwCNAI4AjwCQAJEAjwCRAJIAkwCUAJUAkwCVAJYAlwCYAJkAmgCYAJcAlwCZAJsAnACdAJ4AnACeAJ8AnwCeAKAAoQCiAKMAoQCjAKQApQCmAKcApgCoAKcApQCnAKkAqgCrAKwAqgCsAK0ArgCvALAArgCwALEAsgCzALQAsgC0ALUAtgC3ALgAtgC4ALkAugC7ALwAugC8AL0AvgC/AMAAwQC+AMAAvgDCAL8AwgDDAL8AwgDEAMMAxQDGAMcAxQDHAMgAyQDKAMsAyQDLAMwAzQDJAMwAzQDMAM4AzQDOAM8A0ADRANIA0QDTANIA1ADVANYA1ADWANcA2ADZANoA2ADaANsA3ADdAN4A3ADeAN8A4ADhAOIA4ADiAOMA5ADlAOYA5ADmAOcA6ADpAOoA6ADqAOsA7ADtAO4A7ADuAO8A8ADxAPIA8ADyAPMA9AD1APYA9AD2APcA+AD5APoA+wD4APoA+QD8APoA/QD4APsA+QD+APwA/QD/APgA/gAAAfwA/QABAf8AAAECAfwA/QADAQEBBAECAQABAwEFAQEBBAEGAQIBAwEHAQUBBwEGAQQBBQEHAQQBCAEJAQoBCwEIAQoBCwEKAQwBDQELAQwBDQEMAQ4BDwENAQ4BEAERARIBEAESARMBFAEVARYBFAEWARcBGAEZARoBGAEaARsBHAEdAR4BHAEeAR8BIAEhASIBIAEiASMBJAElASYBJAEmAScBKAEpASoBKAEqASsBLAEtAS4BLAEuAS8BMAExATIBMwExATABMwE0ATEBNQEwATIBNQEyATYBNwE4ATkBNwE5AToBOwE8AT0BPQE8AT4BPQE+AT8BQAE7AT0BQAE9AUEBQgFDAUQBQgFEAUUBRgFHAUgBRgFIAUkBSQFIAUoBRgFJAUsBTAFNAU4BTAFOAU8BUAFRAVIBUwFQAVIBVAFVAVYBVgFVAVcBWAFZAVoBWAFaAVsBXAFdAV4BXAFeAV8BYAFhAWIBYAFiAWMBZAFlAWYBZAFnAWUBaAFpAWoBawFoAWoBbAFtAW4BbAFuAW8BcAFxAXIBcAFyAXMBdAF1AXYBdwF0AXYBeAF5AXoBeAF6AXsBfAF9AX4BfAF+AX8BgAGBAYIBgwGAAYIBhAGFAYYBhAGGAYcBiAGJAYoBiAGKAYsBjAGNAY4BjAGOAY8B")],
-"material": SubResource("StandardMaterial3D_53ias"),
-"name": "stubber1",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 602,
@@ -46,22 +82,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6ahkl")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ydlvs"]
-angle_min = -360.0
-angle_max = 360.00003
-gravity = Vector3(0, 0, 0)
-
-[sub_resource type="QuadMesh" id="QuadMesh_pkcqw"]
-material = ExtResource("6_6h34i")
-size = Vector2(0.4, 0.4)
-
 [node name="WeaponManager" type="Node3D"]
 script = ExtResource("1_kfrq2")
 
+[node name="AnimationManager" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Pistol")
+libraries = {
+&"": SubResource("AnimationLibrary_ydlvs")
+}
+script = ExtResource("5_6h34i")
+
 [node name="Pistol" type="Node3D" parent="."]
-script = ExtResource("4_6h34i")
+script = ExtResource("2_l4ui6")
 
 [node name="Mesh" type="MeshInstance3D" parent="Pistol"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6otbd")
 skeleton = NodePath("")
 
@@ -69,17 +104,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09133608, -0.5385499)
 gizmo_extents = 0.01
 
-[node name="MuzzleFlash" type="Node3D" parent="Pistol/BulletSpawnPoint" node_paths=PackedStringArray("_particles")]
-script = ExtResource("5_pr5rr")
-_particles = NodePath("GPUParticles3D")
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Pistol/BulletSpawnPoint/MuzzleFlash"]
-emitting = false
-amount = 5
-lifetime = 0.05
-one_shot = true
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_ydlvs")
-draw_pass_1 = SubResource("QuadMesh_pkcqw")
-
-[connection signal="shoot" from="." to="Pistol/BulletSpawnPoint/MuzzleFlash" method="_on_weapon_manager_shoot"]
+[connection signal="animation_finished" from="AnimationManager" to="AnimationManager" method="_on_animation_finished"]
+[connection signal="weapon_fired" from="Pistol" to="AnimationManager" method="_on_weapon_fired"]
+[connection signal="weapon_reloaded" from="Pistol" to="AnimationManager" method="_on_weapon_reloaded"]

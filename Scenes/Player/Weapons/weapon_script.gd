@@ -1,7 +1,7 @@
 class_name Weapon extends Node3D
 
-signal weapon_fired(weapon : Weapon)
-signal weapon_reloaded(weapon : Weapon)
+signal weapon_fired
+signal weapon_reloaded
 
 @export var fire_rate : float = 0.2
 @export var ammo_in_mag : int = 10
@@ -19,6 +19,7 @@ var is_reloading : bool = false
 var manager : Node = null
 
 func shoot():
-	if !can_fire or is_reloading:
-		return
-	pass
+	weapon_fired.emit()
+
+func reload():
+	weapon_reloaded.emit()

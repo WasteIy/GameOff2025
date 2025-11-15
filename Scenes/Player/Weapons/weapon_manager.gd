@@ -1,7 +1,5 @@
 class_name WeaponManager extends Node3D
 
-signal shoot
-
 var weapon: Weapon = null
 
 func _ready():
@@ -9,11 +7,13 @@ func _ready():
 		if child is Weapon:
 			weapon = child
 			break
-	
-	if weapon == null:
-		push_error("Nenhuma arma encontrada.")
 
-
-func _on_shoot_shoot_input() -> void:
+func _on_shoot_input() -> void:
 	weapon.shoot()
-	emit_signal("shoot")
+
+func _on_reload_input() -> void:
+	weapon.reload()
+
+
+func _on_weapon_fired() -> void:
+	pass # Replace with function body.
