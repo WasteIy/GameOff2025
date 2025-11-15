@@ -20,7 +20,7 @@ sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Test Level" type="Node3D"]
+[node name="TestLevel" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("5_npfmg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.420479, 2.4400635, 12.103622)

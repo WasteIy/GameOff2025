@@ -2,8 +2,7 @@ extends CanvasLayer
 
 @export var player : CharacterBody3D
 
-@onready var current_state_label: Label = $"Player Info/LabelContainers/StateContainerLabel/CurrentStateLabel"
-
+@onready var current_state_label: Label = %CurrentStateLabel
 @onready var velocity_label: Label = %VelocityLabel
 @onready var max_speed_label: Label = %MaxSpeedLabel
 @onready var desired_move_speed_label: Label = %DesiredMoveSpeedLabel
