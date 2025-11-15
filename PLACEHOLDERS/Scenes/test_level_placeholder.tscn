@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://cd5kmgw3rc6le"]
+[gd_scene load_steps=16 format=3 uid="uid://cd5kmgw3rc6le"]
 
 [ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_3h3g6"]
+[ext_resource type="Shader" uid="uid://el54od7fuqws" path="res://Assets/Shaders/HologramaTestes.gdshader" id="2_gm477"]
+[ext_resource type="Texture2D" uid="uid://bkaxc1cr5888r" path="res://Assets/Shaders/RandomSquares.png" id="3_vkhjf"]
 [ext_resource type="Material" uid="uid://ca4d0wj6cgv8x" path="res://Assets/Materials/structure_material_red.tres" id="3_xkete"]
+[ext_resource type="Texture2D" uid="uid://bon4mtbhvo3qo" path="res://Assets/Textures/checker_red_512x512.png" id="3_yoip6"]
 [ext_resource type="Material" uid="uid://bnka266lmacek" path="res://Assets/Materials/structure_material_blue.tres" id="4_x2a1e"]
 [ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="5_7i70s"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="6_4py6l"]
 [ext_resource type="PackedScene" uid="uid://il88e1qkncj6" path="res://PLACEHOLDERS/Scenes/player_placeholder.tscn" id="6_a5hm4"]
-[ext_resource type="Shader" uid="uid://qba4ha35caid" path="res://Assets/Shaders/missing_outline.gdshader" id="7_6orwi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,15 +23,26 @@ sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gm477"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yoip6"]
 render_priority = 0
-shader = ExtResource("7_6orwi")
-shader_parameter/normal_threshold = 2.085
-shader_parameter/depth_threshold = 0.05
-shader_parameter/depth_artifact_correction_coef = 2.0
-shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader = ExtResource("2_gm477")
+shader_parameter/randomSquares = ExtResource("3_vkhjf")
+shader_parameter/mainTexture = ExtResource("3_yoip6")
+shader_parameter/visible = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_6sor8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkhjf"]
+render_priority = 0
+shader = ExtResource("2_gm477")
+shader_parameter/randomSquares = ExtResource("3_vkhjf")
+shader_parameter/mainTexture = ExtResource("3_yoip6")
+shader_parameter/visible = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwu1n"]
+render_priority = 0
+shader = ExtResource("2_gm477")
+shader_parameter/randomSquares = ExtResource("3_vkhjf")
+shader_parameter/mainTexture = ExtResource("3_yoip6")
+shader_parameter/visible = true
 
 [node name="Test Level" type="Node3D"]
 
@@ -49,18 +62,21 @@ script = ExtResource("2_3h3g6")
 
 [node name="Plataform" type="CSGBox3D" parent="Map/Red"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7171662, 2.6327255, -7.8580117)
+material_override = SubResource("ShaderMaterial_yoip6")
 use_collision = true
 size = Vector3(7.167533, 2.3760452, 7.1601563)
 material = ExtResource("3_xkete")
 
 [node name="Plataform2" type="CSGBox3D" parent="Map/Red"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.117166, 5.032726, -24.958012)
+material_override = SubResource("ShaderMaterial_vkhjf")
 use_collision = true
 size = Vector3(7.167533, 2.3760452, 7.1601563)
 material = ExtResource("3_xkete")
 
 [node name="Door" type="CSGBox3D" parent="Map/Red"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.849753, 3.5714586, -60.73809)
+material_override = SubResource("ShaderMaterial_xwu1n")
 use_collision = true
 size = Vector3(2.8842041, 4.300818, 1.4)
 material = ExtResource("3_xkete")
@@ -211,11 +227,5 @@ material = ExtResource("6_4py6l")
 
 [node name="Player_plcaeholder" parent="." instance=ExtResource("6_a5hm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.145471, 2.4400635, 5.274251)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player_plcaeholder/Head/Camera3D" index="1"]
-transform = Transform3D(3.0917206, 0, 0, 0, 1.7410041, 0, 0, 0, 1, 0, -0.0013737679, -1.0570459)
-material_override = SubResource("ShaderMaterial_gm477")
-mesh = SubResource("BoxMesh_6sor8")
-skeleton = NodePath("../../../..")
 
 [editable path="Player_plcaeholder"]
