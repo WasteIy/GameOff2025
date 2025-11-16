@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c04kpgoijtm07"]
+[gd_scene load_steps=4 format=3 uid="uid://c04kpgoijtm07"]
 
 [ext_resource type="Script" uid="uid://b86syumjr5sto" path="res://Scenes/UI/Menu/pause_menu.gd" id="1_f6oh5"]
+[ext_resource type="PackedScene" uid="uid://bwwk8crh6u2he" path="res://Scenes/UI/Menu/settings.tscn" id="2_l2hgd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l2hgd"]
 font_size = 64
@@ -53,10 +54,25 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "RESUME GAME"
 
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "EXIT GAME"
 
+[node name="Settings" parent="." instance=ExtResource("2_l2hgd")]
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="Settings/VolumeContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="toggled" from="Settings/Mute" to="." method="_on_mute_toggled"]
+[connection signal="item_selected" from="Settings/Resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="pressed" from="Settings/Back" to="." method="_on_back_pressed"]
+
+[editable path="Settings"]
