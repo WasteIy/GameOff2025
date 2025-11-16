@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://clt6mn766fc23"]
+[gd_scene load_steps=4 format=3 uid="uid://clt6mn766fc23"]
 
 [ext_resource type="Script" uid="uid://nk572r5e15vu" path="res://Scenes/UI/Menu/main_menu.gd" id="1_5wsvm"]
+[ext_resource type="PackedScene" uid="uid://bwwk8crh6u2he" path="res://Scenes/UI/Menu/settings.tscn" id="2_nub77"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_36iwh"]
 font_size = 64
@@ -60,6 +61,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "EXIT GAME"
 
+[node name="SettingsContainer" parent="." instance=ExtResource("2_nub77")]
+visible = false
+layout_mode = 1
+
+[node name="Back" parent="SettingsContainer" index="4"]
+text = "BACK TO MAIN MENU"
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="SettingsContainer/Back" to="." method="_on_back_pressed"]
+
+[editable path="SettingsContainer"]

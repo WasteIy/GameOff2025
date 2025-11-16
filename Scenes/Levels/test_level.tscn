@@ -132,4 +132,6 @@ collision_mask = 2
 size = Vector3(1.4538574, 1.43, 1.4448853)
 material = ExtResource("1_db73o")
 
-[node name="Pause Menu" parent="." instance=ExtResource("7_x4x4f")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("7_x4x4f")]

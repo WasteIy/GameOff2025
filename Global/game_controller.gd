@@ -3,7 +3,14 @@ extends Node
 @export var mouse_sensibility_x: float = 0.2
 @export var mouse_sensibility_y: float = 0.2
 
-@export var master_volume: float = 1.0
+@export var master_volume: float = 1.0:
+	set(value):
+		master_volume = value
+		AudioServer.set_bus_volume_db(0, value)
+@export var master_volume_muted: bool = false:
+	set(value):
+		master_volume_muted = value
+		AudioServer.set_bus_volume_db(0, value)
 @export var fov: float = 75.0
 
 func set_mouse_sensibility(x: float, y: float) -> void:

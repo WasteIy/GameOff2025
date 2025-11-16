@@ -6,10 +6,17 @@ extends Control
 
 var pause_toggle = false
 var settings_toggle = false
+static var resolucoes = {
+  "Full HD": Vector2i(1920, 1080),
+  "HD" : Vector2i(1600, 900),
+}
 
 func _ready() -> void:
 	self.visible = false
 	settings.visible = false
+	for chave in resolucoes:
+		resolutions.add_item(chave)
+	resolutions.select(0)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):  # Tecla ESC
@@ -36,18 +43,14 @@ func _on_settings_pressed() -> void:
 	pause_menu_container.hide()
 	
 func _on_h_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, value)
+	GameController.master_volume = value
 
 func _on_resolutions_item_selected(index: int) -> void:
-	var resolution: String = resolutions.get_item_text(index)
-	var h_resolution: int = int(resolution.get_slice("x", 0))
-	var v_resolution: int = int(resolution.get_slice("x", 1))
-	DisplayServer.window_set_size(Vector2i(h_resolution, v_resolution))
-			
+	var aux: Vector2i = resolucoes.get(resolutions.get_item_text(index))
+	DisplayServer.window_set_size(aux)
 
 func _on_mute_toggled(toggled_on: bool) -> void:
-	AudioServer.set_bus_volume_db(0,toggled_on)
-
+	GameController.master_volume = toggled_on
 
 func _on_back_pressed() -> void:
 	$Settings.hide()

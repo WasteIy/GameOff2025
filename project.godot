@@ -30,6 +30,10 @@ SFXManager="*res://Global/sfx_manager.gd"
 
 gdscript/warnings/unused_signal=0
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={
