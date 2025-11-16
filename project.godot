@@ -34,7 +34,10 @@ gdscript/warnings/unused_signal=0
 
 folder_colors={
 "res://Assets/": "red",
-"res://Scenes/": "blue"
+"res://Scenes/": "blue",
+"res://Scenes/Player/Components/": "gray",
+"res://Scenes/Player/State Machine/": "gray",
+"res://Scenes/Player/Weapons/": "blue"
 }
 
 [input]

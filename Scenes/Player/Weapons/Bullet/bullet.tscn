@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://kuxcn84buch0"]
+
+[node name="Bullet" type="CSGSphere3D"]
+radius = 0.028109789

@@ -1,19 +1,42 @@
-class_name WeaponManager extends Node3D
+class_name WeaponManager
+extends Node3D
 
-var weapon: Weapon = null
+var weapons: Array[Weapon] = []
+var current_weapon: Weapon = null
+
 
 func _ready():
 	for child in get_children():
 		if child is Weapon:
-			weapon = child
-			break
+			weapons.append(child)
+	
+	if weapons.size() == 0:
+		push_warning("Nenhuma arma encontrada")
+		return
+		
+	current_weapon = weapons[0]
+	
+	current_weapon.weapon_fired.connect(_on_weapon_fired)
+	current_weapon.weapon_reloaded.connect(_on_weapon_reloaded)
 
-func _on_shoot_input() -> void:
-	weapon.shoot()
+func try_shoot():
+	if current_weapon:
+		current_weapon.shoot()
 
-func _on_reload_input() -> void:
-	weapon.reload()
+func try_reload():
+	if current_weapon:
+		current_weapon.reload()
 
+func _on_weapon_fired():
+	# TODO Animação
+	pass
 
-func _on_weapon_fired() -> void:
-	pass # Replace with function body.
+func _on_weapon_reloaded():
+	# TODO Animação
+	pass
+
+func _on_shoot_input():
+	try_shoot()
+
+func _on_reload_input():
+	try_reload()

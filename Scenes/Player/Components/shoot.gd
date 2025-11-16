@@ -1,4 +1,4 @@
-extends Node
+class_name ShootInput extends Node
 
 signal shoot_input
 signal reload_input
