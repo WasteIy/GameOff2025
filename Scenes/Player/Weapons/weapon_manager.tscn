@@ -87,6 +87,7 @@ _data = {
 script = ExtResource("1_kfrq2")
 
 [node name="Pistol" type="Node3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("2_hw3gm")
 bullet_scene = ExtResource("3_pr5rr")
 

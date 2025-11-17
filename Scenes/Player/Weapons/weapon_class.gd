@@ -68,14 +68,13 @@ func reload():
 	if total_ammo <= 0:
 		return
 	state = WeaponState.RELOADING
-	
-	await get_tree().create_timer(1.2).timeout
+	emit_signal("weapon_reloaded")
+	await get_tree().create_timer(0.4).timeout
 	var needed = mag_capacity - ammo_in_mag
 	var load_amount = min(needed, total_ammo)
 	
 	ammo_in_mag += load_amount
 	total_ammo -= load_amount
 	
-	emit_signal("weapon_reloaded")
 	
 	state = WeaponState.IDLE

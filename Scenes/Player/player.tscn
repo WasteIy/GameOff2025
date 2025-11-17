@@ -11,7 +11,8 @@
 [ext_resource type="Script" uid="uid://c2rjhovo4ljy7" path="res://Scenes/Player/Components/shoot.gd" id="7_jhyir"]
 [ext_resource type="PackedScene" uid="uid://rvq118nc0ibx" path="res://Scenes/UI/ui_debug.tscn" id="13_06tpx"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uvnfx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhyir"]
+height = 1.9020996
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oikmp"]
 
@@ -22,21 +23,21 @@ desired_move_speed_curve = ExtResource("2_jhyir")
 in_air_move_speed_curve = ExtResource("3_74mp2")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_uvnfx")
+shape = SubResource("CapsuleShape3D_jhyir")
 
 [node name="Model" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_oikmp")
 
 [node name="CameraHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 script = ExtResource("2_mtuoh")
 
 [node name="Camera" type="Camera3D" parent="CameraHolder"]
 unique_name_in_owner = true
 
 [node name="WeaponManager" parent="CameraHolder/Camera" instance=ExtResource("5_dey5f")]
-transform = Transform3D(0.999098, 0.035023537, 0.024015673, -0.032590274, 0.99492943, -0.09514913, -0.027226351, 0.094280615, 0.9951734, 0.43062645, -0.2622062, -0.5862533)
+transform = Transform3D(0.9869252, 0.047576167, 0.15399815, -0.033002544, 0.9948489, -0.09584577, -0.15776488, 0.08951025, 0.9834116, 0.191, -0.262, -0.486)
 
 [node name="Raycasts" type="Node3D" parent="."]
 
