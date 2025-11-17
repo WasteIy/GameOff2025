@@ -236,10 +236,10 @@ text = "......"
 [node name="WeaponInfo" type="HBoxContainer" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 937.0
-offset_top = 35.0
-offset_right = 1137.0
-offset_bottom = -482.0
+offset_left = 906.00006
+offset_top = 32.0
+offset_right = 1106.0
+offset_bottom = -485.0
 grow_vertical = 2
 scale = Vector2(0.865, 0.865)
 size_flags_horizontal = 4
