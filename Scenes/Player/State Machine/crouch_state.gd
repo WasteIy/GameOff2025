@@ -52,10 +52,11 @@ func check_input() -> void:
 			if !raycast_check():
 				character.walk_or_run = "WalkState"
 				transitioned.emit(self, "WalkState")
-
+	
 	if Input.is_action_just_pressed("run"):
-		character.walk_or_run = "RunState"
-		transitioned.emit(self, "RunState")
+		if !raycast_check():
+			character.walk_or_run = "RunState"
+			transitioned.emit(self, "RunState")
 
 func raycast_check() -> bool:
 	return character.ceiling_check.is_colliding()
