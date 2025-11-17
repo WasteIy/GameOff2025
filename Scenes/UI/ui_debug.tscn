@@ -247,6 +247,7 @@ size_flags_vertical = 4
 
 [node name="NameContainers" type="VBoxContainer" parent="WeaponInfo"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="WeaponState" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
