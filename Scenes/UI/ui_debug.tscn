@@ -103,9 +103,17 @@ text = "SlideTime:"
 layout_mode = 2
 text = "SlideBufferingOn:"
 
+[node name="FloorCheck" type="Label" parent="Player Info/NameContainers/SlideContainer"]
+layout_mode = 2
+text = "FloorIsColliding:"
+
+[node name="CeilingCheck" type="Label" parent="Player Info/NameContainers/SlideContainer"]
+layout_mode = 2
+text = "CeilingIsColliding:"
+
 [node name="SlideFloorCheck" type="Label" parent="Player Info/NameContainers/SlideContainer"]
 layout_mode = 2
-text = "SlideFloorIsColliding:"
+text = "SlideFloorCheck:"
 
 [node name="LabelContainers" type="VBoxContainer" parent="Player Info"]
 layout_mode = 2
@@ -201,6 +209,16 @@ text = "......."
 unique_name_in_owner = true
 layout_mode = 2
 text = "......."
+
+[node name="CeilingCheckLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......"
+
+[node name="SlideFloorCheckLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......"
 
 [node name="Weapon Info" type="HBoxContainer" parent="."]
 anchors_preset = 13

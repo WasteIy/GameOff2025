@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @export var player : CharacterBody3D
+@onready var weapon_manager: WeaponManager = $"../CameraHolder/Camera/WeaponManager"
+
 
 @onready var current_state_label: Label = %CurrentStateLabel
 @onready var velocity_label: Label = %VelocityLabel
@@ -21,6 +23,12 @@ extends CanvasLayer
 @onready var slide_cooldown_label: Label = %SlideCooldownLabel
 @onready var slide_time_label: Label = %SlideTimeLabel
 @onready var slide_buffering_on_label: Label = %SlideBufferingOnLabel
+@onready var floor_check_label: Label = %FloorCheckLabel
+@onready var ceiling_check_label: Label = %CeilingCheckLabel
+@onready var slide_floor_check_label: Label = %SlideFloorCheckLabel
+
+@onready var weapon_state_label: Label = %WeaponStateLabel
+@onready var weapon_ammo_label: Label = %WeaponAmmoLabel
 
 
 # Visible toggle
@@ -58,3 +66,11 @@ func display():
 	slide_cooldown_label.set_text("%.2f" % player.slide_cooldown)
 	slide_time_label.set_text("%.2f" % player.slide_time)
 	slide_buffering_on_label.set_text(str(player.slide_buffering_on))
+	floor_check_label.set_text(str(player.floor_check.is_colliding()))
+	ceiling_check_label.set_text(str(player.ceiling_check.is_colliding()))
+	slide_floor_check_label.set_text(str(player.slide_floor_check.is_colliding()))
+	
+	weapon_ammo_label.set_text(str(weapon_manager.current_weapon.total_ammo))
+	
+	#TODO: switch
+	weapon_state_label.set_text(str(weapon_manager.current_weapon.state))
