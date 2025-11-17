@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bon4mtbhvo3qo" path="res://Assets/Textures/checker_red_512x512.png" id="1_3f6vf"]
 
 [resource]
-transparency = 1
 albedo_color = Color(0.6789437, 0.6789437, 0.6789436, 1)
 albedo_texture = ExtResource("1_3f6vf")
 metallic_specular = 0.0
