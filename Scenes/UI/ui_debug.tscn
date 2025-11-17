@@ -8,8 +8,8 @@ script = ExtResource("1_5sp44")
 [node name="Player Info" type="HBoxContainer" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_right = 250.0
+offset_left = 85.0
+offset_right = 285.0
 offset_bottom = 102.0
 grow_vertical = 2
 scale = Vector2(0.865, 0.865)
@@ -51,7 +51,7 @@ text = "AirJumpsLeft:"
 
 [node name="HitGroundCooldown" type="Label" parent="Player Info/NameContainers/JumpContainer"]
 layout_mode = 2
-text = "HitGroundCooldown:"
+text = "HitGroundCooldown:   "
 
 [node name="JumpVelocity" type="Label" parent="Player Info/NameContainers/JumpContainer"]
 layout_mode = 2
@@ -234,11 +234,11 @@ layout_mode = 2
 text = "......"
 
 [node name="WeaponInfo" type="HBoxContainer" parent="."]
-anchors_preset = 9
+anchors_preset = -1
 anchor_bottom = 1.0
-offset_left = 906.00006
+offset_left = 871.0
 offset_top = 32.0
-offset_right = 1078.0
+offset_right = 1043.0
 offset_bottom = -485.0
 grow_vertical = 2
 scale = Vector2(0.865, 0.865)
@@ -251,23 +251,23 @@ size_flags_horizontal = 3
 
 [node name="WeaponState" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
-text = "Weapon State:"
+text = "WeaponState:"
 
 [node name="WeaponAmmo" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
-text = "Weapon Ammo:"
+text = "WeaponAmmo:"
 
 [node name="ShootCooldown" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
-text = "Shoot Cooldown:"
+text = "ShootCooldown:"
 
 [node name="ReloadDuration" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
-text = "Reload Duration:"
+text = "ReloadDuration:"
 
 [node name="ReloadCancelled" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
-text = "Reload Cancelled:"
+text = "ReloadCancelled:     "
 
 [node name="LabelContainers" type="VBoxContainer" parent="WeaponInfo"]
 layout_mode = 2
