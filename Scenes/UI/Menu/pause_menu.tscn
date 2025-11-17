@@ -67,11 +67,6 @@ text = "EXIT GAME"
 [node name="Settings" parent="." instance=ExtResource("2_l2hgd")]
 layout_mode = 1
 
-[node name="Resolutions" parent="Settings" index="3"]
-selected = -1
-allow_reselect = true
-item_count = 0
-
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci2bujn2juf0j"]
+[gd_scene load_steps=11 format=3 uid="uid://ci2bujn2juf0j"]
 
 [ext_resource type="PackedScene" uid="uid://bl6m5oumql8y4" path="res://Scenes/Player/player.tscn" id="1_rg2yx"]
 [ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_g2g1g"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://bnka266lmacek" path="res://Assets/Materials/structure_material_blue.tres" id="4_cw15a"]
 [ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="5_vurb2"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="6_odyqc"]
+[ext_resource type="PackedScene" uid="uid://c04kpgoijtm07" path="res://Scenes/UI/Menu/pause_menu.tscn" id="7_g2g1g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -130,3 +131,5 @@ use_collision = true
 collision_mask = 2
 size = Vector3(1, 1.5, 1)
 material = ExtResource("6_odyqc")
+
+[node name="Pause Menu" parent="." instance=ExtResource("7_g2g1g")]
