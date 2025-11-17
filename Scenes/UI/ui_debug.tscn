@@ -86,6 +86,27 @@ text = "LastFramePosition:"
 layout_mode = 2
 text = "LastFrameVelocity:"
 
+[node name="SlideContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SlideCooldown" type="Label" parent="Player Info/NameContainers/SlideContainer"]
+layout_mode = 2
+text = "SlideCooldown:"
+
+[node name="SlideTime" type="Label" parent="Player Info/NameContainers/SlideContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SlideTime:"
+
+[node name="SlideBufferingOn" type="Label" parent="Player Info/NameContainers/SlideContainer"]
+layout_mode = 2
+text = "SlideBufferingOn:"
+
+[node name="SlideFloorCheck" type="Label" parent="Player Info/NameContainers/SlideContainer"]
+layout_mode = 2
+text = "SlideFloorIsColliding:"
+
 [node name="LabelContainers" type="VBoxContainer" parent="Player Info"]
 layout_mode = 2
 
@@ -155,3 +176,66 @@ layout_mode = 2
 [node name="LastFrameVelocityLabel" type="Label" parent="Player Info/LabelContainers/FrameContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="SlideContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SlideCooldownLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......"
+
+[node name="SlideTimeLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "......."
+
+[node name="SlideBufferingOnLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......."
+
+[node name="FloorCheckLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......."
+
+[node name="Weapon Info" type="HBoxContainer" parent="."]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -209.0
+offset_top = 35.0
+offset_right = -110.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="WeaponNameContainers" type="VBoxContainer" parent="Weapon Info"]
+layout_mode = 2
+
+[node name="WeaponState" type="Label" parent="Weapon Info/WeaponNameContainers"]
+layout_mode = 2
+text = "Weapon State:"
+
+[node name="WeaponAmmo" type="Label" parent="Weapon Info/WeaponNameContainers"]
+layout_mode = 2
+text = "Ammo:"
+
+[node name="WeaponLabelContainers" type="VBoxContainer" parent="Weapon Info"]
+layout_mode = 2
+
+[node name="WeaponStateLabel" type="Label" parent="Weapon Info/WeaponLabelContainers"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......"
+
+[node name="WeaponAmmoLabel" type="Label" parent="Weapon Info/WeaponLabelContainers"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......"

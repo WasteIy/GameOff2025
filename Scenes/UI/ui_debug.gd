@@ -18,6 +18,11 @@ extends CanvasLayer
 @onready var last_frame_position_label: Label = %LastFramePositionLabel
 @onready var last_frame_velocity_label: Label = %LastFrameVelocityLabel
 
+@onready var slide_cooldown_label: Label = %SlideCooldownLabel
+@onready var slide_time_label: Label = %SlideTimeLabel
+@onready var slide_buffering_on_label: Label = %SlideBufferingOnLabel
+
+
 # Visible toggle
 var debug_visible: bool = false
 
@@ -49,3 +54,7 @@ func display():
 	
 	last_frame_position_label.set_text("X:%.2f Y:%.2f Z:%.2f" % [player.last_frame_position.x, player.last_frame_position.y, player.last_frame_position.z])
 	last_frame_velocity_label.set_text("%.2f" % player.last_frame_velocity.length())
+	
+	slide_cooldown_label.set_text("%.2f" % player.slide_cooldown)
+	slide_time_label.set_text("%.2f" % player.slide_time)
+	slide_buffering_on_label.set_text(str(player.slide_buffering_on))
