@@ -15,9 +15,6 @@ func _ready():
 		return
 		
 	current_weapon = weapons[0]
-	
-	current_weapon.weapon_fired.connect(_on_weapon_fired)
-	current_weapon.weapon_reloaded.connect(_on_weapon_reloaded)
 
 func try_shoot():
 	if current_weapon:

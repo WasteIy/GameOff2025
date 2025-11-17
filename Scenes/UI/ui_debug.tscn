@@ -126,18 +126,22 @@ size_flags_vertical = 6
 [node name="CurrentStateLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="VelocityLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="MaxSpeedLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="DesiredMoveSpeedLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="JumpContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
 layout_mode = 2
@@ -147,30 +151,37 @@ size_flags_vertical = 6
 [node name="AirJumpsLeftLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="HitGroundCooldownLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="JumpVelocityLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="BufferedJumpOnLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="JumpGravityLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="FallGravityLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="CoyoteCooldownLabel" type="Label" parent="Player Info/LabelContainers/JumpContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="FrameContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
 layout_mode = 2
@@ -180,10 +191,12 @@ size_flags_vertical = 6
 [node name="LastFramePositionLabel" type="Label" parent="Player Info/LabelContainers/FrameContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="LastFrameVelocityLabel" type="Label" parent="Player Info/LabelContainers/FrameContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "......."
 
 [node name="SlideContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
 layout_mode = 2
@@ -192,7 +205,7 @@ size_flags_vertical = 3
 [node name="SlideCooldownLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "......"
+text = "......."
 
 [node name="SlideTimeLabel" type="Label" parent="Player Info/LabelContainers/SlideContainerLabel"]
 unique_name_in_owner = true
@@ -220,40 +233,64 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "......"
 
-[node name="Weapon Info" type="HBoxContainer" parent="."]
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+[node name="WeaponInfo" type="HBoxContainer" parent="."]
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -209.0
+offset_left = 937.0
 offset_top = 35.0
-offset_right = -110.0
-offset_bottom = -78.0
-grow_horizontal = 2
+offset_right = 1137.0
+offset_bottom = -482.0
 grow_vertical = 2
-size_flags_horizontal = 10
+scale = Vector2(0.865, 0.865)
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="WeaponNameContainers" type="VBoxContainer" parent="Weapon Info"]
+[node name="NameContainers" type="VBoxContainer" parent="WeaponInfo"]
 layout_mode = 2
 
-[node name="WeaponState" type="Label" parent="Weapon Info/WeaponNameContainers"]
+[node name="WeaponState" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
 text = "Weapon State:"
 
-[node name="WeaponAmmo" type="Label" parent="Weapon Info/WeaponNameContainers"]
+[node name="WeaponAmmo" type="Label" parent="WeaponInfo/NameContainers"]
 layout_mode = 2
-text = "Ammo:"
+text = "Weapon Ammo:"
 
-[node name="WeaponLabelContainers" type="VBoxContainer" parent="Weapon Info"]
+[node name="ShootCooldown" type="Label" parent="WeaponInfo/NameContainers"]
+layout_mode = 2
+text = "Shoot Cooldown:"
+
+[node name="ReloadDuration" type="Label" parent="WeaponInfo/NameContainers"]
+layout_mode = 2
+text = "Reload Duration:"
+
+[node name="ReloadCancelled" type="Label" parent="WeaponInfo/NameContainers"]
+layout_mode = 2
+text = "Reload Cancelled:"
+
+[node name="LabelContainers" type="VBoxContainer" parent="WeaponInfo"]
 layout_mode = 2
 
-[node name="WeaponStateLabel" type="Label" parent="Weapon Info/WeaponLabelContainers"]
+[node name="WeaponStateLabel" type="Label" parent="WeaponInfo/LabelContainers"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "......"
+text = "......."
 
-[node name="WeaponAmmoLabel" type="Label" parent="Weapon Info/WeaponLabelContainers"]
+[node name="WeaponAmmoLabel" type="Label" parent="WeaponInfo/LabelContainers"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "......"
+text = "......."
+
+[node name="ShootCooldownLabel" type="Label" parent="WeaponInfo/LabelContainers"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......."
+
+[node name="ReloadDurationLabel" type="Label" parent="WeaponInfo/LabelContainers"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......."
+
+[node name="ReloadCancelledLabel" type="Label" parent="WeaponInfo/LabelContainers"]
+layout_mode = 2
+text = "......."

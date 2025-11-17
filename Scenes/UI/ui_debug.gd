@@ -29,7 +29,9 @@ extends CanvasLayer
 
 @onready var weapon_state_label: Label = %WeaponStateLabel
 @onready var weapon_ammo_label: Label = %WeaponAmmoLabel
-
+@onready var shoot_cooldown_label: Label = %ShootCooldownLabel
+@onready var reload_duration_label: Label = %ReloadDurationLabel
+@onready var reload_cancelled_label: Label = $WeaponInfo/LabelContainers/ReloadCancelledLabel
 
 # Visible toggle
 var debug_visible: bool = false
@@ -70,7 +72,11 @@ func display():
 	ceiling_check_label.set_text(str(player.ceiling_check.is_colliding()))
 	slide_floor_check_label.set_text(str(player.slide_floor_check.is_colliding()))
 	
-	weapon_ammo_label.set_text(str(weapon_manager.current_weapon.total_ammo))
+	weapon_ammo_label.set_text(str(weapon_manager.current_weapon.ammo_in_mag))
 	
 	#TODO: switch
 	weapon_state_label.set_text(str(weapon_manager.current_weapon.state))
+	
+	shoot_cooldown_label.set_text("%.2f" % weapon_manager.current_weapon.shoot_cooldown)
+	reload_duration_label.set_text("%.2f" % weapon_manager.current_weapon.reload_cooldown)
+	reload_cancelled_label.set_text(str(weapon_manager.current_weapon.reload_cancelled))
