@@ -225,9 +225,9 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -209.0
+offset_left = -231.0
 offset_top = 35.0
-offset_right = -110.0
+offset_right = 14.0
 offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -236,6 +236,7 @@ size_flags_vertical = 4
 
 [node name="WeaponNameContainers" type="VBoxContainer" parent="Weapon Info"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="WeaponState" type="Label" parent="Weapon Info/WeaponNameContainers"]
 layout_mode = 2
@@ -247,6 +248,7 @@ text = "Ammo:"
 
 [node name="WeaponLabelContainers" type="VBoxContainer" parent="Weapon Info"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="WeaponStateLabel" type="Label" parent="Weapon Info/WeaponLabelContainers"]
 unique_name_in_owner = true
