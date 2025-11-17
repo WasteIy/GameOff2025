@@ -16,6 +16,8 @@ var state: WeaponState = WeaponState.IDLE
 @export_group("Cooldown Variables")
 @export var early_reload : bool = true
 @export var early_reload_time : float = 0.1
+@export var early_shoot : bool = true
+@export var early_shoot_time : float = 0.1
 @export var fallback_shoot_cooldown := 0.2
 @export var fallback_reload_cooldown := 0.4
 
@@ -75,6 +77,9 @@ func shoot():
 	emit_signal("shoot_animation")
 	state = WeaponState.SHOOTING
 	shoot_cooldown = get_animation_duration("shoot", fallback_shoot_cooldown)
+	
+	if early_shoot:
+		shoot_cooldown -= early_shoot_time
 
 func fire_bullet():
 	if bullet_scene == null:
