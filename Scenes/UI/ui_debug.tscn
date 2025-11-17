@@ -6,7 +6,7 @@
 script = ExtResource("1_5sp44")
 
 [node name="Player Info" type="HBoxContainer" parent="."]
-anchors_preset = 9
+anchors_preset = -1
 anchor_bottom = 1.0
 offset_left = 85.0
 offset_right = 285.0
