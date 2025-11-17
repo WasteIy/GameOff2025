@@ -1,59 +1,39 @@
-class_name WeaponManager extends Node3D
+class_name WeaponManager
+extends Node3D
 
-var weapons : Dictionary = {}
-var current_weapon : Weapon = null
-var current_weapon_name : String = ""
-var current_index : int = 0
+var weapons: Array[Weapon] = []
+var current_weapon: Weapon = null
 
-signal weapon_switched(new_weapon_name : String)
 
-func _ready() -> void:
+func _ready():
 	for child in get_children():
 		if child is Weapon:
-			child.manager = self
-			weapons[child.name.to_lower()] = child
-			child.weapon_fired.connect(_on_weapon_fired)
-			child.weapon_reloaded.connect(_on_weapon_reloaded)
-			
-	for weapon in weapons.values():
-		weapon.visible = false
+			weapons.append(child)
 	
-	if weapons.size() > 0:
-		equip_weapon(weapons.keys()[0])
-
-func equip_weapon(weapon_name : String) -> void:
-	if current_weapon:
-		current_weapon.visible = false
-		current_weapon.unequip()
-	
-	current_weapon = weapons[weapon_name]
-	current_weapon_name = weapon_name
-	current_weapon.visible = true
-	current_weapon.equip()
-	
-	emit_signal("weapon_switched", weapon_name)
-
-func switch_weapon(direction : int) -> void:
-	if weapons.size() <= 1:
+	if weapons.size() == 0:
+		push_warning("Nenhuma arma encontrada")
 		return
 		
-	var keys = weapons.keys()
-	current_index = (current_index + direction) % keys.size()
-	if current_index < 0:
-		current_index = keys.size() - 1
-		
-	equip_weapon(keys[current_index])
+	current_weapon = weapons[0]
 
-func shoot_current() -> void:
+func try_shoot():
 	if current_weapon:
 		current_weapon.shoot()
 
-func reload_current() -> void:
+func try_reload():
 	if current_weapon:
 		current_weapon.reload()
 
-func _on_weapon_fired(_weapon_name : String) -> void:
+func _on_weapon_fired():
+	# TODO Animação
 	pass
 
-func _on_weapon_reloaded(_weapon_name : String) -> void:
+func _on_weapon_reloaded():
+	# TODO Animação
 	pass
+
+func _on_shoot_input():
+	try_shoot()
+
+func _on_reload_input():
+	try_reload()

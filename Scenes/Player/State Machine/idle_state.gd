@@ -29,8 +29,8 @@ func check_is_on_floor():
 func update(delta):
 	if character.hit_ground_cooldown > 0.0: character.hit_ground_cooldown -= delta
 	
-	character.collision.shape.height = lerp(character.collision.shape.height, character.base_collision_height, character.height_change_speed * delta)
-	character.model.scale.y = lerp(character.model.scale.y, character.base_model_height, character.height_change_speed * delta)
+	character.tween_collision_height(character.base_collision_height)
+	character.tween_model_height(character.base_model_height)
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):

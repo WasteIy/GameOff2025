@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djr27dbr0k6wm"]
+[gd_scene load_steps=9 format=3 uid="uid://djr27dbr0k6wm"]
 
 [ext_resource type="Script" uid="uid://dmw751ewg0keo" path="res://Scenes/Player/State Machine/state_machine.gd" id="1_jhlow"]
 [ext_resource type="Script" uid="uid://bk40qjqvrcgcv" path="res://Scenes/Player/State Machine/idle_state.gd" id="2_8lv4h"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dsi0tr6e5moq0" path="res://Scenes/Player/State Machine/walk_state.gd" id="5_4qpfn"]
 [ext_resource type="Script" uid="uid://cdvjmmtnmb31q" path="res://Scenes/Player/State Machine/run_state.gd" id="6_2l5iy"]
 [ext_resource type="Script" uid="uid://n0av315tcyx7" path="res://Scenes/Player/State Machine/crouch_state.gd" id="7_45stm"]
+[ext_resource type="Script" uid="uid://c2ri13h4d3iik" path="res://Scenes/Player/State Machine/slide_state.gd" id="8_8lv4h"]
 
 [node name="StateMachine" type="Node" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_jhlow")
@@ -30,3 +31,6 @@ script = ExtResource("6_2l5iy")
 
 [node name="CrouchState" type="Node" parent="."]
 script = ExtResource("7_45stm")
+
+[node name="SlideState" type="Node" parent="."]
+script = ExtResource("8_8lv4h")

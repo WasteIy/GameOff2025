@@ -1,9 +1,10 @@
 extends CanvasLayer
 
 @export var player : CharacterBody3D
+@onready var weapon_manager: WeaponManager = $"../CameraHolder/Camera/WeaponManager"
 
-@onready var current_state_label: Label = $"Player Info/LabelContainers/StateContainerLabel/CurrentStateLabel"
 
+@onready var current_state_label: Label = %CurrentStateLabel
 @onready var velocity_label: Label = %VelocityLabel
 @onready var max_speed_label: Label = %MaxSpeedLabel
 @onready var desired_move_speed_label: Label = %DesiredMoveSpeedLabel
@@ -18,6 +19,19 @@ extends CanvasLayer
 
 @onready var last_frame_position_label: Label = %LastFramePositionLabel
 @onready var last_frame_velocity_label: Label = %LastFrameVelocityLabel
+
+@onready var slide_cooldown_label: Label = %SlideCooldownLabel
+@onready var slide_time_label: Label = %SlideTimeLabel
+@onready var slide_buffering_on_label: Label = %SlideBufferingOnLabel
+@onready var floor_check_label: Label = %FloorCheckLabel
+@onready var ceiling_check_label: Label = %CeilingCheckLabel
+@onready var slide_floor_check_label: Label = %SlideFloorCheckLabel
+
+@onready var weapon_state_label: Label = %WeaponStateLabel
+@onready var weapon_ammo_label: Label = %WeaponAmmoLabel
+@onready var shoot_cooldown_label: Label = %ShootCooldownLabel
+@onready var reload_duration_label: Label = %ReloadDurationLabel
+@onready var reload_cancelled_label: Label = $WeaponInfo/LabelContainers/ReloadCancelledLabel
 
 # Visible toggle
 var debug_visible: bool = false
@@ -50,3 +64,24 @@ func display():
 	
 	last_frame_position_label.set_text("X:%.2f Y:%.2f Z:%.2f" % [player.last_frame_position.x, player.last_frame_position.y, player.last_frame_position.z])
 	last_frame_velocity_label.set_text("%.2f" % player.last_frame_velocity.length())
+	
+	slide_cooldown_label.set_text("%.2f" % player.slide_cooldown)
+	slide_time_label.set_text("%.2f" % player.slide_time)
+	slide_buffering_on_label.set_text(str(player.slide_buffering_on))
+	floor_check_label.set_text(str(player.floor_check.is_colliding()))
+	ceiling_check_label.set_text(str(player.ceiling_check.is_colliding()))
+	slide_floor_check_label.set_text(str(player.slide_floor_check.is_colliding()))
+	
+	weapon_ammo_label.set_text(str(weapon_manager.current_weapon.ammo_in_mag))
+	
+	match weapon_manager.current_weapon.state:
+		0:
+			weapon_state_label.set_text("IDLE")
+		1:
+			weapon_state_label.set_text("SHOOTING")
+		2:
+			weapon_state_label.set_text("RELOADING")
+	
+	shoot_cooldown_label.set_text("%.2f" % weapon_manager.current_weapon.shoot_cooldown)
+	reload_duration_label.set_text("%.2f" % weapon_manager.current_weapon.reload_cooldown)
+	reload_cancelled_label.set_text(str(weapon_manager.current_weapon.reload_cancelled))

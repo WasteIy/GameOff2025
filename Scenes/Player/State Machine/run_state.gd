@@ -34,8 +34,8 @@ func check_if_floor():
 func update(delta):
 	if character.hit_ground_cooldown > 0.0: character.hit_ground_cooldown -= delta
 	
-	character.collision.shape.height = lerp(character.collision.shape.height, character.base_collision_height, character.height_change_speed * delta)
-	character.model.scale.y = lerp(character.model.scale.y, character.base_model_height, character.height_change_speed * delta)
+	character.tween_collision_height(character.base_collision_height)
+	character.tween_model_height(character.base_model_height)
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):
@@ -53,8 +53,9 @@ func check_input():
 			transitioned.emit(self, "WalkState")
 	
 	if Input.is_action_just_pressed("crouch"): 
-		transitioned.emit(self, "CrouchState")
-
+		if character.slide_cooldown <= 0.0:
+			transitioned.emit(self, "SlideState")
+	
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	character.move_direction = (character.global_basis * Vector3(character.input_direction.x, 0.0, character.input_direction.y)).normalized()
