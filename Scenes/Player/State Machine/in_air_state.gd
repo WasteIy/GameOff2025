@@ -20,8 +20,8 @@ func update(delta : float):
 		if character.coyote_jump_cooldown > 0.0:
 			character.coyote_jump_cooldown -= delta
 	
-	character.collision.shape.height = lerp(character.collision.shape.height, character.base_collision_height, character.height_change_speed * delta)
-	character.model.scale.y = lerp(character.model.scale.y, character.base_model_height, character.height_change_speed * delta)
+	character.tween_collision_height(character.base_collision_height)
+	character.tween_model_height(character.base_model_height)
 
 func check_input():
 	if Input.is_action_just_pressed("jump"):
@@ -35,6 +35,10 @@ func check_input():
 			transitioned.emit(self, "JumpState")
 		
 		transitioned.emit(self, "JumpState")
+		
+	if Input.is_action_just_pressed("crouch"):
+		if character.slide_floor_check.is_colliding() and character.last_frame_position.y > character.position.y and character.slide_cooldown <= 0.0:
+			character.slide_buffering_on = true
 
 func check_if_floor():
 	if character.is_on_floor():
@@ -42,6 +46,9 @@ func check_if_floor():
 			character.buffered_jump = true
 			character.buffered_jump_on = false
 			transitioned.emit(self, "JumpState")
+		if character.slide_buffering_on:
+			character.slide_buffering_on = false
+			transitioned.emit(self, "SlideState") 
 		else:
 			if character.move_direction:
 				transitioned.emit(self, character.walk_or_run)
@@ -51,7 +58,6 @@ func check_if_floor():
 	if character.is_on_wall():
 		character.velocity.x = 0.0
 		character.velocity.z = 0.0
-
 
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

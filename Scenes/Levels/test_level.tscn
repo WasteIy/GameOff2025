@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci2bujn2juf0j"]
+[gd_scene load_steps=11 format=3 uid="uid://ukelgvccyan5"]
 
-[ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="1_db73o"]
-[ext_resource type="Material" uid="uid://ca4d0wj6cgv8x" path="res://Assets/Materials/structure_material_red.tres" id="2_k8g1k"]
-[ext_resource type="Material" uid="uid://bnka266lmacek" path="res://Assets/Materials/structure_material_blue.tres" id="2_npfmg"]
-[ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_x4x4f"]
-[ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="4_x4x4f"]
-[ext_resource type="PackedScene" uid="uid://bl6m5oumql8y4" path="res://Scenes/Player/player.tscn" id="5_npfmg"]
+[ext_resource type="PackedScene" uid="uid://bl6m5oumql8y4" path="res://Scenes/Player/player.tscn" id="1_rv5g2"]
+[ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_lhx7y"]
+[ext_resource type="Material" uid="uid://ca4d0wj6cgv8x" path="res://Assets/Materials/structure_material_red.tres" id="3_i5435"]
+[ext_resource type="Material" uid="uid://bnka266lmacek" path="res://Assets/Materials/structure_material_blue.tres" id="4_jbixu"]
+[ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="5_rxcld"]
+[ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="6_j3yal"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,10 +20,12 @@ sky = SubResource("Sky_43bpn")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_70edh"]
+
 [node name="TestLevel" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("5_npfmg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -1)
+[node name="Player" parent="." instance=ExtResource("1_rv5g2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 17, 0.5)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -37,96 +39,257 @@ shadow_enabled = true
 [node name="Map" type="Node3D" parent="."]
 
 [node name="Red" type="Node3D" parent="Map"]
-script = ExtResource("2_x4x4f")
+script = ExtResource("2_lhx7y")
 
-[node name="Plataform" type="CSGBox3D" parent="Map/Red"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -4.5)
-use_collision = true
-size = Vector3(5, 2, 5)
-material = ExtResource("2_k8g1k")
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Red"]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 7.25, 1.75, -48)
+material_override = ExtResource("3_i5435")
+size = Vector3(5.5, 3.5, 3)
 
-[node name="Plataform2" type="CSGBox3D" parent="Map/Red"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3, -20.5)
-use_collision = true
-size = Vector3(5, 2, 5)
-material = ExtResource("2_k8g1k")
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Red"]
+transform = Transform3D(0.49999997, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, 0.49999997, -8.25, 1.75, -48)
+material_override = ExtResource("3_i5435")
+size = Vector3(5.5, 3.5, 3)
 
 [node name="Blue" type="Node3D" parent="Map"]
-script = ExtResource("2_x4x4f")
+script = ExtResource("2_lhx7y")
 color = 2
 
-[node name="Platform" type="CSGBox3D" parent="Map/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -20.5)
-use_collision = true
-collision_mask = 2
-size = Vector3(5, 2, 5)
-material = ExtResource("2_npfmg")
-
-[node name="Platform2" type="CSGBox3D" parent="Map/Blue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 7, -20.5)
-use_collision = true
-collision_mask = 2
-size = Vector3(5, 2, 5)
-material = ExtResource("2_npfmg")
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Blue"]
+transform = Transform3D(0.9659258, 0, 0.2588191, 0, 1, 0, -0.2588191, 0, 0.9659258, -0.75, 1.75, -45.5)
+material_override = ExtResource("4_jbixu")
+size = Vector3(5.5, 3.5, 3)
 
 [node name="Green" type="Node3D" parent="Map"]
-script = ExtResource("2_x4x4f")
+script = ExtResource("2_lhx7y")
 color = 1
 
-[node name="Platform" type="CSGBox3D" parent="Map/Green"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -12.5)
-use_collision = true
-collision_mask = 2
-size = Vector3(5, 2, 5)
-material = ExtResource("4_x4x4f")
-
-[node name="Platform2" type="CSGBox3D" parent="Map/Green"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 5, -20.5)
-use_collision = true
-collision_mask = 2
-size = Vector3(5, 2, 5)
-material = ExtResource("4_x4x4f")
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/Green"]
+transform = Transform3D(0.9659258, 0, 0.2588191, 0, 1, 0, -0.2588191, 0, 0.9659258, 4.75, 1.75, -53)
+material_override = ExtResource("5_rxcld")
+size = Vector3(5.5, 3.5, 3)
 
 [node name="Black" type="Node" parent="Map"]
 
 [node name="Floor" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -12)
+use_collision = true
+collision_mask = 2
+size = Vector3(4, 1, 32)
+material = ExtResource("6_j3yal")
+
+[node name="Floor6" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75, -0.5, -41.999)
+use_collision = true
+collision_mask = 2
+size = Vector3(36.5, 1, 28)
+material = ExtResource("6_j3yal")
+
+[node name="Desk" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.5, -35.499)
+use_collision = true
+collision_mask = 2
+size = Vector3(7.5, 1, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Desk2" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -9.25, 0.5, -33.499)
+use_collision = true
+collision_mask = 2
+size = Vector3(7.5, 1, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Desk3" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 8.75, 0.5, -33.499)
+use_collision = true
+collision_mask = 2
+size = Vector3(7.5, 1, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Floor2" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, -0.5, -14)
+use_collision = true
+collision_mask = 2
+size = Vector3(16.5, 1, 28)
+material = ExtResource("6_j3yal")
+
+[node name="Floor3" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, -0.5, -14)
+use_collision = true
+collision_mask = 2
+size = Vector3(16.5, 1, 28)
+material = ExtResource("6_j3yal")
+
+[node name="Floor4" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 7.5, -14)
+use_collision = true
+collision_mask = 2
+size = Vector3(16.5, 1, 28)
+material = ExtResource("6_j3yal")
+
+[node name="Floor5" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 7.5, -14)
+use_collision = true
+collision_mask = 2
+size = Vector3(16.5, 1, 28)
+material = ExtResource("6_j3yal")
+
+[node name="Wall4" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, 4.5)
+use_collision = true
+collision_mask = 2
+size = Vector3(4, 8, 1)
+material = ExtResource("6_j3yal")
+
+[node name="Wall3" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 3.5, -27)
+use_collision = true
+collision_mask = 2
+size = Vector3(16.5, 7, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Wall9" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 4.75, -38.25)
+use_collision = true
+collision_mask = 2
+size = Vector3(35, 9.5, 0.5)
+material = ExtResource("6_j3yal")
+
+[node name="Wall14" type="CSGBox3D" parent="Map/Black/Wall9"]
+operation = 2
+use_collision = true
+collision_mask = 2
+size = Vector3(33, 7.5, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Wall10" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 3.5, -27)
+use_collision = true
+collision_mask = 2
+size = Vector3(14.5, 7, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Vent" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 14, 0.5)
+operation = 2
+use_collision = true
+collision_mask = 2
+size = Vector3(3, 14, 3)
+material = ExtResource("6_j3yal")
+
+[node name="VentHole" type="CSGBox3D" parent="Map/Black/Vent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+operation = 2
 use_collision = true
 collision_mask = 2
-size = Vector3(100, 1, 100)
-material = ExtResource("1_db73o")
+size = Vector3(2, 14.5, 2)
+material = ExtResource("6_j3yal")
 
-[node name="Crouch" type="CSGBox3D" parent="Map/Black"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.75, 24.5)
+[node name="Ceiling" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 6.5, -12)
 use_collision = true
 collision_mask = 2
-size = Vector3(5, 0.5, 5)
-material = ExtResource("1_db73o")
+size = Vector3(3, 1, 32)
+material = ExtResource("6_j3yal")
 
-[node name="Leg" type="CSGBox3D" parent="Map/Black/Crouch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, -2)
+[node name="VentHole" type="CSGBox3D" parent="Map/Black/Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 12.5)
+operation = 2
 use_collision = true
 collision_mask = 2
-size = Vector3(1, 1.5, 1)
-material = ExtResource("1_db73o")
+size = Vector3(2, 3, 2)
+material = ExtResource("6_j3yal")
 
-[node name="Leg2" type="CSGBox3D" parent="Map/Black/Crouch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1, 2)
+[node name="Wall7" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 3.5, -14)
 use_collision = true
 collision_mask = 2
-size = Vector3(1, 1.5, 1)
-material = ExtResource("1_db73o")
+size = Vector3(2, 7, 28)
+material = ExtResource("6_j3yal")
 
-[node name="Leg3" type="CSGBox3D" parent="Map/Black/Crouch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 2)
+[node name="Wall8" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 3.5, -14)
 use_collision = true
 collision_mask = 2
-size = Vector3(1, 1.5, 1)
-material = ExtResource("1_db73o")
+size = Vector3(2, 7, 28)
+material = ExtResource("6_j3yal")
 
-[node name="Leg4" type="CSGBox3D" parent="Map/Black/Crouch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -2)
+[node name="Wall5" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 3.5, -14)
 use_collision = true
 collision_mask = 2
-size = Vector3(1, 1.5, 1)
-material = ExtResource("1_db73o")
+size = Vector3(14.5, 7, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Wall12" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 3.5, -1)
+use_collision = true
+collision_mask = 2
+size = Vector3(14.5, 7, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Wall11" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.75, 3.5, -1)
+use_collision = true
+collision_mask = 2
+size = Vector3(14.5, 7, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Wall6" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75, 3.5, -14)
+use_collision = true
+collision_mask = 2
+size = Vector3(14.5, 7, 2)
+material = ExtResource("6_j3yal")
+
+[node name="Wall2" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 3.5, -12)
+use_collision = true
+collision_mask = 2
+size = Vector3(0.5, 7, 32)
+material = ExtResource("6_j3yal")
+
+[node name="Window2" type="CSGBox3D" parent="Map/Black/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 5)
+operation = 2
+use_collision = true
+collision_mask = 2
+size = Vector3(1, 3, 7)
+material = ExtResource("6_j3yal")
+
+[node name="Window3" type="CSGBox3D" parent="Map/Black/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -8)
+operation = 2
+use_collision = true
+collision_mask = 2
+size = Vector3(1, 3, 7)
+material = ExtResource("6_j3yal")
+
+[node name="Wall13" type="CSGBox3D" parent="Map/Black"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 3, -12)
+use_collision = true
+collision_mask = 2
+size = Vector3(0.5, 8, 32)
+material = ExtResource("6_j3yal")
+
+[node name="Window4" type="CSGBox3D" parent="Map/Black/Wall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 5)
+operation = 2
+use_collision = true
+collision_mask = 2
+size = Vector3(1, 3, 7)
+material = ExtResource("6_j3yal")
+
+[node name="Window5" type="CSGBox3D" parent="Map/Black/Wall13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -8)
+operation = 2
+use_collision = true
+collision_mask = 2
+size = Vector3(1, 3, 7)
+material = ExtResource("6_j3yal")
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 6.5, -9)
+mesh = SubResource("CapsuleMesh_70edh")

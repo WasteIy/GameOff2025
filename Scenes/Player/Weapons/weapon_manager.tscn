@@ -47,17 +47,6 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_l4ui6"]
-resource_name = "reload"
-length = 0.4
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0.7071068, 0, 0, 0.70710677, 0.2, 1, 1, 0, 0, -4.3711392e-08, 0.3, 1, -0.7071068, 0, 0, 0.70710677, 0.4, 1, 0, 0, 0, 1)
-
 [sub_resource type="Animation" id="Animation_6h34i"]
 resource_name = "shoot"
 length = 0.2
@@ -76,10 +65,21 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0.12035344, 0, 0, 0.99273115, 0.1, 1, 0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_ydlvs"]
+resource_name = "reload"
+length = 0.5
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0, 0, 0.7071067, 0.70710677, 0.16666667, 1, 0.5, 0.4999999, 0.5000001, 0.49999997, 0.23333333, 1, 0.7071069, 0.7071066, -3.0908623e-08, -3.0908613e-08, 0.3, 1, -0.1830127, -0.6830127, 0.18301265, 0.68301266, 0.36666667, 1, -0.022135999, -0.330612, 0.073538065, 0.94063693, 0.5, 1, 0, 0, 0, 1)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydlvs"]
 _data = {
 &"RESET": SubResource("Animation_pr5rr"),
-&"reload": SubResource("Animation_l4ui6"),
+&"reload": SubResource("Animation_ydlvs"),
 &"shoot": SubResource("Animation_6h34i")
 }
 
@@ -92,7 +92,7 @@ script = ExtResource("2_hw3gm")
 bullet_scene = ExtResource("3_pr5rr")
 
 [node name="Mesh" type="MeshInstance3D" parent="Pistol"]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000004, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6otbd")
 skeleton = NodePath("")
 
