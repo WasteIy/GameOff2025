@@ -3,7 +3,7 @@ extends Control
 @onready var v_box_container: VBoxContainer = $VBoxContainer
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Levels/test_level.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/debug_level.tscn")
 
 
 func _on_exit_pressed() -> void:

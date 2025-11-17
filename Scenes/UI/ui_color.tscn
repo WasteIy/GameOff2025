@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjfgpiirpihg7"]
 
 [ext_resource type="Shader" uid="uid://dl66atqk84612" path="res://Assets/Shaders/ui_color.gdshader" id="1_wghih"]
-[ext_resource type="Script" uid="uid://c4qwpy6hl2iyj" path="res://Scenes/UI/ui_color_script.gd" id="2_agmrd"]
+[ext_resource type="Script" uid="uid://c4qwpy6hl2iyj" path="res://Scenes/UI/ui_color.gd" id="2_re77f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_agmrd"]
-shader = ExtResource("1_elyqt")
+shader = ExtResource("1_wghih")
 shader_parameter/color_offset = 0.0
 shader_parameter/sFreq = 1.0
 
@@ -20,4 +20,4 @@ offset_top = 1.0
 offset_right = 120.0
 offset_bottom = 72.0
 grow_horizontal = 2
-script = ExtResource("2_82pqq")
+script = ExtResource("2_re77f")
