@@ -47,6 +47,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
+[node name="VolumeValue" type="Label" parent="VolumeContainers/VolumeContainer"]
+layout_mode = 2
+text = "00"
+
 [node name="Mute" type="CheckButton" parent="VolumeContainers"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -66,6 +70,14 @@ text = "Sensibility X: "
 [node name="SensibilityXSlider" type="HSlider" parent="SensibilityContainer/SensibilityXContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = 0.01
+max_value = 0.5
+step = 0.01
+value = 0.01
+
+[node name="SensibilityXValue" type="Label" parent="SensibilityContainer/SensibilityXContainer"]
+layout_mode = 2
+text = "00"
 
 [node name="SensibilityYContainer" type="HBoxContainer" parent="SensibilityContainer"]
 layout_mode = 2
@@ -77,6 +89,14 @@ text = "Sensibility Y: "
 [node name="SensibilityYSlider" type="HSlider" parent="SensibilityContainer/SensibilityYContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+min_value = 0.01
+max_value = 0.5
+step = 0.01
+value = 0.01
+
+[node name="SensibilityYValue" type="Label" parent="SensibilityContainer/SensibilityYContainer"]
+layout_mode = 2
+text = "00"
 
 [node name="FOVContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -88,6 +108,10 @@ text = "FOV: "
 [node name="FOVSlider" type="HSlider" parent="FOVContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="FOVValue" type="Label" parent="FOVContainer"]
+layout_mode = 2
+text = "00"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 2

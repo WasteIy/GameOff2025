@@ -15,6 +15,10 @@ var y_sensibility: float
 func _ready() -> void:
 	update_sensibility_and_fov()
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	GameController.settings_update.connect(on_settings_update)
+
+func on_settings_update():
+	update_sensibility_and_fov()
 
 func update_sensibility_and_fov() -> void:
 	# Essa função serve pra no futuro, sempre que atualizar no menu a sensibilidade e FOV

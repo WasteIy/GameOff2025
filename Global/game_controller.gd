@@ -1,13 +1,17 @@
 extends Node
 
+signal settings_update
+
 # Sensibilidade padrão
 @export var mouse_sensibility_x: float = 0.2:
 	set(value):
 		mouse_sensibility_x = value
+		settings_update.emit()
 
 @export var mouse_sensibility_y: float = 0.2:
 	set(value):
 		mouse_sensibility_y = value
+		settings_update.emit()
 
 @export var master_volume: float = 1.0:
 	set(value):
@@ -22,7 +26,7 @@ extends Node
 @export var fov: float = 75.0:
 	set(value):
 		fov = value
-
+		settings_update.emit()
 
 func set_mouse_sensibility(x: float, y: float) -> void:
 	mouse_sensibility_x = x

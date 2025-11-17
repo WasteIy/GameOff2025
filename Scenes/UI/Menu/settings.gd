@@ -5,6 +5,12 @@ extends VBoxContainer
 @onready var sensibility_y_slider: HSlider = $SensibilityContainer/SensibilityYContainer/SensibilityYSlider
 @onready var fov_slider: HSlider = $FOVContainer/FOVSlider
 
+@onready var volume_value: Label = $VolumeContainers/VolumeContainer/VolumeValue
+@onready var sensibility_x_value: Label = $SensibilityContainer/SensibilityXContainer/SensibilityXValue
+@onready var sensibility_y_value: Label = $SensibilityContainer/SensibilityYContainer/SensibilityYValue
+@onready var fov_value: Label = $FOVContainer/FOVValue
+
+
 var settings_toggle = false
 static var resolutionsAux = {
 	"Normal": Vector2i(1152, 648),
@@ -35,12 +41,16 @@ func _on_mute_toggled(toggled_on: bool) -> void:
 
 func _on_volume_slider_value_changed(value: float) -> void:
 	GameController.master_volume = value
+	volume_value.set_text(str(value))
 
 func _on_fov_slider_value_changed(value: float) -> void:
 	GameController.fov = value
+	fov_value.set_text(str(value))
 
 func _on_sensibility_y_slider_value_changed(value: float) -> void:
 	GameController.mouse_sensibility_y = value
+	sensibility_y_value.set_text(str(value))
 
 func _on_sensibility_x_slider_value_changed(value: float) -> void:
 	GameController.mouse_sensibility_x = value
+	sensibility_x_value.set_text(str(value))
