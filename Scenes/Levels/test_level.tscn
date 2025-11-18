@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://06vs5c27grlb"]
+[gd_scene load_steps=12 format=3 uid="uid://06vs5c27grlb"]
 
 [ext_resource type="PackedScene" uid="uid://bl6m5oumql8y4" path="res://Scenes/Player/player.tscn" id="1_rv5g2"]
 [ext_resource type="Script" uid="uid://cdwxlwba2c3qd" path="res://Scenes/colorful_tree.gd" id="2_lhx7y"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://bnka266lmacek" path="res://Assets/Materials/structure_material_blue.tres" id="4_jbixu"]
 [ext_resource type="Material" uid="uid://3ub3li5nvjsw" path="res://Assets/Materials/structure_material_green.tres" id="5_rxcld"]
 [ext_resource type="Material" uid="uid://cmlreoo2qwhp4" path="res://Assets/Materials/structure_material.tres" id="6_j3yal"]
+[ext_resource type="PackedScene" uid="uid://c04kpgoijtm07" path="res://Scenes/UI/Menu/pause_menu.tscn" id="7_x4x4f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjbi6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -327,3 +328,5 @@ material = ExtResource("6_j3yal")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 6.5, -9)
 mesh = SubResource("CapsuleMesh_70edh")
+
+[node name="Pause Menu" parent="." instance=ExtResource("7_x4x4f")]

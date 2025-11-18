@@ -5,10 +5,10 @@
 [ext_resource type="Curve" uid="uid://kkhylwe26fec" path="res://Scenes/Player/State Machine/Curves/desired_move_speed.tres" id="2_jhyir"]
 [ext_resource type="Script" uid="uid://b03w8se4tf6xq" path="res://Scenes/Player/camera_script.gd" id="2_mtuoh"]
 [ext_resource type="Curve" uid="uid://bgv5oilo8se3k" path="res://Scenes/Player/State Machine/Curves/in_air_move_speed_curve.tres" id="3_74mp2"]
-[ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/ui.tscn" id="3_xpcdj"]
+[ext_resource type="PackedScene" uid="uid://bd5bhha7t4278" path="res://Scenes/UI/ui.tscn" id="3_xpcdj"]
 [ext_resource type="PackedScene" uid="uid://d1o7b30ilyyb0" path="res://Scenes/Player/Weapons/weapon_manager.tscn" id="5_dey5f"]
 [ext_resource type="PackedScene" uid="uid://djr27dbr0k6wm" path="res://Scenes/Player/State Machine/state_machine.tscn" id="7_gk6dx"]
-[ext_resource type="Script" uid="uid://c2rjhovo4ljy7" path="res://Scenes/Player/Components/shoot.gd" id="7_jhyir"]
+[ext_resource type="Script" path="res://Scenes/Player/Components/shoot.gd" id="7_jhyir"]
 [ext_resource type="PackedScene" uid="uid://rvq118nc0ibx" path="res://Scenes/UI/ui_debug.tscn" id="13_06tpx"]
 
 [sub_resource type="Animation" id="Animation_74mp2"]
