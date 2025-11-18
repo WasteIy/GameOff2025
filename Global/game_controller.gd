@@ -13,15 +13,15 @@ signal settings_update
 		mouse_sensibility_y = value
 		settings_update.emit()
 
-@export var master_volume: float = 1.0:
+@export var master_volume: float = -20:
 	set(value):
 		master_volume = value
-		AudioServer.set_bus_volume_db(0, value)
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
 
 @export var master_volume_muted: bool = false:
 	set(value):
 		master_volume_muted = value
-		AudioServer.set_bus_mute(0, value)
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), value)
 
 @export var fov: float = 75.0:
 	set(value):

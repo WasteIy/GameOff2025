@@ -46,16 +46,13 @@ text = "Volume: "
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+min_value = -40.0
+max_value = 1.0
+value = -20.0
 
 [node name="VolumeValue" type="Label" parent="VolumeContainers/VolumeContainer"]
 layout_mode = 2
 text = "00"
-
-[node name="Mute" type="CheckButton" parent="VolumeContainers"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Mute"
 
 [node name="SensibilityContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -120,7 +117,6 @@ text = "BACK TO MENU"
 
 [connection signal="item_selected" from="Resolutions" to="." method="_on_resolutions_item_selected"]
 [connection signal="value_changed" from="VolumeContainers/VolumeContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
-[connection signal="toggled" from="VolumeContainers/Mute" to="." method="_on_mute_toggled"]
 [connection signal="value_changed" from="SensibilityContainer/SensibilityXContainer/SensibilityXSlider" to="." method="_on_sensibility_x_slider_value_changed"]
 [connection signal="value_changed" from="SensibilityContainer/SensibilityYContainer/SensibilityYSlider" to="." method="_on_sensibility_y_slider_value_changed"]
 [connection signal="value_changed" from="FOVContainer/FOVSlider" to="." method="_on_fov_slider_value_changed"]

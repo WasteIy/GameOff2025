@@ -4,6 +4,7 @@ extends VBoxContainer
 @onready var sensibility_x_slider: HSlider = $SensibilityContainer/SensibilityXContainer/SensibilityXSlider
 @onready var sensibility_y_slider: HSlider = $SensibilityContainer/SensibilityYContainer/SensibilityYSlider
 @onready var fov_slider: HSlider = $FOVContainer/FOVSlider
+@onready var volume_slider: HSlider = $VolumeContainers/VolumeContainer/VolumeSlider
 
 @onready var volume_value: Label = $VolumeContainers/VolumeContainer/VolumeValue
 @onready var sensibility_x_value: Label = $SensibilityContainer/SensibilityXContainer/SensibilityXValue
@@ -30,18 +31,22 @@ func _ready() -> void:
 	sensibility_x_slider.value = GameController.mouse_sensibility_x
 	sensibility_y_slider.value = GameController.mouse_sensibility_y
 	fov_slider.value = GameController.fov
+	volume_slider.value = GameController.master_volume
 
 func _on_resolutions_item_selected(index: int) -> void:
 	var aux: Vector2i = resolutionsAux.get(resolutions.get_item_text(index))
 	DisplayServer.window_set_size(aux)
 	DisplayServer.window_set_position(Vector2i(0, 0))
 
-func _on_mute_toggled(toggled_on: bool) -> void:
-	GameController.master_volume_muted = toggled_on
-
 func _on_volume_slider_value_changed(value: float) -> void:
 	GameController.master_volume = value
-	volume_value.set_text(str(value))
+	volume_value.set_text("%.0f" % (((value + 40) / 41) * 100))
+	
+	#Mute
+	if value == -40:
+		GameController.master_volume_muted = true
+	else:
+		GameController.master_volume_muted = false
 
 func _on_fov_slider_value_changed(value: float) -> void:
 	GameController.fov = value
