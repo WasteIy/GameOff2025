@@ -46,7 +46,7 @@ func check_input():
 		transitioned.emit(self, "RunState")
 		
 	if Input.is_action_just_pressed("crouch"): 
-		transitioned.emit(self, "CrouchState")
+		transitioned.emit(self, "SlideState")
 
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

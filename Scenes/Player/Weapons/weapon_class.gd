@@ -21,9 +21,20 @@ var state: WeaponState = WeaponState.IDLE
 @export var fallback_shoot_cooldown := 0.2
 @export var fallback_reload_cooldown := 0.4
 
+@export_group("Sway Variables")
+@export var sway_min : Vector2 = Vector2(-20.0, -20.0)
+@export var sway_max : Vector2 = Vector2(20.0, 20.0)
+@export_range(0,0.2,0.01) var sway_speed_position : float = 0.07
+@export_range(0,0.2,0.01) var sway_speed_rotation : float = 0.1
+@export_range(0,0.25,0.01) var sway_ammount_position : float = 0.1
+@export_range(0,50,0.1) var sway_ammount_rotation : float = 30.0
+
+@onready var mesh_container: Node3D = $MeshContainer
 @onready var bullet_spawn_point: Marker3D = $BulletSpawnPoint
 @onready var animation_manager: AnimationPlayer = $AnimationManager
+@onready var weapon_manager: WeaponManager = get_parent()
 
+var mouse_movement : Vector2
 var shoot_cooldown := 0.0
 var reload_cooldown := 0.0
 var reload_cancelled := false
@@ -36,6 +47,21 @@ func _ready():
 func _process(delta: float) -> void:
 	update_shoot_cooldown(delta)
 	update_reload(delta)
+
+func _physics_process(delta: float) -> void:
+	sway_weapon(delta)
+
+func sway_weapon(delta) -> void:
+	mouse_movement = mouse_movement.clamp(sway_min, sway_max)
+	position.x = lerp(position.x, mesh_container.position.x - (mouse_movement.x * sway_ammount_position) * delta, sway_speed_position)
+	position.y = lerp(position.y, mesh_container.position.y + (mouse_movement.y * sway_ammount_position) * delta, sway_speed_position)
+	
+	rotation_degrees.y = lerp(rotation_degrees.y, mesh_container.rotation_degrees.y + (mouse_movement.y * sway_ammount_rotation) * delta, sway_speed_rotation)
+	rotation_degrees.x = lerp(rotation_degrees.y, mesh_container.rotation_degrees.y - (mouse_movement.x * sway_ammount_rotation) * delta, sway_speed_rotation)
+
+func _input(event) -> void:
+	if event is InputEventMouseMotion:
+		mouse_movement = event.relative
 
 func update_shoot_cooldown(delta: float) -> void:
 	if shoot_cooldown > 0.0:

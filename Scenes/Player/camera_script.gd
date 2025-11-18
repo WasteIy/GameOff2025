@@ -1,7 +1,7 @@
 class_name CameraHolder extends Node3D
 
-@export_range(-89.0, 89.0) var min_pitch: float = -70.0
-@export_range(-89.0, 89.0) var max_pitch: float = 70.0
+@export_range(-90.0, 90.0) var min_pitch: float = -90.0
+@export_range(-90.0, 90.0) var max_pitch: float = 90.0
 
 @onready var camera: Camera3D = $Camera
 @onready var player: Player = $".."
