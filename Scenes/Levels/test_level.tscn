@@ -26,6 +26,7 @@ glow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_rv5g2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 17, 0.5)
+walk_speed = 7.5
 
 [node name="Environment" type="Node3D" parent="."]
 

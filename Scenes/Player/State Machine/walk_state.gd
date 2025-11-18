@@ -1,8 +1,13 @@
 class_name WalkState extends State
 
 var character : CharacterBody3D
+var top_animation_speed = 5.0
+
 
 func enter(character_reference):
+	
+	state_machine.animation.play("walk",-1.0,1.0)
+	
 	character = character_reference
 	
 	character.move_speed = character.walk_speed
@@ -15,11 +20,17 @@ func enter(character_reference):
 		character.coyote_jump_cooldown = character.coyote_jump_cooldown_reference
 
 func physics_update(delta : float):
+	set_animation_speed(character.velocity.length())
 	check_if_floor()
 	update(delta)
 	character.apply_gravity(delta)
 	check_input()
 	move(delta)
+
+func set_animation_speed(speed):
+	var alpha = remap(speed, 0.0, character.max_speed, 0.0, 2.0)
+	state_machine.animation.speed_scale = lerp(0.0, top_animation_speed, alpha)
+	
 
 func check_if_floor():
 	if !character.is_on_floor() and !character.is_on_wall():
@@ -46,7 +57,7 @@ func check_input():
 		transitioned.emit(self, "RunState")
 		
 	if Input.is_action_just_pressed("crouch"): 
-		transitioned.emit(self, "SlideState")
+		transitioned.emit(self, "CrouchState")
 
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")

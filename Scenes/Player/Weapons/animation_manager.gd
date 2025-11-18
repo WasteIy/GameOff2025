@@ -1,9 +1,5 @@
 extends AnimationPlayer
 
-func _process(_delta: float) -> void:
-	if current_animation == "RESET":
-		play("idle")
-
 func _on_shoot_animation() -> void:
 	if current_animation == "shoot":
 		return

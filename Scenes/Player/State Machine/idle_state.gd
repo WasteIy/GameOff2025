@@ -3,8 +3,10 @@ class_name IdleState extends State
 var character : CharacterBody3D
 
 func enter(character_reference):
-	character = character_reference
 	
+	state_machine.animation.pause()
+	
+	character = character_reference
 	if character.number_air_jump < character.number_air_jump_reference: 
 		character.number_air_jump = character.number_air_jump_reference
 	if character.coyote_jump_cooldown < character.coyote_jump_cooldown_reference:

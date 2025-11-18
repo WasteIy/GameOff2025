@@ -37,9 +37,10 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_jhyir"]
-resource_name = "walking"
+resource_name = "walk"
 length = 2.0
 loop_mode = 1
+step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,8 +48,8 @@ tracks/0/path = NodePath("CameraController:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2, 2, 2, 2),
-"points": PackedFloat32Array(0.015, -0.25, 0, 0.25, 0, 0, -0.083333336, 0.0025, 0, 0, -0.015, -0.083333336, 0.0025, 0, 0, 0, -0.083333336, -0.0025, 0, 0, 0.015, -0.083333336, -0.0025, 0, 0),
+"handle_modes": PackedInt32Array(2, 3, 0, 0, 3),
+"points": PackedFloat32Array(0.06045824, -0.24999999, 0, 0.25, 0, -5.120039e-05, -0.20694202, 5.6802295e-05, 0.20694202, -5.6802295e-05, -0.059782874, -0.19999999, -1.0708347e-05, 0.19999999, 1.0708347e-05, 0.0004154537, -0.26331687, 0, 0.26331687, 0, 0.06014713, -0.17269254, -7.102359e-05, 0.17269254, 7.102359e-05),
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
 }
 tracks/1/type = "bezier"
@@ -58,15 +59,15 @@ tracks/1/path = NodePath("CameraController:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(2, 2, 2, 2, 2),
-"points": PackedFloat32Array(0.75, -0.25, 0, 0.25, 0, 0.8, -0.083333336, -0.008333336, 0, 0, 0.75, -0.083333336, 0.008333336, 0, 0, 0.8, -0.083333336, -0.008333336, 0, 0, 0.75, -0.083333336, 0.008333336, 0, 0),
+"handle_modes": PackedInt32Array(2, 3, 0, 3, 2),
+"points": PackedFloat32Array(0.7497879, -0.22789787, -0.0036741837, 0.3, 0.004836619, 0.9144916, -0.26, 0, 0.26, 0, 0.7497879, -0.3, 0.004674673, 0.29999995, 0.005259037, 0.91374004, -0.29020226, 5.2452087e-05, 0.29020226, -5.2452087e-05, 0.7497879, -0.29999995, 0.0049535036, 0, 0),
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74mp2"]
 _data = {
 &"RESET": SubResource("Animation_74mp2"),
-&"walking": SubResource("Animation_jhyir")
+&"walk": SubResource("Animation_jhyir")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhyir"]
@@ -77,51 +78,16 @@ height = 1.9020996
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_uvnfx")
-base_collision_height = null
-base_model_height = null
-height_change_duration = null
-max_speed = null
 bunny_hop_desired_move_speed_increase = 1.0
 desired_move_speed_curve = ExtResource("2_jhyir")
 in_air_move_speed_curve = ExtResource("3_74mp2")
-walk_speed = null
-walk_acceleration = null
-walk_deceleration = null
-run_speed = null
-run_acceleration = null
-run_deceleration = null
-continuous_run = null
-crouch_speed = null
-crouch_acceleration = null
-crouch_deceleration = null
-continuous_crouch = null
-crouch_collision_height = null
-crouch_model_height = null
-slide_speed = null
-slide_acceleration = null
-velocity_lost_per_second = null
-slope_sliding_desired_move_speed_increase = null
-slope_sliding_speed_increase = null
-slide_time = null
-slide_cooldown = null
 slide_collision_height = 0.8
 slide_model_height = 0.25
-continuous_slide = null
-max_slope_angle = null
-uphill_tolerance = null
-jump_height = null
-number_air_jump = null
-coyote_jump_cooldown = null
-in_air_input_multiplier = null
-jump_time_to_peak = null
-jump_time_to_fall = null
-hit_ground_cooldown = null
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationManager" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_74mp2")
 }
-autoplay = "walking"
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jhyir")
@@ -137,8 +103,9 @@ script = ExtResource("2_mtuoh")
 [node name="Camera" type="Camera3D" parent="CameraController"]
 unique_name_in_owner = true
 
-[node name="WeaponManager" parent="CameraController/Camera" instance=ExtResource("5_dey5f")]
-transform = Transform3D(0.9993622, 0.03415648, 0.010423573, -0.03300254, 0.99484867, -0.095845744, -0.013643635, 0.09544059, 0.99534154, 0.191, -0.262, -0.486)
+[node name="WeaponManager" parent="CameraController/Camera" node_paths=PackedStringArray("player") instance=ExtResource("5_dey5f")]
+transform = Transform3D(0.98386467, 0.044757888, 0.17322516, -0.033074416, 0.9970153, -0.06975646, -0.17583036, 0.06290159, 0.9824087, 0.225, -0.264, -0.42)
+player = NodePath("../../..")
 
 [node name="Raycasts" type="Node3D" parent="."]
 
@@ -159,7 +126,8 @@ script = ExtResource("2_a3d8c")
 [node name="WeaponInput" type="Node" parent="Components"]
 script = ExtResource("7_jhyir")
 
-[node name="StateMachine" parent="." instance=ExtResource("7_gk6dx")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("7_gk6dx")]
+animation = NodePath("../AnimationManager")
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 

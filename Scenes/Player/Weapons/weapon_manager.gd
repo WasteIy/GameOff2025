@@ -1,6 +1,8 @@
 class_name WeaponManager
 extends Node3D
 
+@export var player : CharacterBody3D
+
 var weapons: Array[Weapon] = []
 var current_weapon: Weapon = null
 
@@ -14,6 +16,7 @@ func _ready():
 		return
 		
 	current_weapon = weapons[0]
+	current_weapon.enter(player)
 
 func try_shoot():
 	if current_weapon:
