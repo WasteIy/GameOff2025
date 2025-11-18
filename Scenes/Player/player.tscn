@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=19 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -6,10 +6,14 @@
 [ext_resource type="Script" uid="uid://b03w8se4tf6xq" path="res://Scenes/Player/camera_script.gd" id="2_mtuoh"]
 [ext_resource type="Curve" uid="uid://bgv5oilo8se3k" path="res://Scenes/Player/State Machine/Curves/in_air_move_speed_curve.tres" id="3_74mp2"]
 [ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/ui.tscn" id="3_xpcdj"]
+[ext_resource type="Script" uid="uid://bl4uxaupo5umw" path="res://Scenes/Player/player_animation_manager.gd" id="4_74mp2"]
 [ext_resource type="PackedScene" uid="uid://d1o7b30ilyyb0" path="res://Scenes/Player/Weapons/weapon_manager.tscn" id="5_dey5f"]
 [ext_resource type="PackedScene" uid="uid://djr27dbr0k6wm" path="res://Scenes/Player/State Machine/state_machine.tscn" id="7_gk6dx"]
 [ext_resource type="Script" uid="uid://c2rjhovo4ljy7" path="res://Scenes/Player/Components/shoot.gd" id="7_jhyir"]
 [ext_resource type="PackedScene" uid="uid://rvq118nc0ibx" path="res://Scenes/UI/ui_debug.tscn" id="13_06tpx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhyir"]
+height = 1.9
 
 [sub_resource type="Animation" id="Animation_74mp2"]
 length = 0.001
@@ -34,6 +38,18 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0.75, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collision:shape")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape3D_jhyir")]
 }
 
 [sub_resource type="Animation" id="Animation_jhyir"]
@@ -64,15 +80,33 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
 }
 
+[sub_resource type="Animation" id="Animation_oikmp"]
+resource_name = "crouch"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Collision:shape")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape3D_jhyir")]
+}
+
+[sub_resource type="Animation" id="Animation_06tpx"]
+resource_name = "uncrouch"
+step = 0.1
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74mp2"]
 _data = {
 &"RESET": SubResource("Animation_74mp2"),
+&"crouch": SubResource("Animation_oikmp"),
+&"uncrouch": SubResource("Animation_06tpx"),
 &"walk": SubResource("Animation_jhyir")
 }
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhyir"]
-radius = 0.36621094
-height = 1.9020996
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oikmp"]
 
@@ -88,6 +122,7 @@ slide_model_height = 0.25
 libraries = {
 &"": SubResource("AnimationLibrary_74mp2")
 }
+script = ExtResource("4_74mp2")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_jhyir")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1o7b30ilyyb0"]
+[gd_scene load_steps=17 format=3 uid="uid://d1o7b30ilyyb0"]
 
 [ext_resource type="Script" uid="uid://dgjhlcdihhsnd" path="res://Scenes/Player/Weapons/weapon_manager.gd" id="1_kfrq2"]
 [ext_resource type="Script" uid="uid://cd780r5y6bcu1" path="res://Scenes/Player/Weapons/pistol.gd" id="2_hw3gm"]
-[ext_resource type="Script" uid="uid://co0mq4weu4jyn" path="res://Scenes/Player/Weapons/animation_manager.gd" id="3_l4ui6"]
+[ext_resource type="Script" uid="uid://co0mq4weu4jyn" path="res://Scenes/Player/Weapons/weapon_animation_manager.gd" id="3_l4ui6"]
 [ext_resource type="PackedScene" uid="uid://kuxcn84buch0" path="res://Scenes/Player/Weapons/Bullet/bullet.tscn" id="3_pr5rr"]
-[ext_resource type="ArrayMesh" uid="uid://y2ca3lv878nv" path="res://Assets/Models/gun.tres" id="4_pr5rr"]
+[ext_resource type="Shader" uid="uid://dp13lb5xwavhs" path="res://Assets/Shaders/weapon_viewport.gdshader" id="4_pr5rr"]
+[ext_resource type="ArrayMesh" uid="uid://y2ca3lv878nv" path="res://Assets/Models/gun.tres" id="5_6h34i"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pr5rr"]
 noise_type = 0
@@ -12,6 +13,20 @@ frequency = 0.4005
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pr5rr"]
 noise = SubResource("FastNoiseLite_pr5rr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6h34i"]
+render_priority = 0
+shader = ExtResource("4_pr5rr")
+shader_parameter/viewmodel_fov = 75.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/roughness_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/normal_scale = 0.5
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_pr5rr"]
 length = 0.001
@@ -40,38 +55,38 @@ resource_name = "idle"
 [sub_resource type="Animation" id="Animation_ydlvs"]
 resource_name = "reload"
 length = 0.5
-tracks/0/type = "rotation_3d"
+tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("MeshContainer/Mesh")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0, 0, 0.7071067, 0.70710677, 0.16666667, 1, 0.5, 0.4999999, 0.5000001, 0.49999997, 0.23333333, 1, 0.7071069, 0.7071066, -3.0908623e-08, -3.0908613e-08, 0.3, 1, -0.1830127, -0.6830127, 0.18301265, 0.68301266, 0.36666667, 1, -0.022135999, -0.330612, 0.073538065, 0.94063693, 0.5, 1, 0, 0, 0, 1)
-tracks/1/type = "position_3d"
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.25, 1, 0, -0.15, 0, 0.5, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("MeshContainer/Mesh")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.25, 1, 0, -0.15, 0, 0.5, 1, 0, 0, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0, 0, 0.7071067, 0.70710677, 0.16666667, 1, 0.5, 0.4999999, 0.5000001, 0.49999997, 0.23333333, 1, 0.7071069, 0.7071066, -3.0908623e-08, -3.0908613e-08, 0.3, 1, -0.1830127, -0.6830127, 0.18301265, 0.68301266, 0.36666667, 1, -0.022135999, -0.330612, 0.073538065, 0.94063693, 0.5, 1, 0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_6h34i"]
 resource_name = "shoot"
 length = 0.2
-tracks/0/type = "rotation_3d"
+tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("MeshContainer/Mesh")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0.12035344, 0, 0, 0.99273115, 0.1, 1, 0, 0, 0, 1)
-tracks/1/type = "position_3d"
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.06666667, 1, 0, 0, 0.07, 0.16666667, 1, 0, 0, 0)
+tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("MeshContainer/Mesh")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.06666667, 1, 0, 0, 0.07, 0.16666667, 1, 0, 0, 0)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0.12035344, 0, 0, 0.99273115, 0.1, 1, 0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_l4ui6"]
 resource_name = "unequip"
@@ -112,7 +127,8 @@ sway_speed = 0.5
 
 [node name="Mesh" type="MeshInstance3D" parent="Pistol/MeshContainer"]
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000004, 0, 0, 0)
-mesh = ExtResource("4_pr5rr")
+material_override = SubResource("ShaderMaterial_6h34i")
+mesh = ExtResource("5_6h34i")
 skeleton = NodePath("")
 
 [node name="BulletSpawnPoint" type="Marker3D" parent="Pistol"]
