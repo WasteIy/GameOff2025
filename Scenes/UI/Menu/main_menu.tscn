@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://clt6mn766fc23"]
+[gd_scene load_steps=5 format=3 uid="uid://clt6mn766fc23"]
 
 [ext_resource type="Script" uid="uid://nk572r5e15vu" path="res://Scenes/UI/Menu/main_menu.gd" id="1_5wsvm"]
 [ext_resource type="PackedScene" uid="uid://bwwk8crh6u2he" path="res://Scenes/UI/Menu/settings.tscn" id="2_nub77"]
+[ext_resource type="AudioStream" uid="uid://dwc5nwujihgia" path="res://Assets/Music/main_menu_music.mp3" id="3_4qolt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_36iwh"]
 font_size = 64
@@ -64,6 +65,11 @@ text = "EXIT GAME"
 [node name="Settings" parent="." instance=ExtResource("2_nub77")]
 visible = false
 layout_mode = 1
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4qolt")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
