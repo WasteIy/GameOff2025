@@ -1,6 +1,6 @@
 extends AnimationPlayer
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if current_animation == "RESET":
 		play("idle")
 

@@ -46,7 +46,7 @@ func check_if_floor():
 
 func move(delta: float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	character.move_direction = (character.camera_holder.global_basis * Vector3(character.input_direction.x, 0.0, character.input_direction.y)).normalized()
+	character.move_direction = (character.camera_controller.global_basis * Vector3(character.input_direction.x, 0.0, character.input_direction.y)).normalized()
 	
 	# Movimento só é aplicado quando o personagem está no ar
 	if !character.is_on_floor():

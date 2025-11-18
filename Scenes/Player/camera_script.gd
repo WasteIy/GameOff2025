@@ -1,4 +1,4 @@
-class_name CameraHolder extends Node3D
+class_name CameraController extends Node3D
 
 @export_range(-90.0, 90.0) var min_pitch: float = -90.0
 @export_range(-90.0, 90.0) var max_pitch: float = 90.0
