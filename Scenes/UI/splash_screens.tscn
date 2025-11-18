@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://x5eoad7jidfu"]
+
+[ext_resource type="Script" uid="uid://b0qic5j44neyk" path="res://Scenes/UI/splash_screens.gd" id="1_17qai"]
+[ext_resource type="PackedScene" uid="uid://clt6mn766fc23" path="res://Scenes/UI/Menu/main_menu.tscn" id="2_lckrs"]
+[ext_resource type="Texture2D" uid="uid://bygyviue11fq5" path="res://Assets/Images/logo_large_color_dark.png" id="2_rmqrp"]
+
+[node name="Splash Screens" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_17qai")
+loadScene = ExtResource("2_lckrs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13319641, 0.13319641, 0.13319638, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 165.0
+offset_right = 1576.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+
+[node name="Godot Splash" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_rmqrp")
+
+[node name="Screen2" type="TextureRect" parent="CenterContainer"]
+layout_mode = 2
+texture = ExtResource("2_rmqrp")
