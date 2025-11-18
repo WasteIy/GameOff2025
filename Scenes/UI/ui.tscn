@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd5bhha7t4278"]
+
+[ext_resource type="Shader" uid="uid://dl66atqk84612" path="res://Assets/Shaders/ui_color.gdshader" id="1_fo61o"]
+[ext_resource type="Script" uid="uid://c4qwpy6hl2iyj" path="res://Scenes/UI/ui_color_wave_script.gd" id="2_alcrr"]
+[ext_resource type="Texture2D" uid="uid://d2geokjhmh5tr" path="res://Assets/Textures/crosshair.png" id="3_1c2ca"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_agmrd"]
+shader = ExtResource("1_fo61o")
+shader_parameter/color_offset = 0.0
+shader_parameter/sFreq = 1.0
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="ColorWave" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_agmrd")
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 1.0
+offset_right = 120.0
+offset_bottom = 72.0
+grow_horizontal = 2
+script = ExtResource("2_alcrr")
+
+[node name="Crosshair" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(72, 72)
+texture = ExtResource("3_1c2ca")

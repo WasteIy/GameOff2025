@@ -4,7 +4,6 @@ extends Node3D
 var weapons: Array[Weapon] = []
 var current_weapon: Weapon = null
 
-
 func _ready():
 	for child in get_children():
 		if child is Weapon:

@@ -1,9 +1,24 @@
-[gd_scene load_steps=11 format=4 uid="uid://d1o7b30ilyyb0"]
+[gd_scene load_steps=16 format=4 uid="uid://d1o7b30ilyyb0"]
 
 [ext_resource type="Script" uid="uid://dgjhlcdihhsnd" path="res://Scenes/Player/Weapons/weapon_manager.gd" id="1_kfrq2"]
 [ext_resource type="Script" uid="uid://cd780r5y6bcu1" path="res://Scenes/Player/Weapons/pistol.gd" id="2_hw3gm"]
 [ext_resource type="Script" uid="uid://co0mq4weu4jyn" path="res://Scenes/Player/Weapons/animation_manager.gd" id="3_l4ui6"]
 [ext_resource type="PackedScene" uid="uid://kuxcn84buch0" path="res://Scenes/Player/Weapons/Bullet/bullet.tscn" id="3_pr5rr"]
+[ext_resource type="Shader" uid="uid://dp13lb5xwavhs" path="res://Assets/Shaders/weapon_viewport.gdshader" id="4_pr5rr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6h34i"]
+render_priority = 0
+shader = ExtResource("4_pr5rr")
+shader_parameter/viewmodel_fov = 75.0
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/roughness_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/normal_scale = 0.5
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6ahkl"]
 _surfaces = [{
@@ -29,6 +44,7 @@ _surfaces = [{
 "index_count": 1062,
 "index_data": PackedByteArray("AAABAAIAAAACAAMACAAJAAoACAAKAAsAkAENAA4AkAEOAJEBEgATABQAEgAUABYAkgGTAZQBkgGUAZUBlgGXAZgBlgGYAZkBlwFFAJgBlwFCAEUAQgBEAEUAQgBDAEQAKgArACwAKgAsAC0AGACaAZsBmgEhAJsBGACbARkAGwAYABkAHAAbABkAmgEgACEAIAAkACEAIAAlACQALgAvAJwBnQEuAJwBMgAzADQAMgA0AJ4BNgAyAJ4BNgCeAZ8BNwA2AJ8BNwCfATUAOAA5ADoAoAE4ADoAoQGgAToAoQE6ADwAOwChATwAOwA8AD0APgA/AEAAPgBAAEEAogGjATAAMQCiATAApAGlAaYBpwGkAaYBqAGpAU4AqAFOAE8AqgGpAagBqgGrAakBrAGrAaoBrAGtAasBVQBUAK4BVQCuAa8BrwGuAbABrwGwAbEBsQGwAbIBsQGyAbMBUgBTALQBUgC0AbUBTABNALYBTAC2AbcBWABZAFoAWABaAFsAXABdAF4AXABeAF8AuAFWAFcAuQG4AVcABQAHAAYABQAGAAQAugG7AbwBugG8Ab0BvgG/AVAAvgFQAFEAwAHBAXUAwQF2AHUAwQFzAHYAwAF1AMIBwwHAAcIBwwHCAcQBxQHDAcQBxQHEAcYBYABhAMcBYQDIAccBYADHAckBYwBgAMkBYwDJAWIAYQDKAcgBygFkAMgBygHLAWQAywFmAGQAywFlAGYAZwBoAGkAZwBpAGoAzAHNAc4BzAHOAc8BzQHQAc4BzQHRAdAB0QHSAdAB0QGmANIBpgCnANIBpgCoAKcA0wFGAEcA0wFHANQB1QHTAdQB1QHUAdYBSADVAdYBSADWAdcBawDYAWwAawBsAG0A2AFuAGwA2AHZAW4A2QHaAW4A2QHbAdoB2wHcAdoB2wFwANwBcABvANwBcABxAG8A3QHeAREA3QERABAA3wHgAeEB3wHhAUkA4AHiAeEB4AHjAeIB4wFKAOIB4wFLAEoAcgDkAeUBcgDlAXQA5gHnAegB5gHoARcA6QHqAesB6QHrAewB6gHtAesB6gHuAe0BFQDvAfABFQDwAfEB8gHzAfQB8gH0AR0AdwB4AHkAdwB5AHoAewB8AH0AewB9AH4AfwCAAIEAfwCBAIIA9QH2AZUA9QGVAJYAgwCEAIUAgwCFAIYA9wH4AZEA9wGRAJIA+QH6AYgA+QGIAIkAiwCMAI0AiwCNAI4A+wH8Af0B+wH9Af4BjwCQAP8BjwD/AQACAAL/AQECAAIBAgICkwCUAAMCkwADAgQCBAIDAgUCBAIFAgYCBwKZAAgCBwIIAgkCCgILAgwCCgIMAg0CngAOAg8CEAKeAA8CnACdABECnAARAhICEwIUAhUCEwIVAhYCmgCYABcCmgAXAhgCGQIaAhsCGQIbAhwCHQIeAh8CHQIfAiACIQIiAqAAIQKgAJ8AIwIkApsAIwKbAJcAoQCiAKMAoQCjAKQAGgAeAB8AGgAfACUCqgCrAKwAqgCsAK0AJgInAikAJgIpACgArgCvALAArgCwALEApQAoAikCpQApAqkAsgCzALQAsgC0ALUAtgC3ALgAtgC4ALkAKgIrAiwCKgIsAi0CDAAPAC4CDAAuAi8CMAIxAjICMAIyAjMCNAI1AjYCNAI2AjcCJgAnADgCJgA4AjkCOgIjACIAOgIiADsCugC7ALwAugC8AL0AvgA8AsAAwQC+AMAAvgDCADwCwgC/ADwCwgDDAL8AwgDEAMMAxQDGAMcAxQDHAMgAyQDKAMsAyQDLAMwAPQLJAMwAPQLMAM4AzQA9As4AzQDOAM8A0AA+Aj8C0AA/AtIAQALRANMAQALTAEEC1ADVANYA1ADWANcA2ADZANoA2ADaANsA3ADdAN4A3ADeAN8A4ADhAOIA4ADiAOMA5ADlAOYA5ADmAOcA6ADpAOoA6ADqAOsA7ADtAO4A7ADuAO8A8ADxAPIA8ADyAPMA9AD1APYA9AD2APcA+AD5APoA+wD4APoA+QD8APoA/QD4APsA+QD+APwA/QD/APgA/gAAAfwA/QABAf8AAAECAfwA/QADAQEBBAECAQABAwEFAQEBBAEGAQIBAwEHAQUBBwEGAQQBBQEHAQQBCAEJAQoBCwEIAQoBCwEKAQwBDQELAQwBDQEMAQ4BDwENAQ4BEAERARIBEAESARMBFAEVARYBFAEWARcBGAEZARoBGAEaARsBHAEdAR4BHAEeAR8BIAEhASIBIAEiASMBJAElASYBJAEmAScBKAEpASoBKAEqASsBLAEtAS4BLAEuAS8BMAFCAjEBMAExATIBMwFCAjABMwE0AUICNQEwATIBNQEyATYBNwE4ATkBNwE5AToBOwE8AUMCOwFDAj0BPQFDAj4BPQE+AT8BQAE7AT0BQAE9AUEBRAJDAUQBRAJEAUUCQgFGAkcCQgFHAkUBRgFHAUgBRgFIAUkBSQFIAUoBRgFJAUsBTAFNAU4BTAFOAU8BUAFRAVIBUwFQAVIBSAJJAkoCSAJKAksCTAJNAlcBTAJXAVYBVAFVAU4CVAFOAk8CWAFZAVoBWAFaAVsBXAFdAV4BXAFeAV8BhwCKAFAChwBQAlECYAFhAWIBYAFiAWMBUgJTAmUBUgJlAWYBaAFpAWoBawFoAWoBZAFnAVQCZAFUAlUCbAFtAW4BbAFuAW8BcAFxAXIBcAFyAXMBdAF1AXYBdwF0AXYBVgJXAlgCVgJYAlkCeAF5AXoBeAF6AXsBfAF9AX4BfAF+AX8BgAGBAYIBgwGAAYIBhAGFAYYBhAGGAYcBiAGJAYoBiAGKAYsBjAGNAY4BjAGOAY8B"),
 "lods": [0.10723376, PackedByteArray("AAABAAIAAAACAAMAAQAEAAIAAQAFAAQABQAGAAQABQAHAAYACAAJAAoACAAKAAsADAANAA4ADAAPAA0ADAAOABAAEAAOABEAEgATABQAFQATABIAEgAUABYAFgAUABcAFQAYABMAFAAZABcAFQAaABgAGwAYABkAHAAbABkAGQAdABcAGAAdABkAGgAdABgAGgAeAB8AGgAfACAAGgAgAB0AHQAgACEAIQAiAB0AIQAjACIAIAAkACEAIAAlACQAJgAnACgAKAAnACkAKgArACwAKgAsAC0ALgAvADAAMQAuADAAMgAzADQAMgA0ADUANgAyADUANwA2ADUAOAA5ADoAOwA4ADoAOwA6ADwAOwA8AD0APgA/AEAAPgBAAEEAQgBDAEQAQgBEAEUARgBHAEIASABGAEIASABCAEUASABFAEkARQBKAEkARQBLAEoATABNAE4ATABOAE8ATwBOAFAATwBQAFEAUgBTAFQAUgBUAFUAVQBUAFYAVQBWAFcAWABZAFoAWABaAFsAXABdAF4AXABeAF8AYABhAGIAYwBgAGIAYQBkAGIAYQBlAGQAZQBmAGQAZwBoAGkAZwBpAGoAawBsAG0AawBuAGwAawBvAG4AawBwAG8AcABxAG8AcgBzAHQAcwB1AHQAcwB2AHUAdwB4AHkAdwB5AHoAewB8AH0AewB9AH4AfwCAAIEAfwCBAIIAgwCEAIUAgwCFAIYAhwCIAIkAhwCKAIgAiwCMAI0AiwCNAI4AjwCQAJEAjwCRAJIAkwCUAJUAkwCVAJYAlwCYAJkAmgCYAJcAlwCZAJsAnACdAJ4AnACeAJ8AnwCeAKAAoQCiAKMAoQCjAKQApQCmAKcApgCoAKcApQCnAKkAqgCrAKwAqgCsAK0ArgCvALAArgCwALEAsgCzALQAsgC0ALUAtgC3ALgAtgC4ALkAugC7ALwAugC8AL0AvgC/AMAAwQC+AMAAvgDCAL8AwgDDAL8AwgDEAMMAxQDGAMcAxQDHAMgAyQDKAMsAyQDLAMwAzQDJAMwAzQDMAM4AzQDOAM8A0ADRANIA0QDTANIA1ADVANYA1ADWANcA2ADZANoA2ADaANsA3ADdAN4A3ADeAN8A4ADhAOIA4ADiAOMA5ADlAOYA5ADmAOcA6ADpAOoA6ADqAOsA7ADtAO4A7ADuAO8A8ADxAPIA8ADyAPMA9AD1APYA9AD2APcA+AD5APoA+wD4APoA+QD8APoA/QD4APsA+QD+APwA/QD/APgA/gAAAfwA/QABAf8AAAECAfwA/QADAQEBBAECAQABAwEFAQEBBAEGAQIBAwEHAQUBBwEGAQQBBQEHAQQBCAEJAQoBCwEIAQoBCwEKAQwBDQELAQwBDQEMAQ4BDwENAQ4BEAERARIBEAESARMBFAEVARYBFAEWARcBGAEZARoBGAEaARsBHAEdAR4BHAEeAR8BIAEhASIBIAEiASMBJAElASYBJAEmAScBKAEpASoBKAEqASsBLAEtAS4BLAEuAS8BMAExATIBMwExATABMwE0ATEBNQEwATIBNQEyATYBNwE4ATkBNwE5AToBOwE8AT0BPQE8AT4BPQE+AT8BQAE7AT0BQAE9AUEBQgFDAUQBQgFEAUUBRgFHAUgBRgFIAUkBSQFIAUoBRgFJAUsBTAFNAU4BTAFOAU8BUAFRAVIBUwFQAVIBVAFVAVYBVgFVAVcBWAFZAVoBWAFaAVsBXAFdAV4BXAFeAV8BYAFhAWIBYAFiAWMBZAFlAWYBZAFnAWUBaAFpAWoBawFoAWoBbAFtAW4BbAFuAW8BcAFxAXIBcAFyAXMBdAF1AXYBdwF0AXYBeAF5AXoBeAF6AXsBfAF9AX4BfAF+AX8BgAGBAYIBgwGAAYIBhAGFAYYBhAGGAYcBiAGJAYoBiAGKAYsBjAGNAY4BjAGOAY8B")],
+"material": SubResource("ShaderMaterial_6h34i"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 602,
@@ -42,10 +58,24 @@ length = 0.001
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh")
+tracks/0/path = NodePath("MeshContainer/Mesh")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_54vjm"]
+resource_name = "equip"
+length = 0.3
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -1, 0, 0.3, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_pkcqw"]
+resource_name = "idle"
 
 [sub_resource type="Animation" id="Animation_ydlvs"]
 resource_name = "reload"
@@ -53,7 +83,7 @@ length = 0.5
 tracks/0/type = "rotation_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh")
+tracks/0/path = NodePath("MeshContainer/Mesh")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0, 0, 0.7071067, 0.70710677, 0.16666667, 1, 0.5, 0.4999999, 0.5000001, 0.49999997, 0.23333333, 1, 0.7071069, 0.7071066, -3.0908623e-08, -3.0908613e-08, 0.3, 1, -0.1830127, -0.6830127, 0.18301265, 0.68301266, 0.36666667, 1, -0.022135999, -0.330612, 0.073538065, 0.94063693, 0.5, 1, 0, 0, 0, 1)
@@ -64,23 +94,37 @@ length = 0.2
 tracks/0/type = "position_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh")
+tracks/0/path = NodePath("MeshContainer/Mesh")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.06666667, 1, 0, 0, 0.07, 0.16666667, 1, 0, 0, 0)
 tracks/1/type = "rotation_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh")
+tracks/1/path = NodePath("MeshContainer/Mesh")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0.12035344, 0, 0, 0.99273115, 0.1, 1, 0, 0, 0, 1)
 
+[sub_resource type="Animation" id="Animation_l4ui6"]
+resource_name = "unequip"
+length = 0.3
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshContainer/Mesh")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 0, -1, 0)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydlvs"]
 _data = {
 &"RESET": SubResource("Animation_pr5rr"),
+&"equip": SubResource("Animation_54vjm"),
+&"idle": SubResource("Animation_pkcqw"),
 &"reload": SubResource("Animation_ydlvs"),
-&"shoot": SubResource("Animation_6h34i")
+&"shoot": SubResource("Animation_6h34i"),
+&"unequip": SubResource("Animation_l4ui6")
 }
 
 [node name="WeaponManager" type="Node3D"]
@@ -91,8 +135,12 @@ transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("2_hw3gm")
 bullet_scene = ExtResource("3_pr5rr")
 early_reload_time = 0.2
+sway_min = Vector2(-10, -5)
+sway_max = Vector2(10, 5)
 
-[node name="Mesh" type="MeshInstance3D" parent="Pistol"]
+[node name="MeshContainer" type="Node3D" parent="Pistol"]
+
+[node name="Mesh" type="MeshInstance3D" parent="Pistol/MeshContainer"]
 transform = Transform3D(0.99999976, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000004, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6otbd")
 skeleton = NodePath("")

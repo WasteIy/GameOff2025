@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 @export var player : CharacterBody3D
-@onready var weapon_manager: WeaponManager = $"../CameraHolder/Camera/WeaponManager"
+@onready var weapon_manager: WeaponManager = $"../CameraController/Camera/WeaponManager"
 
 
 @onready var current_state_label: Label = %CurrentStateLabel

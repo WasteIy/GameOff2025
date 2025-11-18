@@ -74,7 +74,7 @@ var hit_ground_cooldown_reference : float
 @onready var fall_gravity : float = (-2.0 * jump_height) / (jump_time_to_fall * jump_time_to_fall)
 
 @onready var model: MeshInstance3D = $Model
-@onready var camera_holder: CameraHolder = $CameraHolder
+@onready var camera_controller: CameraController = $CameraController
 @onready var state_machine: StateMachine = $StateMachine
 @onready var collision: CollisionShape3D = $Collision
 @onready var floor_check: RayCast3D = $Raycasts/FloorCheck
