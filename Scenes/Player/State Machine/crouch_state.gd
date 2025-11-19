@@ -1,10 +1,8 @@
 class_name CrouchState extends State
 
 var character : CharacterBody3D
-var top_animation_speed = 5.0
 
 func enter(character_reference : CharacterBody3D) -> void:
-	state_machine.animation.play("walk", -1.0, 1.0)
 	character = character_reference
 	
 	character.move_speed = character.crouch_speed
@@ -22,12 +20,6 @@ func physics_update(delta : float) -> void:
 	character.apply_gravity(delta)
 	check_input()
 	move(delta)
-	set_animation_speed(character.velocity.length())
-
-func set_animation_speed(speed):
-	var alpha = remap(speed, 0.0, character.max_speed, 0.0, 2.0)
-	state_machine.animation.speed_scale = lerp(0.0, top_animation_speed, alpha)
-	
 
 func check_if_floor() -> void:
 	if !character.is_on_floor() and !character.is_on_wall():

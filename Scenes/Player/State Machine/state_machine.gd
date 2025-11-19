@@ -1,7 +1,6 @@
 class_name StateMachine extends Node
 
 @export var initial_state: State
-@export var animation : AnimationPlayer
 
 var current_state: State
 var states: Dictionary[String, State] = {}

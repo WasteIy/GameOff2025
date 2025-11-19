@@ -165,10 +165,10 @@ func reload():
 	if early_reload:
 		reload_cooldown -= early_reload_time
 
-func get_animation_duration(anim_name: String, fallback: float) -> float:
+func get_animation_duration(animation_name: String, fallback: float) -> float:
 	if animation_manager == null and !early_reload:
 		return fallback
-	var anim = animation_manager.get_animation(anim_name)
+	var anim = animation_manager.get_animation(animation_name)
 	if anim == null:
 		return fallback
 	

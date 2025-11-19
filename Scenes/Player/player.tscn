@@ -161,7 +161,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_oikmp")
 
 [node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0005229846, 0.649903, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0004112292, 0.6500281, 0)
 script = ExtResource("2_mtuoh")
 
 [node name="Camera" type="Camera3D" parent="CameraController"]
@@ -190,8 +190,7 @@ script = ExtResource("2_a3d8c")
 [node name="WeaponInput" type="Node" parent="Components"]
 script = ExtResource("7_jhyir")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("7_gk6dx")]
-animation = NodePath("../AnimationManager")
+[node name="StateMachine" parent="." instance=ExtResource("7_gk6dx")]
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 

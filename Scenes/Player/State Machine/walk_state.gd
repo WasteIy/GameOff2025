@@ -1,13 +1,9 @@
 class_name WalkState extends State
 
 var character : CharacterBody3D
-var top_animation_speed = 5.0
 
 
 func enter(character_reference):
-	
-	state_machine.animation.play("walk",-1.0,1.0)
-	
 	character = character_reference
 	
 	character.move_speed = character.walk_speed
@@ -20,21 +16,11 @@ func enter(character_reference):
 		character.coyote_jump_cooldown = character.coyote_jump_cooldown_reference
 
 func physics_update(delta : float):
-	set_animation_speed(character.velocity.length())
 	check_if_floor()
 	update(delta)
 	character.apply_gravity(delta)
 	check_input()
 	move(delta)
-
-func set_animation_speed(speed):
-	var min_speed_threshold := 0.7
-	if speed < min_speed_threshold:
-		state_machine.animation.speed_scale = 0.0
-		return
-	
-	var alpha = remap(speed, 0.0, character.max_speed, 0.0, 2.0)
-	state_machine.animation.speed_scale = lerp(0.0, top_animation_speed, alpha)
 
 func check_if_floor():
 	if !character.is_on_floor() and !character.is_on_wall():
