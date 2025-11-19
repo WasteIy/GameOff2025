@@ -83,8 +83,8 @@ tracks/0/path = NodePath("CameraController:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 3, 0, 0, 3),
-"points": PackedFloat32Array(0.06045824, -0.24999999, 0, 0.25, 0, -5.120039e-05, -0.20694202, 5.6802295e-05, 0.20694202, -5.6802295e-05, -0.059782874, -0.19999999, -1.0708347e-05, 0.19999999, 1.0708347e-05, 0.0004154537, -0.26331687, 0, 0.26331687, 0, 0.06014713, -0.17269254, -7.102359e-05, 0.17269254, 7.102359e-05),
+"handle_modes": PackedInt32Array(3, 2, 3, 0, 0),
+"points": PackedFloat32Array(0.00041122735, -0.17269254, -7.102359e-05, 0.17269254, 7.102359e-05, 0.06045824, -0.24999999, 0, 0.25, 0, -5.120039e-05, -0.20694202, 5.6802295e-05, 0.20694202, -5.6802295e-05, -0.059782874, -0.19999999, -1.0708347e-05, 0.19999999, 1.0708347e-05, 0.0004154537, -0.26331687, 0, 0.26331687, 0),
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
 }
 tracks/1/type = "bezier"
@@ -94,8 +94,8 @@ tracks/1/path = NodePath("CameraController:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(2, 3, 0, 3, 2),
-"points": PackedFloat32Array(0.5000274, -0.22789787, -0.0036741837, 0.3, 0.004836619, 0.6496724, -0.26, 0, 0.26, 0, 0.5000274, -0.3, 0.004674673, 0.29999995, 0.005259037, 0.6496724, -0.29020226, 5.2452087e-05, 0.29020226, -5.2452087e-05, 0.5000274, -0.29999995, 0.0049535036, 0, 0),
+"handle_modes": PackedInt32Array(0, 0, 3, 0, 2),
+"points": PackedFloat32Array(0.6500281, -0.22789787, -0.0036741837, 0.3, -0.0010511875, 0.49971223, -0.3, 0.014716268, 0.3, 0.016818583, 0.6500281, -0.29999995, 0, 0.29999995, 0, 0.49866107, -0.29999995, 0.01786974, 0.29999995, 0.022074372, 0.6500281, -0.29999995, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
 }
 
@@ -137,7 +137,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_oikmp")
 
 [node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.120039e-05, 0.6496724, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06045824, 0.6500281, 0)
 script = ExtResource("2_mtuoh")
 
 [node name="Camera" type="Camera3D" parent="CameraController"]
