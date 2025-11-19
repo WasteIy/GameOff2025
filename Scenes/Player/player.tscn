@@ -137,7 +137,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_oikmp")
 
 [node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06045824, 0.5000274, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.120039e-05, 0.6496724, 0)
 script = ExtResource("2_mtuoh")
 
 [node name="Camera" type="Camera3D" parent="CameraController"]

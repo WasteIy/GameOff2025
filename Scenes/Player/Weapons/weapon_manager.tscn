@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://d1o7b30ilyyb0"]
 
 [ext_resource type="Script" uid="uid://dgjhlcdihhsnd" path="res://Scenes/Player/Weapons/weapon_manager.gd" id="1_kfrq2"]
-[ext_resource type="Script" uid="uid://cd780r5y6bcu1" path="res://Scenes/Player/Weapons/pistol.gd" id="2_hw3gm"]
+[ext_resource type="Script" uid="uid://bry2vlaa3sb3r" path="res://Scenes/Player/Weapons/pistol.gd" id="2_6h34i"]
 [ext_resource type="Script" uid="uid://co0mq4weu4jyn" path="res://Scenes/Player/Weapons/weapon_animation_manager.gd" id="3_l4ui6"]
 [ext_resource type="PackedScene" uid="uid://kuxcn84buch0" path="res://Scenes/Player/Weapons/Bullet/bullet.tscn" id="3_pr5rr"]
 [ext_resource type="Shader" uid="uid://dp13lb5xwavhs" path="res://Assets/Shaders/weapon_viewport.gdshader" id="4_pr5rr"]
@@ -114,7 +114,7 @@ script = ExtResource("1_kfrq2")
 
 [node name="Pistol" type="Node3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
-script = ExtResource("2_hw3gm")
+script = ExtResource("2_6h34i")
 bullet_scene = ExtResource("3_pr5rr")
 early_reload_time = 0.2
 sway_min = Vector2(-10, -5)
