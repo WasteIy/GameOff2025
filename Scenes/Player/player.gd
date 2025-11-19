@@ -110,11 +110,14 @@ func _physics_process(delta: float) -> void:
 		if state_machine.current_state.name != "SlideState":
 			slide_time = slide_time_reference
 
-func apply_gravity(delta : float):
-	# Se o personagem vai pra cima, aplica a jump_velocity
-	# Se não, a fall-velocity
-	if velocity.y >= 0.0: velocity.y += jump_gravity * delta
-	elif velocity.y < 0.0: velocity.y += fall_gravity * delta
+func apply_gravity(delta: float):
+	if not is_on_floor():
+		if velocity.y >= 0.0:
+			velocity.y += jump_gravity * delta
+		else:
+			velocity.y += fall_gravity * delta
+	else:
+		velocity.y = 0.0
 
 func update_properties():
 	last_frame_position = position

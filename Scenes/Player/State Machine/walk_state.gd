@@ -28,9 +28,13 @@ func physics_update(delta : float):
 	move(delta)
 
 func set_animation_speed(speed):
+	var min_speed_threshold := 0.7
+	if speed < min_speed_threshold:
+		state_machine.animation.speed_scale = 0.0
+		return
+	
 	var alpha = remap(speed, 0.0, character.max_speed, 0.0, 2.0)
 	state_machine.animation.speed_scale = lerp(0.0, top_animation_speed, alpha)
-	
 
 func check_if_floor():
 	if !character.is_on_floor() and !character.is_on_wall():
