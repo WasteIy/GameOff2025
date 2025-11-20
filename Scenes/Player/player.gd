@@ -81,6 +81,7 @@ var hit_ground_cooldown_reference : float
 @onready var ceiling_check: RayCast3D = $Raycasts/CeilingCheck
 @onready var debug: CanvasLayer = $Debug
 @onready var slide_floor_check: RayCast3D = $Raycasts/SlideFloorCheck
+@onready var animation_manager: AnimationPlayer = $AnimationManager
 
 var input_direction : Vector2
 var move_direction : Vector3

@@ -2,10 +2,10 @@ class_name StateMachine extends Node
 
 @export var initial_state: State
 
+@onready var player: Player = $".."
+
 var current_state: State
 var states: Dictionary[String, State] = {}
-
-@onready var player: Player = $".."
 
 # Aqui adiciona todos os filhos desse nó no dictionary
 func _ready() -> void:
@@ -40,6 +40,7 @@ func _on_state_transitioned(state: State, new_state_name: String) -> void:
 
 	if current_state:
 		current_state.exit()
-
+	
 	new_state.enter(player)
 	current_state = new_state
+	player.animation_manager.play_state_animation(current_state.name)

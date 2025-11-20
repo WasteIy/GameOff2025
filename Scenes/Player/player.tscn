@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bl6m5oumql8y4"]
+[gd_scene load_steps=17 format=3 uid="uid://bl6m5oumql8y4"]
 
 [ext_resource type="Script" uid="uid://cvu2gg1d14dtr" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="2_a3d8c"]
@@ -51,52 +51,8 @@ tracks/2/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_oikmp"]
-resource_name = "crouch"
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Collision:shape:height")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.9, 1.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Collision:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.05, 0), Vector3(0, -0.25, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CameraController/Camera:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.98553884),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.4, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_06tpx"]
-resource_name = "uncrouch"
-step = 0.1
-
 [sub_resource type="Animation" id="Animation_jhyir"]
-resource_name = "walk"
+resource_name = "WalkState"
 length = 2.0
 loop_mode = 1
 step = 0.1
@@ -126,9 +82,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_74mp2"]
 _data = {
 &"RESET": SubResource("Animation_74mp2"),
-&"crouch": SubResource("Animation_oikmp"),
-&"uncrouch": SubResource("Animation_06tpx"),
-&"walk": SubResource("Animation_jhyir")
+&"WalkState": SubResource("Animation_jhyir")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jhyir"]
@@ -190,7 +144,8 @@ script = ExtResource("2_a3d8c")
 [node name="WeaponInput" type="Node" parent="Components"]
 script = ExtResource("7_jhyir")
 
-[node name="StateMachine" parent="." instance=ExtResource("7_gk6dx")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_gk6dx")]
+player = NodePath("..")
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 
