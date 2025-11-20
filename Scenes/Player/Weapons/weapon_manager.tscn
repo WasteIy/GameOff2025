@@ -116,9 +116,9 @@ script = ExtResource("1_kfrq2")
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("2_6h34i")
 bullet_scene = ExtResource("3_pr5rr")
-early_reload_time = 0.2
-sway_ammount_rotation = 10.0
+sway_ammount_rotation = 20.0
 sway_noise = SubResource("NoiseTexture2D_pr5rr")
+sway_speed = 2.0
 
 [node name="MeshContainer" type="Node3D" parent="Pistol"]
 
