@@ -119,7 +119,6 @@ bullet_scene = ExtResource("3_pr5rr")
 early_reload_time = 0.2
 sway_ammount_rotation = 10.0
 sway_noise = SubResource("NoiseTexture2D_pr5rr")
-sway_speed = 0.5
 
 [node name="MeshContainer" type="Node3D" parent="Pistol"]
 

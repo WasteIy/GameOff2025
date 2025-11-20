@@ -41,6 +41,10 @@ text = "MaxSpeed:"
 layout_mode = 2
 text = "DesiredMoveSpeed:"
 
+[node name="AnimationSpeed" type="Label" parent="Player Info/NameContainers/MovementContainer"]
+layout_mode = 2
+text = "AnimationSpeed:"
+
 [node name="JumpContainer" type="VBoxContainer" parent="Player Info/NameContainers"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -144,6 +148,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "......."
 
+[node name="AnimationSpeedLabel" type="Label" parent="Player Info/LabelContainers/MovementContainerLabel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "......."
+
 [node name="JumpContainerLabel" type="VBoxContainer" parent="Player Info/LabelContainers"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -237,10 +246,10 @@ text = "......"
 [node name="WeaponInfo" type="HBoxContainer" parent="."]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 871.0
-offset_top = 32.0
-offset_right = 1043.0
-offset_bottom = -485.0
+offset_left = 875.0
+offset_top = 21.0
+offset_right = 1063.0002
+offset_bottom = -495.99976
 grow_vertical = 2
 scale = Vector2(0.865, 0.865)
 size_flags_horizontal = 4

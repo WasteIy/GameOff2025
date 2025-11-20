@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var player : CharacterBody3D
 @onready var weapon_manager: WeaponManager = $"../CameraController/Camera/WeaponManager"
 
+@onready var animation_speed_label: Label = %AnimationSpeedLabel
 
 @onready var current_state_label: Label = %CurrentStateLabel
 @onready var velocity_label: Label = %VelocityLabel
@@ -53,6 +54,8 @@ func display():
 	velocity_label.set_text("%.2f" % player.velocity.length())
 	max_speed_label.set_text("%.2f" % player.max_speed)
 	desired_move_speed_label.set_text("%.2f" % player.desired_move_speed)
+	
+	animation_speed_label.set_text("%.2f" % player.animation_manager.speed_scale)
 	
 	air_jumps_left_label.set_text(str(player.number_air_jump)) #?
 	hit_ground_cooldown_label.set_text("%.2f" % player.hit_ground_cooldown) 

@@ -14,4 +14,4 @@ func play_state_animation(state_name: String) -> void:
 
 func set_animation_speed(speed):
 	var alpha = remap(speed, 0.0, player.max_speed, 0.0, 2.0)
-	speed_scale = lerp(0.0, max_animation_speed, alpha)
+	speed_scale = clamp(lerp(0.0, max_animation_speed, alpha), 0.0, max_animation_speed)
