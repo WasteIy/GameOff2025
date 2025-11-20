@@ -9,8 +9,16 @@ func _physics_process(_delta: float) -> void:
 
 func play_state_animation(state_name: String) -> void:
 	var animation_name := state_name
-	if has_animation(animation_name):
-		play(animation_name)
+	if not has_animation(animation_name):
+		return
+	
+	var t := 0.0
+	
+	if current_animation:
+		t = current_animation_position
+	
+	play(animation_name)
+	seek(t, false)
 
 func set_animation_speed(speed):
 	var alpha = remap(speed, 0.0, player.max_speed, 0.0, 2.0)
