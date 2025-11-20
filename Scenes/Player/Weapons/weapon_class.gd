@@ -23,8 +23,8 @@ var state: WeaponState = WeaponState.IDLE
 @export var fallback_reload_cooldown := 0.4
 
 @export_group("Sway Variables")
-@export var sway_min : Vector2 = Vector2(-20.0, -20.0)
-@export var sway_max : Vector2 = Vector2(20.0, 20.0)
+@export var sway_min : Vector2 = Vector2(-10.0, -10.0)
+@export var sway_max : Vector2 = Vector2(10.0, 10.0)
 @export_range(0,0.2,0.01) var sway_speed_position : float = 0.07
 @export_range(0,0.2,0.01) var sway_speed_rotation : float = 0.1
 @export_range(0,0.25,0.01) var sway_ammount_position : float = 0.1
