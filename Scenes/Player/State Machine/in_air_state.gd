@@ -33,8 +33,10 @@ func check_input():
 		if character.was_on_floor and character.coyote_jump_cooldown > 0.0 and character.last_frame_position.y > character.position.y:
 			character.coyote_jump_on = true
 			transitioned.emit(self, "JumpState")
+			return
 		
 		transitioned.emit(self, "JumpState")
+		return
 		
 	if Input.is_action_just_pressed("crouch"):
 		if character.slide_floor_check.is_colliding() and character.last_frame_position.y > character.position.y and character.slide_cooldown <= 0.0:
@@ -46,14 +48,17 @@ func check_if_floor():
 			character.buffered_jump = true
 			character.buffered_jump_on = false
 			transitioned.emit(self, "JumpState")
+			return
 		if character.slide_buffering_on:
 			character.slide_buffering_on = false
-			transitioned.emit(self, "SlideState") 
+			transitioned.emit(self, "SlideState")
+			return
 		else:
 			if character.move_direction:
 				transitioned.emit(self, character.walk_or_run)
 			else:
 				transitioned.emit(self, "IdleState")
+				return
 	
 	if character.is_on_wall():
 		character.velocity.x = 0.0

@@ -32,6 +32,7 @@ func check_if_floor() -> void:
 		if character.buffered_jump_on:
 			character.buffered_jump = true
 			transitioned.emit(self, "JumpState")
+			return
 
 func update(delta : float) -> void:
 	if (character.global_position.y - character.last_frame_position.y) > character.uphill_tolerance:
@@ -40,8 +41,10 @@ func update(delta : float) -> void:
 		character.slide_direction = Vector3.ZERO
 		if !raycast_check():
 			transitioned.emit(self, character.walk_or_run)
+			return
 		else:
 			transitioned.emit(self, "CrouchState")
+			return
 	
 	slope_angle = rad_to_deg(acos(character.get_floor_normal().dot(Vector3.UP)))
 	if slope_angle < character.max_slope_angle:
@@ -53,8 +56,10 @@ func update(delta : float) -> void:
 			character.slide_cooldown = character.slide_cooldown_reference
 			if !raycast_check():
 				transitioned.emit(self, character.walk_or_run)
+				return
 			else:
 				transitioned.emit(self, "CrouchState")
+				return
 	
 	character.tween_collision_height(character.slide_collision_height)
 	character.tween_model_height(character.slide_model_height)
@@ -67,6 +72,7 @@ func check_input() -> void:
 			character.slide_direction = Vector3.ZERO
 			character.slide_cooldown = character.slide_cooldown_reference
 			transitioned.emit(self, "JumpState")
+			return
 	
 	if character.continuous_slide: 
 		if Input.is_action_just_pressed("crouch"):
@@ -75,8 +81,10 @@ func check_input() -> void:
 			character.slide_cooldown = character.slide_cooldown_reference
 			if !raycast_check():
 				transitioned.emit(self, character.walk_or_run)
+				return
 			else:
 				transitioned.emit(self, "CrouchState")
+				return
 	else:
 		if !Input.is_action_pressed("crouch"):
 			if !raycast_check():
@@ -85,8 +93,10 @@ func check_input() -> void:
 				character.slide_cooldown = character.slide_cooldown_reference
 				if !raycast_check():
 					transitioned.emit(self, character.walk_or_run)
+					return
 				else:
 					transitioned.emit(self, "CrouchState")
+					return
 
 func raycast_check() -> bool:
 	return character.ceiling_check.is_colliding()

@@ -24,12 +24,14 @@ func physics_update(delta : float):
 func check_if_floor():
 	if !character.is_on_floor() and character.velocity.y < 0.0:
 		transitioned.emit(self, "InAirState")
+		return
 		
 	if character.is_on_floor():
 		if character.buffered_jump_on:
 			character.buffered_jump = true
 			character.buffered_jump_on = false
 			transitioned.emit(self, "JumpState")
+			return
 
 func update(delta):
 	if character.hit_ground_cooldown > 0.0: character.hit_ground_cooldown -= delta
@@ -40,21 +42,25 @@ func update(delta):
 func check_input():
 	if Input.is_action_just_pressed("jump"):
 		transitioned.emit(self, "JumpState")
+		return
 	
 	if character.continuous_run:
 		# Precisa apertar uma vez o botão de correr
 		if Input.is_action_just_pressed("run"):
 			character.walk_or_run = "WalkState"
 			transitioned.emit(self, "WalkState")
+			return
 	else:
 		# Tem que pressionar o botão de correr
 		if !Input.is_action_pressed("run"):
 			character.walk_or_run = "WalkState"
 			transitioned.emit(self, "WalkState")
+			return
 	
 	if Input.is_action_just_pressed("crouch"): 
 		if character.slide_cooldown <= 0.0:
 			transitioned.emit(self, "SlideState")
+			return
 	
 func move(delta : float):
 	character.input_direction = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -68,5 +74,6 @@ func move(delta : float):
 		
 	else:
 		transitioned.emit(self, "IdleState")
+		return
 		
 	if character.desired_move_speed >= character.max_speed: character.desired_move_speed = character.max_speed

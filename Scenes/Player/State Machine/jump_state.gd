@@ -32,12 +32,15 @@ func check_input():
 func check_if_floor():
 	if !character.is_on_floor() and character.velocity.y < 0.0:
 		transitioned.emit(self, "InAirState")
+		return
 		
 	if character.is_on_floor():
 		if character.move_direction:
 			transitioned.emit(self, character.walk_or_run)
+			return
 		else:
 			transitioned.emit(self, "IdleState")
+			return
 	
 	# Perde toda a velocidade se o personagem bater numa parede
 	if character.is_on_wall():
