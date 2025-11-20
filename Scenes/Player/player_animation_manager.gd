@@ -4,7 +4,7 @@ extends AnimationPlayer
 
 @onready var player: Player = $".."
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	set_animation_speed(player.velocity.length())
 
 func play_state_animation(state_name: String) -> void:

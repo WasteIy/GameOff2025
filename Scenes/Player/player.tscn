@@ -144,8 +144,7 @@ script = ExtResource("2_a3d8c")
 [node name="WeaponInput" type="Node" parent="Components"]
 script = ExtResource("7_jhyir")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_gk6dx")]
-player = NodePath("..")
+[node name="StateMachine" parent="." instance=ExtResource("7_gk6dx")]
 
 [node name="UI" parent="." instance=ExtResource("3_xpcdj")]
 
