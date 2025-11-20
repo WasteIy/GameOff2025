@@ -122,7 +122,6 @@ func update_reload(delta: float) -> void:
 		state = WeaponState.IDLE
 
 func shoot():
-	
 	if ammo_in_mag <= 0:
 		if state == WeaponState.IDLE:
 			reload()
