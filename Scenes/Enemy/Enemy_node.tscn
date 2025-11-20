@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnnsu2kh4hygu"]
+
+[ext_resource type="Script" uid="uid://dqelekku4v251" path="res://node_3d.gd" id="1_u1yda"]
+[ext_resource type="Script" uid="uid://dfxdnfbfm8tke" path="res://character_body_3d.gd" id="2_4ajvi"]
+[ext_resource type="ArrayMesh" uid="uid://y2ca3lv878nv" path="res://Assets/Models/gun.tres" id="3_e5rt8"]
+[ext_resource type="PackedScene" uid="uid://dika8vkvgcprx" path="res://Scenes/Enemy/StateMachine/StateMachine.tscn" id="4_4ajvi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pgncf"]
+radius = 0.42370605
+height = 0.8474121
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8seqw"]
+radius = 1.812221
+
+[node name="Enemy_node" type="Node3D"]
+script = ExtResource("1_u1yda")
+
+[node name="Enemy" type="CharacterBody3D" parent="."]
+script = ExtResource("2_4ajvi")
+
+[node name="Gun" type="MeshInstance3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18136823, 0, -0.1773649)
+mesh = ExtResource("3_e5rt8")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.055462718, -0.51986146)
+shape = SubResource("CapsuleShape3D_pgncf")
+
+[node name="Detection Range" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Range"]
+shape = SubResource("SphereShape3D_8seqw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9972786, -0.073725566, 0, 0.073725566, 0.9972786, 0, 0, 0, 1, 0.41064298, 0.45135683, 1.4030263)
+fov = 66.66127
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("enemy_node") instance=ExtResource("4_4ajvi")]
+enemy_node = NodePath("..")
+
+[connection signal="body_entered" from="Detection Range" to="." method="_on_area_3d_body_entered"]
