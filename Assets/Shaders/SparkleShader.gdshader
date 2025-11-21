@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode cull_disabled, unshaded;
 
-uniform sampler2D mainTex : filter_linear;
+uniform sampler2D mainTex : filter_nearest;
 uniform vec4 cor : source_color;
 uniform sampler2D noiseTex;
 

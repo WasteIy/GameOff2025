@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cjfgpiirpihg7" path="res://Scenes/UI/UI_scene.tscn" id="3_k2lhu"]
 [ext_resource type="Shader" uid="uid://cp3ukynrqpm6q" path="res://Assets/Shaders/SparkleShader.gdshader" id="3_o5hn5"]
 [ext_resource type="Script" uid="uid://7a3av5sc4s0f" path="res://Scenes/Player/Components/color_change.gd" id="4_f64hd"]
-[ext_resource type="Texture2D" uid="uid://c8lvgcee2x48d" path="res://Assets/Shaders/T_4_streaks.png" id="5_4vtuq"]
+[ext_resource type="Texture2D" uid="uid://b2dd6i2xodxtq" path="res://Assets/Shaders/MuzzleFlashTexture.png" id="4_mg8o3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_l7207"]
 
@@ -14,7 +14,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ery3i"]
 render_priority = 0
 shader = ExtResource("3_o5hn5")
-shader_parameter/mainTex = ExtResource("5_4vtuq")
+shader_parameter/mainTex = ExtResource("4_mg8o3")
 shader_parameter/cor = Color(3.2944162, 0.54292107, 0, 1)
 
 [sub_resource type="Curve" id="Curve_f64hd"]
@@ -79,9 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37160873, -0.21746147, -0.4
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Head/Camera3D/blaster-d"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.014242649, 0.055680335, -0.4553818)
 material_override = SubResource("ShaderMaterial_ery3i")
-emitting = false
 lifetime = 0.1
-one_shot = true
 explosiveness = 0.9
 randomness = 1.0
 fixed_fps = 60
