@@ -3,6 +3,7 @@ class_name Player extends CharacterBody3D
 @export var base_collision_height: float = 1.9
 @export var base_model_height: float = 1.0
 @export var height_change_duration: float = 0.15
+@export var headbob : bool = false
 
 @export_group("Movement Variables")
 @export var max_speed : float = 50.0

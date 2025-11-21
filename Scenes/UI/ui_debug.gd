@@ -77,7 +77,7 @@ func display():
 	
 	weapon_ammo_label.set_text(str(weapon_manager.current_weapon.ammo_in_mag))
 	
-	match weapon_manager.current_weapon.state:
+	match weapon_manager.state:
 		0:
 			weapon_state_label.set_text("IDLE")
 		1:
@@ -85,6 +85,6 @@ func display():
 		2:
 			weapon_state_label.set_text("RELOADING")
 	
-	shoot_cooldown_label.set_text("%.2f" % weapon_manager.current_weapon.shoot_cooldown)
-	reload_duration_label.set_text("%.2f" % weapon_manager.current_weapon.reload_cooldown)
-	reload_cancelled_label.set_text(str(weapon_manager.current_weapon.reload_cancelled))
+	shoot_cooldown_label.set_text("%.2f" % weapon_manager.shoot_cooldown)
+	reload_duration_label.set_text("%.2f" % weapon_manager.reload_cooldown)
+	reload_cancelled_label.set_text(str(weapon_manager.reload_cancelled))

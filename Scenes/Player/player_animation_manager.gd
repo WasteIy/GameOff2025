@@ -10,6 +10,7 @@ func _physics_process(_delta: float) -> void:
 func play_state_animation(state_name: String) -> void:
 	var animation_name := state_name
 	if not has_animation(animation_name):
+		pause()
 		return
 	
 	var t := 0.0

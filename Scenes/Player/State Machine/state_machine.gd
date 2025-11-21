@@ -43,4 +43,6 @@ func _on_state_transitioned(state: State, new_state_name: String) -> void:
 	
 	new_state.enter(player)
 	current_state = new_state
-	player.animation_manager.play_state_animation(current_state.name)
+	
+	if player.headbob:
+		player.animation_manager.play_state_animation(current_state.name)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1o7b30ilyyb0"]
+[gd_scene load_steps=14 format=3 uid="uid://d1o7b30ilyyb0"]
 
 [ext_resource type="Script" uid="uid://dgjhlcdihhsnd" path="res://Scenes/Player/Weapons/weapon_manager.gd" id="1_kfrq2"]
 [ext_resource type="Script" uid="uid://bry2vlaa3sb3r" path="res://Scenes/Player/Weapons/pistol.gd" id="2_6h34i"]
@@ -7,12 +7,11 @@
 [ext_resource type="Shader" uid="uid://dp13lb5xwavhs" path="res://Assets/Shaders/weapon_viewport.gdshader" id="4_pr5rr"]
 [ext_resource type="ArrayMesh" uid="uid://y2ca3lv878nv" path="res://Assets/Models/gun.tres" id="5_6h34i"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pr5rr"]
-noise_type = 0
-frequency = 0.4005
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6h34i"]
+frequency = 0.2285
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pr5rr"]
-noise = SubResource("FastNoiseLite_pr5rr")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ydlvs"]
+noise = SubResource("FastNoiseLite_6h34i")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6h34i"]
 render_priority = 0
@@ -38,22 +37,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_54vjm"]
-resource_name = "equip"
-length = 0.3
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshContainer/Mesh")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, -1, 0, 0.3, 1, 0, 0, 0)
-
-[sub_resource type="Animation" id="Animation_pkcqw"]
-resource_name = "idle"
-
 [sub_resource type="Animation" id="Animation_ydlvs"]
-resource_name = "reload"
+resource_name = "Reload"
 length = 0.5
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -71,7 +56,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.1, 1, 0, 0, 0.7071067, 0.70710677, 0.16666667, 1, 0.5, 0.4999999, 0.5000001, 0.49999997, 0.23333333, 1, 0.7071069, 0.7071066, -3.0908623e-08, -3.0908613e-08, 0.3, 1, -0.1830127, -0.6830127, 0.18301265, 0.68301266, 0.36666667, 1, -0.022135999, -0.330612, 0.073538065, 0.94063693, 0.5, 1, 0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_6h34i"]
-resource_name = "shoot"
+resource_name = "Shoot"
 length = 0.2
 tracks/0/type = "position_3d"
 tracks/0/imported = false
@@ -88,25 +73,11 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0.12035344, 0, 0, 0.99273115, 0.1, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_l4ui6"]
-resource_name = "unequip"
-length = 0.3
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshContainer/Mesh")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 0, -1, 0)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydlvs"]
 _data = {
 &"RESET": SubResource("Animation_pr5rr"),
-&"equip": SubResource("Animation_54vjm"),
-&"idle": SubResource("Animation_pkcqw"),
-&"reload": SubResource("Animation_ydlvs"),
-&"shoot": SubResource("Animation_6h34i"),
-&"unequip": SubResource("Animation_l4ui6")
+&"Reload": SubResource("Animation_ydlvs"),
+&"Shoot": SubResource("Animation_6h34i")
 }
 
 [node name="WeaponManager" type="Node3D"]
@@ -116,9 +87,7 @@ script = ExtResource("1_kfrq2")
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("2_6h34i")
 bullet_scene = ExtResource("3_pr5rr")
-sway_ammount_rotation = 20.0
-sway_noise = SubResource("NoiseTexture2D_pr5rr")
-sway_speed = 2.0
+sway_noise = SubResource("NoiseTexture2D_ydlvs")
 
 [node name="MeshContainer" type="Node3D" parent="Pistol"]
 
