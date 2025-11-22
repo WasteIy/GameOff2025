@@ -51,4 +51,5 @@ func stop_bob() -> void:
 	
 	if weapon_animation.current_animation == "bob":
 		weapon_animation.stop()
+		# Isso é porque quando tocava a animação de atirar ou de recarregar, ela tocava muito rápido
 		weapon_animation.speed_scale = 1.0
