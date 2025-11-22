@@ -1,7 +1,5 @@
 extends AnimationPlayer
 
-
-
 func _on_shoot_animation() -> void:
 	if current_animation == "shoot":
 		return

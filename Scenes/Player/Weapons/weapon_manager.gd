@@ -1,9 +1,11 @@
-class_name WeaponManager
-extends Node3D
+class_name WeaponManager extends Node3D
 
 enum WeaponState { IDLE, SHOOTING, RELOADING }
 
 @export var player : CharacterBody3D
+
+@onready var animation_manager: AnimationPlayer = $Pistol/AnimationManager
+@onready var bob_animation: AnimationPlayer = $Pistol/BobAnimation
 
 var weapons: Array[Weapon] = []
 var current_weapon: Weapon = null

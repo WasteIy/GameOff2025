@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1o7b30ilyyb0"]
+[gd_scene load_steps=15 format=3 uid="uid://d1o7b30ilyyb0"]
 
 [ext_resource type="Script" uid="uid://dgjhlcdihhsnd" path="res://Scenes/Player/Weapons/weapon_manager.gd" id="1_kfrq2"]
 [ext_resource type="Script" uid="uid://bry2vlaa3sb3r" path="res://Scenes/Player/Weapons/pistol.gd" id="2_6h34i"]
 [ext_resource type="Script" uid="uid://co0mq4weu4jyn" path="res://Scenes/Player/Weapons/weapon_animation_manager.gd" id="3_l4ui6"]
 [ext_resource type="PackedScene" uid="uid://kuxcn84buch0" path="res://Scenes/Player/Weapons/Bullet/bullet.tscn" id="3_pr5rr"]
 [ext_resource type="Shader" uid="uid://dp13lb5xwavhs" path="res://Assets/Shaders/weapon_viewport.gdshader" id="4_pr5rr"]
-[ext_resource type="ArrayMesh" uid="uid://y2ca3lv878nv" path="res://Assets/Models/gun.tres" id="5_6h34i"]
+[ext_resource type="ArrayMesh" uid="uid://dpsp2sqpt3gvv" path="res://Assets/Models/gun.tres" id="5_6h34i"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_pr5rr"]
 noise_type = 0
@@ -37,20 +37,33 @@ tracks/0/path = NodePath("MeshContainer/Mesh")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshContainer:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_54vjm"]
-resource_name = "equip"
-length = 0.3
-tracks/0/type = "position_3d"
+resource_name = "bob"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshContainer/Mesh")
+tracks/0/path = NodePath("MeshContainer:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, -1, 0, 0.3, 1, 0, 0, 0)
-
-[sub_resource type="Animation" id="Animation_pkcqw"]
-resource_name = "idle"
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 3, 0, 3),
+"points": PackedFloat32Array(0, -0.25, 0, 0.2, -0.0020679813, -0.025, -0.13333333, 0.016474858, 0.13333333, 0.016474858, 0, -0.20000005, -0.0013027154, 0.20000005, 0.0013027154, -0.025, -0.133, 0.016, 0.133, 0.016, 0, -0.16666675, -0.0013027154, 0.16666675, 0.0013027154),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
 
 [sub_resource type="Animation" id="Animation_ydlvs"]
 resource_name = "reload"
@@ -88,25 +101,12 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.033333335, 1, 0.12035344, 0, 0, 0.99273115, 0.1, 1, 0, 0, 0, 1)
 
-[sub_resource type="Animation" id="Animation_l4ui6"]
-resource_name = "unequip"
-length = 0.3
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshContainer/Mesh")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.3, 1, 0, -1, 0)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ydlvs"]
 _data = {
 &"RESET": SubResource("Animation_pr5rr"),
-&"equip": SubResource("Animation_54vjm"),
-&"idle": SubResource("Animation_pkcqw"),
+&"bob": SubResource("Animation_54vjm"),
 &"reload": SubResource("Animation_ydlvs"),
-&"shoot": SubResource("Animation_6h34i"),
-&"unequip": SubResource("Animation_l4ui6")
+&"shoot": SubResource("Animation_6h34i")
 }
 
 [node name="WeaponManager" type="Node3D"]
@@ -129,8 +129,13 @@ mesh = ExtResource("5_6h34i")
 skeleton = NodePath("")
 
 [node name="BulletSpawnPoint" type="Marker3D" parent="Pistol"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17325696, -0.7744767)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17325696, -0.6205092)
 gizmo_extents = 0.01
+
+[node name="BobAnimation" type="AnimationPlayer" parent="Pistol"]
+libraries = {
+&"": SubResource("AnimationLibrary_ydlvs")
+}
 
 [node name="AnimationManager" type="AnimationPlayer" parent="Pistol"]
 libraries = {

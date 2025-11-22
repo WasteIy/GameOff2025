@@ -28,6 +28,10 @@ signal reload_animation
 @export var sway_noise : NoiseTexture2D
 @export var sway_speed : float = 1.2
 
+@onready var mesh_container: Node3D = $MeshContainer
+@onready var bullet_spawn_point: Marker3D = $BulletSpawnPoint
+@onready var animation_manager: AnimationPlayer = $AnimationManager
+
 var mouse_movement : Vector2
 var random_sway_x 
 var random_sway_y
@@ -35,11 +39,6 @@ var random_sway_amount = 5.0
 var time : float = 0.0
 var idle_sway_adjustment = 10.0
 var idle_sway_rotation_strenght = 30.0
-
-@onready var mesh_container: Node3D = $MeshContainer
-@onready var bullet_spawn_point: Marker3D = $BulletSpawnPoint
-@onready var animation_manager: AnimationPlayer = $AnimationManager
-
 var player : CharacterBody3D
 
 func enter(player_reference):
