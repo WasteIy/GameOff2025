@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjfgpiirpihg7"]
+[gd_scene load_steps=9 format=3 uid="uid://cjfgpiirpihg7"]
 
 [ext_resource type="Shader" uid="uid://bic5pu4ouc3ax" path="res://Assets/Shaders/Glitch.gdshader" id="1_18t6v"]
 [ext_resource type="Shader" uid="uid://dl66atqk84612" path="res://Assets/Shaders/UI_Color.gdshader" id="1_wghih"]
 [ext_resource type="Script" uid="uid://c4qwpy6hl2iyj" path="res://Scenes/UI/UI_color_script.gd" id="2_agmrd"]
 [ext_resource type="Script" uid="uid://d3ocxmuwkjb7w" path="res://Scenes/UI/GlitchScript.gd" id="4_g87wr"]
+[ext_resource type="Shader" uid="uid://dtiue8tr36jxp" path="res://Assets/Shaders/PixelArt.gdshader" id="5_fvueq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvueq"]
+shader = ExtResource("5_fvueq")
+shader_parameter/pixel_size = 4.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g87wr"]
 shader = ExtResource("1_18t6v")
@@ -20,7 +25,16 @@ shader_parameter/sFreq = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
+[node name="PixelEffect" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_fvueq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Glitch" type="Panel" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_g87wr")
 anchors_preset = 15
 anchor_right = 1.0
